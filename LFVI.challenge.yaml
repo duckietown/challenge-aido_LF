@@ -1,18 +1,18 @@
-challenge: aido3-LFVI-sim-validation
+challenge: aido3-off-LFVI-sim-validation
 
 title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
-tags: [visible, ml-validation, aido3, aido3-embodied, LFVI, v4, simulation]
+tags: [visible, ml-validation, aido3-off, aido3-off-embodied, LFVI, v4, simulation]
 description: |
 
 protocol: aido2_db18_agent-z2
 
-date-open: 2019-10-10T00:00Z
-date-close: 2019-12-12T13:00Z
+date-open: 2019-12-12T00:00Z
+date-close: 2020-05-12T00:00Z
 
 scoring: !include scoring.yaml
 
 dependencies:
-  aido3-LFV-sim-validation:
+  aido3-off-LFV-sim-validation:
     description: The submission must first pass LFV testing.
     min_threshold: 2.0
     scores:
