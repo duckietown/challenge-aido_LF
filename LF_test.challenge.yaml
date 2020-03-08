@@ -1,7 +1,7 @@
-challenge: aido3-off-LF-sim-testing
+challenge: aido4-LF-sim-testing
 
 title: "LF 🚗 - Lane following (simulation 👾, testing 🥇)"
-tags: [visible, ml-testing, aido3-off, aido3-off-embodied, LF, v4, simulation]
+tags: [visible, ml-testing, aido4, aido4-embodied, LF, v4, simulation]
 description: |
   Lane following challenge.
 
@@ -15,7 +15,7 @@ date-close: 2020-05-12T00:00Z
 scoring: !include scoring.yaml
 
 dependencies:
-  aido3-off-LF-sim-validation:
+  aido4-LF-sim-validation:
     description: The submission must first pass the testing.
     min_threshold: 2.0
     scores:

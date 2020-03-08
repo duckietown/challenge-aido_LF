@@ -1,5 +1,5 @@
-build:
-  context: ./simulator
+image: docker.io/duckietown/challenge-aido_lf-simulator-gym:daffy-aido4
+
 environment:
   AIDONODE_DATA_IN: /fifos/simulator-in
   AIDONODE_DATA_OUT: fifo:/fifos/simulator-out

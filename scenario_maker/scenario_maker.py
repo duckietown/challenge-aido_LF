@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import random
 from dataclasses import dataclass
-from typing import *
+from typing import Dict, List, Tuple
 
 import numpy as np
 import yaml
 
 import duckietown_world as dw
 import geometry as g
-from aido_schemas import protocol_scenario_maker, Scenario, ScenarioRobotSpec, RobotConfiguration, wrap_direct, Context
+from aido_schemas import Context, protocol_scenario_maker, RobotConfiguration, Scenario, ScenarioRobotSpec, wrap_direct
 from duckietown_world import list_maps
 from duckietown_world.world_duckietown.map_loading import _get_map_yaml
 from duckietown_world.world_duckietown.sampling_poses import sample_good_starting_pose
@@ -23,7 +23,7 @@ class MyScenario(Scenario):
 
 @dataclass
 class MyConfig:
-    maps: Tuple[str] = ('4way',)
+    maps: Tuple[str, ...] = ('4way',)
     scenarios_per_map: int = 1
     robots_npcs: int = 0
     robots_pcs: int = 1
