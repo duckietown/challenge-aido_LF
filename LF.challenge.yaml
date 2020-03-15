@@ -11,9 +11,6 @@ protocol: aido2_db18_agent-z2
 date-open: 2019-12-12T00:00Z
 date-close: 2020-05-12T00:00Z
 
-
-
-
 scoring: !include scoring.yaml
 
 steps:
@@ -38,6 +35,7 @@ steps:
               maps:
               - ETHZ_autolab_technical_track
               scenarios_per_map: 5
-              robots_npcs: 0
-          build:
-            context: ./scenario_maker
+              robots_npcs: []
+              robots_pcs: [ego]
+          image: docker.io/duckietown/challenge-aido_lf-scenario_maker:daffy-aido4
+

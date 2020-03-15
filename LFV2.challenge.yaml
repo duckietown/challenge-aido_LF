@@ -1,0 +1,54 @@
+challenge: aido4-LFV2-sim-validation
+
+title: "LFV 🚗🚗 - Lane following - 2 agents "
+tags: [visible, ml-validation, aido4, aido4-embodied, LFV, v4, simulation]
+description: |
+  Lane following challenge with two agents.
+
+protocol: aido2_db18_agent-z2
+
+date-open: 2019-12-12T00:00Z
+date-close: 2020-05-12T00:00Z
+
+scoring: !include scoring.yaml
+
+steps:
+  step1-simulation:
+    title: Simulation step
+    description: ""
+    features_required:
+      compute_sims: 1 # computation machine
+
+
+    timeout: 3600 # 1 hour
+    evaluation_parameters:
+      services:
+        evaluator: !include comp_evaluator.yaml
+        simulator: !include comp_simulator.yaml
+
+        ego0:
+          image: SUBMISSION_CONTAINER
+          environment:
+            AIDONODE_NAME: ego0
+            AIDONODE_DATA_IN: /fifos/ego0-in
+            AIDONODE_DATA_OUT: fifo:/fifos/ego0-out
+
+        ego1:
+          image: SUBMISSION_CONTAINER
+          environment:
+            AIDONODE_NAME: ego1
+            AIDONODE_DATA_IN: /fifos/ego1-in
+            AIDONODE_DATA_OUT: fifo:/fifos/ego1-out
+
+        scenario_maker:
+          environment:
+            AIDONODE_DATA_IN: /fifos/scenario_maker-in
+            AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
+            AIDONODE_CONFIG: |
+              maps:
+              - ETHZ_autolab_technical_track
+              scenarios_per_map: 1
+              robots_npcs: [npc0, npc1]
+              robots_pcs: [ego0, ego1]
+              robots_parked: [parked0, parked1]
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-aido4

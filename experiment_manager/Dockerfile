@@ -1,13 +1,17 @@
-FROM duckietown/aido3-base-python3:daffy
+ARG AIDO_REGISTRY
+FROM ${AIDO_REGISTRY}/duckietown/aido-base-python3:daffy-aido4
 
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+COPY requirements.* ./
+#RUN pip uninstall -y aido-protocols-daffy-aido4
+RUN pip install -U -r requirements.resolved
 RUN pip list
+RUN pipdeptree
+
+
 
 COPY . .
-ENV DISABLE_CONTRACTS=1
 
-
+RUN  python3 -c "from  experiment_manager import *"
 
 ENTRYPOINT ["python3", "experiment_manager.py"]

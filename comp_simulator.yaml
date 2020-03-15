@@ -1,4 +1,4 @@
-image: docker.io/duckietown/challenge-aido_lf-simulator-gym:daffy-aido4
+image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-aido4
 
 environment:
   AIDONODE_DATA_IN: /fifos/simulator-in
@@ -11,3 +11,6 @@ environment:
       camera_width: 640
       camera_height: 480
       distortion: true
+      num_tris_distractors: 0
+      color_ground: [0, 0.3, 0] # green
+
