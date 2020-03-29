@@ -1,5 +1,7 @@
+PIP_INDEX_URL ?= https://pypi.org/simple
+
 update-reqs:
-	pur -r experiment_manager/requirements.txt -f -m '*' -o experiment_manager/requirements.resolved
+	pur --index-url $(PIP_INDEX_URL) -r experiment_manager/requirements.txt -f -m '*' -o experiment_manager/requirements.resolved
 	aido-update-reqs experiment_manager/requirements.resolved
 
 define-challenge:

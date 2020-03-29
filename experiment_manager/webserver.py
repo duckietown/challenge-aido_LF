@@ -22,8 +22,8 @@ class WebServer:
 
     async def init(self):
         app = web.Application()
-        app.router.add_route('GET', "/", self.index)
-        app.router.add_route('GET', "/image", self.mjpeg_handler)
+        app.router.add_route("GET", "/", self.index)
+        app.router.add_route("GET", "/image", self.mjpeg_handler)
         loop = asyncio.get_event_loop()
         await loop.create_server(app.make_handler(), self.address, self.port)
 
@@ -31,21 +31,27 @@ class WebServer:
         i = self.i
         self.i += 1
 
-        subname = f'sub{i}'
-        image_name = request.query['image']
+        subname = f"sub{i}"
+        image_name = request.query["image"]
         queue: "asyncio.Queue[bytes]" = asyncio.Queue()
         self.name2sub2queue[image_name][subname] = queue
         my_boundary = "jpegboundary"
-        response = web.StreamResponse(status=200, reason='OK', headers={
-            'Content-Type': 'multipart/x-mixed-replace;'
-                            'boundary=%s' % my_boundary,
-        })
+        response = web.StreamResponse(
+            status=200,
+            reason="OK",
+            headers={
+                "Content-Type": "multipart/x-mixed-replace;"
+                "boundary=%s" % my_boundary,
+            },
+        )
         await response.prepare(request)
 
         try:
             while True:
                 jpg_data = await queue.get()
-                with MultipartWriter('x-mixed-replace', boundary=my_boundary) as mpwriter:
+                with MultipartWriter(
+                    "x-mixed-replace", boundary=my_boundary
+                ) as mpwriter:
                     headers = CIMultiDict()
                     mpwriter.append(jpg_data, headers=headers)
                     await mpwriter.write(response, close_boundary=False)
@@ -68,5 +74,5 @@ class WebServer:
         for image_name in self.name2sub2queue:
             response += f'\n<img width="320" src="/image?image={image_name}"/>'
 
-        response += '</body></html>'
-        return web.Response(text=response, content_type='text/html')
+        response += "</body></html>"
+        return web.Response(text=response, content_type="text/html")
