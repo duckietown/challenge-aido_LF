@@ -4,11 +4,10 @@ environment:
     episodes_per_scenario: 1
     episode_length_s: 15.0
     min_episode_length_s: 0.0
-    seed: 43
+    seed: 44
     physics_dt: 0.05
     max_failures: 2
-    agent_in: /fifos/agent-in
-    agent_out: /fifos/agent-out
+    fifo_dir: /fifos
     sim_in: /fifos/simulator-in
     sim_out: /fifos/simulator-out
     sm_in: /fifos/scenario_maker-in
@@ -16,5 +15,10 @@ environment:
     timeout_initialization: 120
     timeout_regular: 120
 
+    port: 10123 # visualization port
+
 build:
   context: ./experiment_manager
+
+ports:
+  - 10123

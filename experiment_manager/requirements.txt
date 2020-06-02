@@ -1,1 +1,14 @@
-duckietown-world-daffy>=5.0.11
+
+# this is already in the base container but makes it easy to update quickly
+aido-protocols-daffy-aido4
+aido-analyze-daffy-aido4
+duckietown-world-daffy-aido4
+duckietown-challenges-daffy-aido4
+
+multidict
+
+aiohttp
+requests
+py-multihash
+py-cid
+pytz

@@ -1,47 +1,40 @@
 #!/usr/bin/env python
 
+import asyncio
+import functools
 import json
 import logging
 import os
 import shutil
 import time
 import traceback
+from concurrent.futures.thread import ThreadPoolExecutor
 from contextlib import contextmanager
 from dataclasses import dataclass
 from threading import Thread
-from typing import cast, Dict, Iterator, List
+from typing import cast, Dict, Iterator, List, Callable
 
 import numpy as np
-
 import yaml
 
-from aido_schemas import (
-    EpisodeStart,
-    protocol_agent,
-    protocol_scenario_maker,
-    protocol_simulator,
-    RobotObservations,
-    RobotPerformance,
-    RobotState,
-    Scenario,
-    SetMap,
-    SetRobotCommands,
-    SimulationState,
-    SpawnRobot,
-    Step,
-    GetRobotState,
-    GetRobotObservations,
-)
+from aido_schemas import (DTSimStateDump, Duckiebot1Observations, Duckiebot1ObservationsPlusState, EpisodeStart,
+                          GetCommands, GetRobotObservations, GetRobotState, JPGImage, protocol_agent,
+                          protocol_scenario_maker, protocol_simulator, RobotObservations, RobotPerformance, RobotState,
+                          Scenario, SetMap, SetRobotCommands, SimulationState, SpawnRobot, Step,
+                          protocol_agent_duckiebot1)
+from aido_schemas.protocol_simulator import DumpState
 from aido_schemas.utils import TimeTracker
-from aido_schemas.utils_drawing import read_and_draw
-from aido_schemas.utils_video import make_video1
+from aido_analyze.utils_drawing import read_and_draw
+from aido_analyze.utils_video import make_video1, make_video_ui_image
+from duckietown_challenges import ChallengeInterfaceEvaluator
 from duckietown_world.rules import RuleEvaluationResult
 from duckietown_world.rules.rule import EvaluatedMetric
+from webserver import WebServer
 from zuper_commons.text import indent
 from zuper_ipce import ipce_from_object, object_from_ipce
 from zuper_nodes.structures import RemoteNodeAborted
 from zuper_nodes_wrapper.wrapper_outside import ComponentInterface, MsgReceived
-from zuper_typing.subcheck import can_be_used_as2
+from zuper_typing import can_be_used_as2
 
 logging.basicConfig()
 logger = logging.getLogger("launcher")
@@ -50,6 +43,7 @@ logger.setLevel(logging.DEBUG)
 
 @dataclass
 class MyConfig:
+
     episode_length_s: float
     min_episode_length_s: float
     seed: int
@@ -57,8 +51,8 @@ class MyConfig:
     episodes_per_scenario: int
     max_failures: int
 
-    agent_in: str
-    agent_out: str
+    fifo_dir: str
+
     sim_in: str
     sim_out: str
     sm_in: str
@@ -67,28 +61,17 @@ class MyConfig:
     timeout_initialization: int
     timeout_regular: int
 
+    port: int # port for visualization web server
 
-def main(cie, log_dir, attempts):
+
+async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
     config_ = env_as_yaml("experiment_manager_parameters")
     logger.info("parameters:\n\n%s" % config_)
     config = cast(MyConfig, object_from_ipce(config_, MyConfig))
 
-    # first open all fifos
-    agent_ci = ComponentInterface(
-        config.agent_in,
-        config.agent_out,
-        expect_protocol=protocol_agent,
-        nickname="agent",
-        timeout=config.timeout_regular,
-    )
-    agents = [agent_ci]
-    sim_ci = ComponentInterface(
-        config.sim_in,
-        config.sim_out,
-        expect_protocol=protocol_simulator,
-        nickname="simulator",
-        timeout=config.timeout_regular,
-    )
+    webserver = WebServer(address="0.0.0.0", port=config.port)
+    await asyncio.create_task(webserver.init())
+
     sm_ci = ComponentInterface(
         config.sm_in,
         config.sm_out,
@@ -96,15 +79,51 @@ def main(cie, log_dir, attempts):
         nickname="scenario_maker",
         timeout=config.timeout_regular,
     )
-
-    # then check compatibility
-    # so that everything fails gracefully in case of error
-
     sm_ci._get_node_protocol(timeout=config.timeout_initialization)
-    sim_ci._get_node_protocol(timeout=config.timeout_initialization)
-    agent_ci._get_node_protocol(timeout=config.timeout_initialization)
+    episodes = get_episodes(
+        sm_ci, episodes_per_scenario=config.episodes_per_scenario, seed=config.seed
+    )
+    episode = episodes[0]
+    playable_robots = []
+    for name, r in episode.scenario.robots.items():
+        if r.playable:
+            playable_robots.append(name)
 
-    check_compatibility_between_agent_and_sim(agent_ci, sim_ci)
+    logger.info('Obtained episodes from scenario maker. Now initializing agents com.')
+    agents_cis: Dict[str, ComponentInterface] = {}
+    for robot_name in playable_robots:
+        fifo_in = os.path.join(config.fifo_dir, robot_name + "-in")
+        fifo_out = os.path.join(config.fifo_dir, robot_name + "-out")
+
+        # first open all fifos
+        logger.info(f'Initializing agent {robot_name} - {fifo_in} / {fifo_out}')
+        aci = ComponentInterface(
+            fifo_in,
+            fifo_out,
+            expect_protocol=protocol_agent_duckiebot1,
+            nickname=robot_name,
+            timeout=config.timeout_regular,
+        )
+        agents_cis[robot_name] = aci
+
+    logger.info(f'Now initializing sim connection {config.sim_in} / {config.sim_out}')
+
+    sim_ci = ComponentInterface(
+        config.sim_in,
+        config.sim_out,
+        expect_protocol=protocol_simulator,
+        nickname="simulator",
+        timeout=config.timeout_regular,
+    )
+
+    logger.info('Getting protocol for sim')
+    sim_ci._get_node_protocol(timeout=config.timeout_initialization)
+
+    for pcname, robot_ci in agents_cis.items():
+        logger.info('Getting protocol for agent')
+        robot_ci._get_node_protocol(timeout=config.timeout_initialization)
+        if True:
+            check_compatibility_between_agent_and_sim(robot_ci, sim_ci)
 
     attempt_i = 0
     per_episode = {}
@@ -112,13 +131,12 @@ def main(cie, log_dir, attempts):
     try:
 
         nfailures = 0
-
+        logger.info(f'Setting seed = {config.seed} for sim')
         sim_ci.write_topic_and_expect_zero("seed", config.seed)
-        agent_ci.write_topic_and_expect_zero("seed", config.seed)
 
-        episodes = get_episodes(
-            sm_ci, episodes_per_scenario=config.episodes_per_scenario, seed=config.seed
-        )
+        for pcname, robot_ci in agents_cis.items():
+            logger.info(f'Setting seed = {config.seed} for agent')
+            robot_ci.write_topic_and_expect_zero("seed", config.seed)
 
         while episodes:
 
@@ -147,7 +165,8 @@ def main(cie, log_dir, attempts):
             fn_tmp = fn + ".tmp"
             fw = open(fn_tmp, "wb")
 
-            agent_ci.cc(fw)
+            for pcname, agent_ci in agents_cis.items():
+                agent_ci.cc(fw)
             sim_ci.cc(fw)
 
             logger.info("Now running episode")
@@ -155,17 +174,19 @@ def main(cie, log_dir, attempts):
             num_playable = len(
                 [_ for _ in episode_spec.scenario.robots.values() if _.playable]
             )
-            if num_playable != len(agents):
-                msg = f"The scenario requires {num_playable} robots, but I only know {len(agents)} agents."
+            if num_playable != len(playable_robots):
+                msg = f"The scenario requires {num_playable} robots, but I only know {len(playable_robots)} agents."
                 raise Exception(msg)  # XXX
             try:
-                length_s = run_episode(
+                logger.info("Starting episode %s" % episode_name)
+                length_s = await run_episode(
                     sim_ci,
-                    agents,
+                    agents_cis,
                     episode_name=episode_name,
                     scenario=episode_spec.scenario,
-                    episode_length_s=config.episode_length_s,
+                    config=config,
                     physics_dt=config.physics_dt,
+                    webserver=webserver,
                 )
                 logger.info("Finished episode %s" % episode_name)
 
@@ -179,39 +200,51 @@ def main(cie, log_dir, attempts):
 
             # output = os.path.join(dn, 'visualization')
             logger.info("Now creating visualization and analyzing statistics.")
-            logger.warning("This might take a LONG time.")
 
-            with notice_thread("Visualization", 2):
-                evaluated = read_and_draw(fn, dn)
-            logger.info("Finally visualization is done.")
+            with notice_thread("Make video", 2):
+                make_video_ui_image(
+                    log_filename=fn, output_video=os.path.join(dn, "ui_image.mp4")
+                )
 
-            stats = {}
-            for k, evr in evaluated.items():
-                assert isinstance(evr, RuleEvaluationResult)
-                for m, em in evr.metrics.items():
-                    assert isinstance(em, EvaluatedMetric)
-                    assert isinstance(m, tuple)
-                    if m:
-                        M = "/".join(m)
-                    else:
-                        M = k
-                    stats[M] = float(em.total)
-            per_episode[episode_name] = stats
+            for pc_name in playable_robots:
+                # with notice_thread("evaluation", 3):
+                #     evaluated = evaluate_stats(fn, pc_name)
+
+                dn_i = os.path.join(dn, pc_name)
+                with notice_thread("Visualization", 2):
+                    evaluated = read_and_draw(fn, dn_i, pc_name)
+
+                out_video = os.path.join(dn_i, "camera.mp4")
+                with notice_thread("Make video", 2):
+                    make_video1(
+                        log_filename=fn, output_video=out_video, robot_name=pc_name
+                    )
+
+                stats = {}
+                for k, evr in evaluated.items():
+                    assert isinstance(evr, RuleEvaluationResult)
+                    for m, em in evr.metrics.items():
+                        assert isinstance(em, EvaluatedMetric)
+                        assert isinstance(m, tuple)
+                        if m:
+                            M = "/".join(m)
+                        else:
+                            M = k
+                        stats[M] = float(em.total)
+                per_episode[episode_name + "-" + pc_name] = stats
 
             if length_s >= config.min_episode_length_s:
                 logger.info("%1.f s are enough" % length_s)
                 episodes.pop(0)
 
-                out_video = os.path.join(dn, "camera.mp4")
-                with notice_thread("Make video", 2):
-                    make_video1(fn, out_video)
-
                 os.rename(dn, dn_final)
             else:
-                logger.error(
-                    "episode too short with %1.f s < %.1f s"
-                    % (length_s, config.min_episode_length_s)
+                msg = "episode too short with %1.f s < %.1f s" % (
+                    length_s,
+                    config.min_episode_length_s,
                 )
+                logger.error(msg)
+
                 nfailures += 1
             attempt_i += 1
     except dc.InvalidSubmission:
@@ -223,7 +256,8 @@ def main(cie, log_dir, attempts):
         raise dc.InvalidEvaluator(msg) from e
 
     finally:
-        agent_ci.close()
+        for agent_name, agent_ci in agents_cis.items():
+            agent_ci.close()
         sim_ci.close()
         logger.info("Simulation done.")
 
@@ -256,7 +290,7 @@ def notice_thread(msg, interval):
         t.join()
 
 
-def notice_thread_child(msg, interval, stop_condition):
+def notice_thread_child(msg: str, interval: float, stop_condition: Callable[[], bool]) -> None:
     t0 = time.time()
     while not stop_condition():
         delta = time.time() - t0
@@ -265,16 +299,17 @@ def notice_thread_child(msg, interval, stop_condition):
     # logger.info('notice_thread_child finishes')
 
 
-def run_episode(
+async def run_episode(
     sim_ci: ComponentInterface,
-    agents: List[ComponentInterface],
+    agents_cis: Dict[str, ComponentInterface],
     physics_dt: float,
-    episode_name,
+    episode_name: str,
     scenario: Scenario,
-    episode_length_s: float,
+    webserver: WebServer,
+    config: MyConfig
 ) -> float:
-    """ returns number of steps """
-
+    """ returns length of episode """
+    episode_length_s = config.episode_length_s
     # clear simulation
     sim_ci.write_topic_and_expect_zero("clear")
     # set map data
@@ -288,14 +323,17 @@ def run_episode(
                 robot_name=robot_name,
                 configuration=robot_conf.configuration,
                 playable=robot_conf.playable,
+                motion=robot_conf.motion,
             ),
         )
 
     # start episode
     sim_ci.write_topic_and_expect_zero("episode_start", EpisodeStart(episode_name))
 
-    for agent in agents:
-        agent.write_topic_and_expect_zero("episode_start", EpisodeStart(episode_name))
+    for _, agent_ci in agents_cis.items():
+        agent_ci.write_topic_and_expect_zero(
+            "episode_start", EpisodeStart(episode_name)
+        )
 
     current_sim_time = 0.0
 
@@ -303,89 +341,153 @@ def run_episode(
 
     steps = 0
 
-    playable_robots = [_ for _ in scenario.robots if scenario.robots[_].playable]
+    loop = asyncio.get_event_loop()
+
     not_playable_robots = [
         _ for _ in scenario.robots if not scenario.robots[_].playable
     ]
-    playable_robots2agent: Dict[str, ComponentInterface] = {
-        _: v for _, v in zip(playable_robots, agents)
-    }
-
-    while True:
-        if current_sim_time >= episode_length_s:
-            logger.info("Reached %1.f seconds. Finishing. " % episode_length_s)
-            break
-
-        tt = TimeTracker(steps)
-        t_effective = current_sim_time
-        for robot_name in playable_robots:
-            agent = playable_robots2agent[robot_name]
-
-            # have this first, so we have something for t = 0
-            with tt.measure(f"sim_compute_robot_state-{robot_name}"):
-                grs = GetRobotState(robot_name=robot_name, t_effective=t_effective)
-                _recv: MsgReceived[RobotState] = sim_ci.write_topic_and_expect(
-                    "get_robot_state", grs, expect="robot_state"
-                )
-
-            with tt.measure(f"sim_compute_performance-{robot_name}"):
-
-                _recv: MsgReceived[RobotPerformance] = sim_ci.write_topic_and_expect(
-                    "get_robot_performance", robot_name, expect="robot_performance"
-                )
-
-            with tt.measure(f"sim_render-{robot_name}"):
-                gro = GetRobotObservations(
-                    robot_name=robot_name, t_effective=t_effective
-                )
-                recv: MsgReceived[RobotObservations] = sim_ci.write_topic_and_expect(
-                    "get_robot_observations", gro, expect="robot_observations"
-                )
-
-            with tt.measure(f"agent_compute-{robot_name}"):
-                try:
-                    agent.write_topic_and_expect_zero(
-                        "observations", recv.data.observations
-                    )
-                    r: MsgReceived = agent.write_topic_and_expect(
-                        "get_commands", expect="commands"
-                    )
-
-                except BaseException as e:
-                    msg = "Trouble with communication to the agent."
-                    raise dc.InvalidSubmission(msg) from e
-
-            with tt.measure("set_robot_commands"):
-                commands = SetRobotCommands(
-                    robot_name=robot_name, commands=r.data, t_effective=t_effective
-                )
-                sim_ci.write_topic_and_expect_zero("set_robot_commands", commands)
-
-        for robot_name in not_playable_robots:
-            with tt.measure(f"sim_compute_robot_state-{robot_name}"):
-                rs = GetRobotState(robot_name=robot_name, t_effective=t_effective)
-                _recv: MsgReceived[RobotState] = sim_ci.write_topic_and_expect(
-                    "get_robot_state", rs, expect="robot_state"
-                )
-
-        with tt.measure("sim_compute_sim_state"):
-
-            recv: MsgReceived[SimulationState] = sim_ci.write_topic_and_expect(
-                "get_sim_state", expect="sim_state"
-            )
-
-            sim_state: SimulationState = recv.data
-            if sim_state.done:
-                logger.info(
-                    f"Breaking because of simulator ({sim_state.done_code} - {sim_state.done_why}"
-                )
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        while True:
+            if current_sim_time >= episode_length_s:
+                logger.info("Reached %1.f seconds. Finishing. " % episode_length_s)
                 break
 
-        with tt.measure("sim_physics"):
-            current_sim_time += physics_dt
-            sim_ci.write_topic_and_expect_zero("step", Step(current_sim_time))
+            tt = TimeTracker(steps)
+            t_effective = current_sim_time
 
-        log_timing_info(tt, sim_ci)
+            with tt.measure('complete-iteration'):
+
+                with tt.measure('get_state_dump'):
+                    f = functools.partial(
+                        sim_ci.write_topic_and_expect, "dump_state", DumpState(), expect="state_dump"
+                    )
+                    state_dump: MsgReceived[DTSimStateDump] = await loop.run_in_executor(executor, f)
+
+                for agent_name, agent_ci in agents_cis.items():
+
+                    # have this first, so we have something for t = 0
+                    with tt.measure(f"sim_compute_robot_state-{agent_name}"):
+
+                        grs = GetRobotState(robot_name=agent_name, t_effective=t_effective)
+                        f = functools.partial(
+                            sim_ci.write_topic_and_expect,
+                            "get_robot_state",
+                            grs,
+                            expect="robot_state",
+                        )
+
+                        _recv: MsgReceived[RobotState] = await loop.run_in_executor(
+                            executor, f
+                        )
+
+                    with tt.measure(f"sim_compute_performance-{agent_name}"):
+                        f = functools.partial(
+                            sim_ci.write_topic_and_expect,
+                            "get_robot_performance",
+                            agent_name,
+                            expect="robot_performance",
+                        )
+
+                        _recv: MsgReceived[RobotPerformance] = await loop.run_in_executor(
+                            executor, f
+                        )
+
+                    with tt.measure(f"sim_render-{agent_name}"):
+                        get_robot_observations = GetRobotObservations(
+                            agent_name, t_effective
+                        )
+
+                        f = functools.partial(
+                            sim_ci.write_topic_and_expect,
+                            "get_robot_observations",
+                            get_robot_observations,
+                            expect="robot_observations",
+                        )
+                        recv_observations: MsgReceived[RobotObservations] = await loop.run_in_executor(
+                            executor, f
+                        )
+                        ro: RobotObservations = recv_observations.data
+                        obs = cast(Duckiebot1Observations, ro.observations)
+                        await webserver.push(f"{agent_name}-camera", obs.camera.jpg_data)
+
+                    with tt.measure(f"agent_compute-{agent_name}"):
+                        try:
+                            map_data = cast(str, scenario.environment)
+                            obs_plus = Duckiebot1ObservationsPlusState(camera=obs.camera,
+                                                                       your_name=agent_name,
+                                                                       state=state_dump.data.state,
+                                                                       map_data=map_data)
+
+                            agent_ci.write_topic_and_expect_zero(
+                                "observations", obs_plus
+                            )
+                            get_commands = GetCommands(t_effective)
+                            f = functools.partial(
+                                agent_ci.write_topic_and_expect,
+                                "get_commands",
+                                get_commands,
+                                expect="commands",
+                            )
+                            r: MsgReceived = await loop.run_in_executor(executor, f)
+
+                        except BaseException as e:
+                            msg = "Trouble with communication to the agent."
+                            raise dc.InvalidSubmission(msg) from e
+
+                    with tt.measure("set_robot_commands"):
+                        set_robot_commands = SetRobotCommands(
+                            agent_name, t_effective, r.data,
+                        )
+                        f = functools.partial(
+                            sim_ci.write_topic_and_expect_zero,
+                            "set_robot_commands",
+                            set_robot_commands,
+                        )
+                        await loop.run_in_executor(executor, f)
+
+                # these are the *non* playing (above we do the playable)
+                for npc_robot_name in not_playable_robots:
+                    with tt.measure(f"sim_compute_robot_state-{npc_robot_name}"):
+                        rs = GetRobotState(npc_robot_name, t_effective)
+                        f = functools.partial(
+                            sim_ci.write_topic_and_expect,
+                            "get_robot_state",
+                            rs,
+                            expect="robot_state",
+                        )
+                        await loop.run_in_executor(executor, f)
+
+                with tt.measure("sim_compute_sim_state"):
+                    f = functools.partial(
+                        sim_ci.write_topic_and_expect, "get_sim_state", expect="sim_state"
+                    )
+                    recv: MsgReceived[SimulationState] = await loop.run_in_executor(
+                        executor, f
+                    )
+
+                    sim_state: SimulationState = recv.data
+                    if sim_state.done:
+                        msg = f"Breaking because of simulator ({sim_state.done_code} - {sim_state.done_why}"
+                        logger.info(msg)
+                        break
+
+                with tt.measure("step_physics"):
+                    current_sim_time += physics_dt
+                    f = functools.partial(
+                        sim_ci.write_topic_and_expect_zero, "step", Step(current_sim_time)
+                    )
+                    await loop.run_in_executor(executor, f)
+
+                with tt.measure("get_ui_image"):
+                    f = functools.partial(
+                        sim_ci.write_topic_and_expect, "get_ui_image", None, expect="ui_image"
+                    )
+                    r_ui_image: MsgReceived[JPGImage] = await loop.run_in_executor(executor, f)
+
+            if True:
+                await webserver.push("ui_image", r_ui_image.data.jpg_data)
+                await asyncio.sleep(0.05)
+            log_timing_info(tt, sim_ci)
 
     return current_sim_time
 
@@ -401,22 +503,20 @@ def log_timing_info(tt, sim_ci: ComponentInterface):
 def check_compatibility_between_agent_and_sim(
     agent_ci: ComponentInterface, sim_ci: ComponentInterface
 ):
-    type_observations_sim = sim_ci.node_protocol.outputs[
-        "robot_observations"
-    ].__annotations__["observations"]
+    snp = sim_ci.node_protocol
+    type_observations_sim = snp.outputs["robot_observations"].__annotations__[
+        "observations"
+    ]
+    type_commands_sim = snp.inputs["set_robot_commands"].__annotations__["commands"]
+
     logger.info(f"Simulation provides observations {type_observations_sim}")
-    type_commands_sim = sim_ci.node_protocol.inputs[
-        "set_robot_commands"
-    ].__annotations__["commands"]
     logger.info(f"Simulation requires commands {type_commands_sim}")
 
     if agent_ci.node_protocol is None:
         msg = "Cannot check compatibility of interfaces because the agent does not implement reflection."
         logger.warning(msg)
-
         agent_ci.expect_protocol.outputs["commands"] = type_commands_sim
         agent_ci.expect_protocol.inputs["observations"] = type_observations_sim
-
         return
 
     type_observations_agent = agent_ci.node_protocol.inputs["observations"]
@@ -460,7 +560,7 @@ def get_episodes(
     episodes = []
     for scenario in iterate_scenarios():
         scenario_name = scenario.scenario_name
-        logger.info(f"Received scenario {scenario}")
+        # logger.info(f"Received scenario {scenario}")
         for i in range(episodes_per_scenario):
             episode_name = f"{scenario_name}-{i}"
             es = EpisodeSpec(episode_name=episode_name, scenario=scenario)
@@ -498,13 +598,13 @@ def wrap(cie: dc.ChallengeInterfaceEvaluator) -> None:
     if not os.path.exists(attempts):
         os.makedirs(attempts)
     try:
-        main(cie, logdir, attempts)
+        asyncio.run(main(cie, logdir, attempts), debug=True)
         cie.set_score("simulation-passed", 1)
     finally:
         cie.info("saving files")
         cie.set_evaluation_dir("episodes", logdir)
 
-    cie.info("score() terminated gracefully.")
+    cie.info("experiment_manager::wrap() terminated gracefully.")
 
 
 if __name__ == "__main__":

@@ -11,3 +11,4 @@ sq.db
 challenges-dir
 evaluator.log
 output-local-evaluation
+experiment_manager/test/
