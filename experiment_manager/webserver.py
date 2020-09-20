@@ -39,19 +39,14 @@ class WebServer:
         response = web.StreamResponse(
             status=200,
             reason="OK",
-            headers={
-                "Content-Type": "multipart/x-mixed-replace;"
-                "boundary=%s" % my_boundary,
-            },
+            headers={"Content-Type": "multipart/x-mixed-replace;" "boundary=%s" % my_boundary,},
         )
         await response.prepare(request)
 
         try:
             while True:
                 jpg_data = await queue.get()
-                with MultipartWriter(
-                    "x-mixed-replace", boundary=my_boundary
-                ) as mpwriter:
+                with MultipartWriter("x-mixed-replace", boundary=my_boundary) as mpwriter:
                     headers = CIMultiDict()
                     mpwriter.append(jpg_data, headers=headers)
                     await mpwriter.write(response, close_boundary=False)

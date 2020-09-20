@@ -1,6 +1,6 @@
-challenge: aido5-LFVI-sim-validation
+challenge: aido5-LFVI_multi-sim-validation
 
-title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+title: "LFVI multibody 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
 tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation]
 description: |
 
@@ -45,14 +45,43 @@ steps:
         solution: !include comp_solution.yaml
 
 
+        ego0:
+          image: SUBMISSION_CONTAINER
+          environment:
+            AIDONODE_NAME: ego0
+            AIDONODE_DATA_IN: /fifos/ego0-in
+            AIDONODE_DATA_OUT: fifo:/fifos/ego0-out
+
+        ego1:
+          image: SUBMISSION_CONTAINER
+          environment:
+            AIDONODE_NAME: ego1
+            AIDONODE_DATA_IN: /fifos/ego1-in
+            AIDONODE_DATA_OUT: fifo:/fifos/ego1-out
+
+        ego2:
+          image: SUBMISSION_CONTAINER
+          environment:
+            AIDONODE_NAME: ego2
+            AIDONODE_DATA_IN: /fifos/ego2-in
+            AIDONODE_DATA_OUT: fifo:/fifos/ego2-out
+#
+#        npc0:
+#          image: ${AIDO_REGISTRY}/duckietown/aidonode-random_agent-full:daffy-aido4
+#          environment:
+#            AIDONODE_NAME: npc0
+#            AIDONODE_DATA_IN: /fifos/npc0-in
+#            AIDONODE_DATA_OUT: fifo:/fifos/npc0-out
+
         scenario_maker:
           environment:
             AIDONODE_DATA_IN: /fifos/scenario_maker-in
             AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
             AIDONODE_CONFIG: |
               maps:
-              - udem1
-              scenarios_per_map: 5
-              robots_npcs: [npc0,npc1,npc2,npc3]
-              robots_pcs: [ego]
+                - udem1
+              scenarios_per_map: 1
+              robots_npcs: []
+              robots_pcs: [ego0, ego1, ego2]
+              robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy

@@ -1,21 +1,21 @@
-challenge: aido4-LF-sim-testing
+challenge: aido5-LF-sim-testing
 
 title: "LF 🚗 - Lane following (simulation 👾, testing 🥇)"
-tags: [visible, ml-testing, aido4, aido4-embodied, LF, v4, simulation]
+tags: [visible, ml-testing, aido5, aido5-embodied, LF, v4, simulation]
 description: |
   Lane following challenge.
 
 protocol: aido2_db18_agent-z2
 
 
-date-open: 2019-12-12T00:00Z
-date-close: 2020-05-12T00:00Z
+date-open: 2020-09-15T00:00Z
+date-close: 2020-12-05T00:00Z
 
 
 scoring: !include scoring.yaml
 
 dependencies:
-  aido4-LF-sim-validation:
+  aido5-LF-sim-validation:
     description: The submission must first pass the testing.
     min_threshold: 2.0
     scores:
@@ -33,7 +33,7 @@ dependencies:
         sub_label: 'straight'
 
 steps:
-  step1-simulation:
+  LFt-sim:
     title: Simulation step
     description: ""
     features_required:
@@ -57,4 +57,4 @@ steps:
               scenarios_per_map: 15
               robots_npcs: []
               robots_pcs: [ego]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-aido4
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy

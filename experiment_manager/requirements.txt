@@ -1,9 +1,9 @@
 
 # this is already in the base container but makes it easy to update quickly
-aido-protocols-daffy-aido4
-aido-analyze-daffy-aido4
-duckietown-world-daffy-aido4
-duckietown-challenges-daffy-aido4
+aido-protocols-daffy
+aido-analyze-daffy
+duckietown-world-daffy
+duckietown-challenges-daffy
 
 multidict
 

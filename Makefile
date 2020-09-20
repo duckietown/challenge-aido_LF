@@ -5,14 +5,16 @@ update-reqs:
 	aido-update-reqs experiment_manager/requirements.resolved
 
 define-challenge:
-
 	$(MAKE) define-challenge-LF
 	$(MAKE) define-challenge-LF_test
 	$(MAKE) define-challenge-LFV
 	$(MAKE) define-challenge-LFV_test
-	$(MAKE) define-challenge-LFV2
+	$(MAKE) define-challenge-LFV_multi
+	# missing test
 	$(MAKE) define-challenge-LFVI
 	$(MAKE) define-challenge-LFVI_test
+	$(MAKE) define-challenge-LFVI_multi
+	# missing test
 
 #define-challenge-no-cache:
 #	$(MAKE) define-challenge-LF-no-cache
@@ -28,11 +30,14 @@ define-challenge-LF: update-reqs
 define-challenge-LFV: update-reqs
 	dts challenges define --config LFV.challenge.yaml
 
-define-challenge-LFV2: update-reqs
-	dts challenges define --config LFV2.challenge.yaml
+define-challenge-LFV_multi: update-reqs
+	dts challenges define --config LFV_multi.challenge.yaml
 
 define-challenge-LFVI: update-reqs
 	dts challenges define --config LFVI.challenge.yaml
+
+define-challenge-LFVI_multi: update-reqs
+	dts challenges define --config LFVI_multi.challenge.yaml
 
 define-challenge-LF_test: update-reqs
 	dts challenges define --config LF_test.challenge.yaml
@@ -83,3 +88,6 @@ test-regular-no-cache:
 	docker-compose -f docker-compose.yaml down -v
 	docker-compose -f docker-compose.yaml build --pull --no-cache
 	docker-compose -f docker-compose.yaml up -V --build
+
+black:
+	black -l 120 -t py38 .

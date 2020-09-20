@@ -1,19 +1,19 @@
-challenge: aido4-LFV2-sim-validation
+challenge: aido5-LFV_multi-sim-validation
 
 title: "LFV 🚗🚗 - Lane following - 2 agents "
-tags: [visible, ml-validation, aido4, aido4-embodied, LFV, v4, simulation]
+tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation]
 description: |
-  Lane following challenge with two agents.
+  Lane following challenge, with the agent embodied in 3 bodies.
 
 protocol: aido2_db18_agent-z2
 
-date-open: 2019-12-12T00:00Z
-date-close: 2020-05-12T00:00Z
+date-open: 2020-09-15T00:00Z
+date-close: 2020-12-05T00:00Z
 
 scoring: !include scoring.yaml
 
 steps:
-  step1-simulation:
+  LFVmultibodyv-sim:
     title: Simulation step
     description: ""
     features_required:
@@ -49,7 +49,7 @@ steps:
             - 10123
 
         simulator:
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-aido4
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy
 
           environment:
             AIDONODE_DATA_IN: /fifos/simulator-in
@@ -106,4 +106,4 @@ steps:
               robots_npcs: []
               robots_pcs: [ego0, ego1, ego2]
               robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-aido4
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy

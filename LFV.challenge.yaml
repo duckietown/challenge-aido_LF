@@ -1,20 +1,20 @@
-challenge: aido4-LFV-sim-validation
+challenge: aido5-LFV-sim-validation
 
 title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido4, aido4-embodied, LFV, v4, simulation]
+tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation]
 description: |
   Lane following challenge.
 
 protocol: aido2_db18_agent-z2
 
-date-open: 2019-12-12T00:00Z
-date-close: 2020-05-12T00:00Z
+date-open: 2020-09-15T00:00Z
+date-close: 2020-12-05T00:00Z
 
 scoring: !include scoring.yaml
 
 
 dependencies:
-  aido4-LF-sim-validation:
+  aido5-LF-sim-validation:
     description: The submission must first pass the LF validation.
     min_threshold: 2.0
     scores:
@@ -33,7 +33,7 @@ dependencies:
 
 
 steps:
-  step1-simulation:
+  LFVv-sim:
     title: Simulation step
     description: ""
     features_required:
@@ -55,4 +55,4 @@ steps:
               scenarios_per_map: 5
               robots_npcs: [npc0,npc1,npc2,npc3]
               robots_pcs: [ego]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-aido4
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy

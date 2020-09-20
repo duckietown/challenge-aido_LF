@@ -1,14 +1,14 @@
 
 # this is already in the base container but makes it easy to update quickly
-aido-protocols-daffy-aido4==5.0.61
-aido-analyze-daffy-aido4==5.3.4
-duckietown-world-daffy-aido4==5.3.21
-duckietown-challenges-daffy-aido4==5.3.22
+aido-protocols-daffy==6.0.0
+aido-analyze-daffy==6.0.0
+duckietown-world-daffy==6.0.3
+duckietown-challenges-daffy==6.0.6
 
-multidict==4.7.5
+multidict==4.7.6
 
 aiohttp==3.6.2
-requests==2.23.0
+requests==2.24.0
 py-multihash==0.2.3
 py-cid==0.3.0
-pytz==2019.3
+pytz==2020.1
