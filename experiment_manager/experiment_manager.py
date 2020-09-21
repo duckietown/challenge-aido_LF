@@ -17,7 +17,6 @@ import numpy as np
 import yaml
 from webserver import WebServer
 from zuper_commons.logs import ZLogger
-from zuper_commons.text import indent
 from zuper_commons.types import ZException
 from zuper_ipce import ipce_from_object, object_from_ipce
 from zuper_nodes.structures import RemoteNodeAborted
@@ -82,9 +81,9 @@ class MyConfig:
 
 async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
     config_ = env_as_yaml("experiment_manager_parameters")
-    logger.info("parameters:\n\n%s" % config_)
-    config = cast(MyConfig, object_from_ipce(config_, MyConfig))
 
+    config = cast(MyConfig, object_from_ipce(config_, MyConfig))
+    logger.info(config_yaml=config_, config_parsed=config)
     webserver = WebServer(address="0.0.0.0", port=config.port)
     await asyncio.create_task(webserver.init())
 
@@ -206,7 +205,8 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
 
             num_playable = len([_ for _ in episode_spec.scenario.robots.values() if _.playable])
             if num_playable != len(playable_robots):
-                msg = f"The scenario requires {num_playable} robots," f"but I only know {len(playable_robots)} agents"
+                msg = f"The scenario requires {num_playable} robots," f"but I only know " \
+                      f"{len(playable_robots)} agents"
                 raise Exception(msg)  # XXX
             try:
                 logger.info("Starting episode %s" % episode_name)
@@ -222,8 +222,8 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
                 logger.info(f"Finished episode {episode_name} with length {length_s}")
 
             except:
-                msg = "Anomalous error from run_episode():\n%s" % traceback.format_exc()
-                logger.error(msg)
+                msg = "Anomalous error from run_episode()"
+                logger.error(msg, e= traceback.format_exc())
                 raise
             finally:
                 fw.close()
@@ -232,7 +232,7 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
             # output = os.path.join(dn, 'visualization')
             logger.info("Now creating visualization and analyzing statistics.")
 
-            if length_s > 0.5:
+            if length_s > 0:
                 with notice_thread("Make video", 2):
                     make_video_ui_image(log_filename=fn, output_video=os.path.join(dn, "ui_image.mp4"))
 
@@ -248,6 +248,10 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
                     with notice_thread("Make video", 2):
                         make_video1(log_filename=fn, output_video=out_video, robot_name=pc_name)
 
+                    if len(evaluated) == 0:
+                        msg = 'Empty evaluated'
+                        raise ZValueError(msg)
+
                     stats = {}
                     for k, evr in evaluated.items():
                         assert isinstance(evr, RuleEvaluationResult)
@@ -260,6 +264,7 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
                                 M = k
                             stats[M] = float(em.total)
                     per_episode[episode_name + "-" + pc_name] = stats
+                    logger.info(episode_name=episode_name, pc_name=pc_name, stats=stats)
 
             if length_s >= config.min_episode_length_s:
                 logger.info("%1.f s are enough" % length_s)
@@ -276,8 +281,7 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
         raise
     except BaseException as e:
         msg = "Anomalous error while running episodes:"
-        msg += "\n\n" + indent(traceback.format_exc(), " > ")
-        logger.error(msg)
+        logger.error(msg, e=traceback.format_exc())
         raise dc.InvalidEvaluator(msg) from e
 
     finally:
@@ -286,9 +290,11 @@ async def main(cie: ChallengeInterfaceEvaluator, log_dir: str, attempts: str):
         sim_ci.close()
         logger.info("Simulation done.")
 
+    logger.info(per_episode=per_episode, stats=list(stats))
     cie.set_score("per-episodes", per_episode)
 
     for k in list(stats):
+        # logger.info(k=k, values=values)
         values = [_[k] for _ in per_episode.values()]
         cie.set_score("%s_mean" % k, float(np.mean(values)))
         cie.set_score("%s_median" % k, float(np.median(values)))
@@ -379,7 +385,8 @@ async def run_episode(
             with tt.measure("complete-iteration"):
 
                 with tt.measure("get_state_dump"):
-                    f = functools.partial(sim_ci.write_topic_and_expect, "dump_state", DumpState(), expect="state_dump")
+                    f = functools.partial(sim_ci.write_topic_and_expect, "dump_state", DumpState(),
+                                          expect="state_dump")
                     state_dump: MsgReceived[DTSimStateDump] = await loop.run_in_executor(executor, f)
 
                 for agent_name, agent_ci in agents_cis.items():
@@ -413,7 +420,8 @@ async def run_episode(
                             get_robot_observations,
                             expect="robot_observations",
                         )
-                        recv_observations: MsgReceived[RobotObservations] = await loop.run_in_executor(executor, f)
+                        recv_observations: MsgReceived[RobotObservations] = await loop.run_in_executor(
+                            executor, f)
                         ro: RobotObservations = recv_observations.data
                         obs = cast(Duckiebot1Observations, ro.observations)
                         await webserver.push(f"{agent_name}-camera", obs.camera.jpg_data)
@@ -422,13 +430,15 @@ async def run_episode(
                         try:
                             map_data = cast(str, scenario.environment)
                             obs_plus = Duckiebot1ObservationsPlusState(
-                                camera=obs.camera, your_name=agent_name, state=state_dump.data.state, map_data=map_data,
+                                camera=obs.camera, your_name=agent_name, state=state_dump.data.state,
+                                map_data=map_data,
                             )
 
                             agent_ci.write_topic_and_expect_zero("observations", obs_plus)
                             get_commands = GetCommands(t_effective)
                             f = functools.partial(
-                                agent_ci.write_topic_and_expect, "get_commands", get_commands, expect="commands",
+                                agent_ci.write_topic_and_expect, "get_commands", get_commands,
+                                expect="commands",
                             )
                             r: MsgReceived = await loop.run_in_executor(executor, f)
 
@@ -437,7 +447,7 @@ async def run_episode(
                             raise dc.InvalidSubmission(msg) from e
 
                     with tt.measure("set_robot_commands"):
-                        set_robot_commands = SetRobotCommands(agent_name, t_effective, r.data,)
+                        set_robot_commands = SetRobotCommands(agent_name, t_effective, r.data, )
                         f = functools.partial(
                             sim_ci.write_topic_and_expect_zero, "set_robot_commands", set_robot_commands,
                         )
@@ -473,7 +483,8 @@ async def run_episode(
                     await loop.run_in_executor(executor, f)
 
                 with tt.measure("get_ui_image"):
-                    f = functools.partial(sim_ci.write_topic_and_expect, "get_ui_image", None, expect="ui_image")
+                    f = functools.partial(sim_ci.write_topic_and_expect, "get_ui_image", None,
+                                          expect="ui_image")
                     r_ui_image: MsgReceived[JPGImage] = await loop.run_in_executor(executor, f)
 
             if True:
@@ -508,10 +519,10 @@ def check_compatibility_between_agent_and_sim(agent_ci: ComponentInterface, sim_
         return
 
     type_observations_agent = agent_ci.node_protocol.inputs["observations"]
-    logger.info(f"Agent requires observations", type_observations_agent=type_observations_agent)
+    # logger.info(f"Agent requires observations", type_observations_agent=type_observations_agent)
 
     type_commands_agent = agent_ci.node_protocol.outputs["commands"]
-    logger.info(f"Agent provides commands", type_commands_agent=type_commands_agent)
+    # logger.info(f"Agent provides commands", type_commands_agent=type_commands_agent)
 
     r = can_be_used_as2(type_observations_sim, type_observations_agent)
     if not r.result:

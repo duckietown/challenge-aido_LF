@@ -3,7 +3,7 @@
 aido-protocols-daffy==6.0.0
 aido-analyze-daffy==6.0.0
 duckietown-world-daffy==6.0.3
-duckietown-challenges-daffy==6.0.6
+duckietown-challenges-daffy==6.0.10
 
 multidict==4.7.6
 
