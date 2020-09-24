@@ -16,6 +16,18 @@ define-challenge:
 	$(MAKE) define-challenge-LFVI_multi
 	# missing test
 
+
+define-challenge-parallel:  \
+	define-challenge-LF \
+	define-challenge-LF_test \
+	define-challenge-LFV \
+	define-challenge-LFV_test \
+	define-challenge-LFV_multi \
+	define-challenge-LFVI \
+	define-challenge-LFVI_test \
+	define-challenge-LFVI_multi
+	# missing test
+
 #define-challenge-no-cache:
 #	$(MAKE) define-challenge-LF-no-cache
 #	$(MAKE) define-challenge-LFV-no-cache
@@ -47,25 +59,25 @@ define-challenge-LFV_test: update-reqs
 
 define-challenge-LFVI_test: update-reqs
 	dts challenges define --config LFVI_test.challenge.yaml
-
-define-challenge-LF-no-cache: update-reqs
-	dts challenges define --config LF.challenge.yaml  --no-cache
-
-define-challenge-LFV-no-cache: update-reqs
-	dts challenges define --config LFV.challenge.yaml  --no-cache
-
-define-challenge-LFVI-no-cache: update-reqs
-	dts challenges define --config LFVI.challenge.yaml  --no-cache
-
-
-define-challenge-LF_test-no-cache: update-reqs
-	dts challenges define --config LF_test.challenge.yaml  --no-cache
-
-define-challenge-LFV_test-no-cache: update-reqs
-	dts challenges define --config LFV_test.challenge.yaml  --no-cache
-
-define-challenge-LFVI_test-no-cache: update-reqs
-	dts challenges define --config LFVI_test.challenge.yaml  --no-cache
+#
+#define-challenge-LF-no-cache: update-reqs
+#	dts challenges define --config LF.challenge.yaml  --no-cache
+#
+#define-challenge-LFV-no-cache: update-reqs
+#	dts challenges define --config LFV.challenge.yaml  --no-cache
+#
+#define-challenge-LFVI-no-cache: update-reqs
+#	dts challenges define --config LFVI.challenge.yaml  --no-cache
+#
+#
+#define-challenge-LF_test-no-cache: update-reqs
+#	dts challenges define --config LF_test.challenge.yaml  --no-cache
+#
+#define-challenge-LFV_test-no-cache: update-reqs
+#	dts challenges define --config LFV_test.challenge.yaml  --no-cache
+#
+#define-challenge-LFVI_test-no-cache: update-reqs
+#	dts challenges define --config LFVI_test.challenge.yaml  --no-cache
 
 
 test-with-local-repos:

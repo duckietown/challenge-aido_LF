@@ -6,7 +6,7 @@ services:
         episodes_per_scenario: 2
         episode_length_s: 5.0
         min_episode_length_s: 1.0
-        seed: 42
+        seed: 20200922
         physics_dt: 0.05
         max_failures: 2
         agent_in: /fifos/agent-in
