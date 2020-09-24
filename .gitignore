@@ -12,3 +12,4 @@ challenges-dir
 evaluator.log
 output-local-evaluation
 experiment_manager/test/
+experiment_manager/requirements.resolved
