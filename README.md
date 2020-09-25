@@ -22,5 +22,5 @@ To run use:
 
     $ make test-with-local-repos
     
-You can see how the repos are mounted in the file [`docker-compose-devel.yaml`](docker-compose-devel.yaml).
+You can see how the repos are mounted in the file [`docker-compose-devel.yaml`](old/docker-compose-devel.yaml).
   
