@@ -62,36 +62,43 @@ steps:
                 distortion: true
                 num_tris_distractors: 0
                 color_ground: [0, 0.3, 0] # green
-              topdown_resolution: 1200
+              topdown_resolution: 600
               debug_no_video: false
 
-        ego0:
+        solution-ego0:
           image: SUBMISSION_CONTAINER
           environment:
             AIDONODE_NAME: ego0
             AIDONODE_DATA_IN: /fifos/ego0-in
             AIDONODE_DATA_OUT: fifo:/fifos/ego0-out
 
-        ego1:
+        solution-ego1:
           image: SUBMISSION_CONTAINER
           environment:
             AIDONODE_NAME: ego1
             AIDONODE_DATA_IN: /fifos/ego1-in
             AIDONODE_DATA_OUT: fifo:/fifos/ego1-out
 
-        ego2:
-          image: SUBMISSION_CONTAINER
-          environment:
-            AIDONODE_NAME: ego2
-            AIDONODE_DATA_IN: /fifos/ego2-in
-            AIDONODE_DATA_OUT: fifo:/fifos/ego2-out
-#
-#        npc0:
-#          image: ${AIDO_REGISTRY}/duckietown/aidonode-random_agent-full:daffy-aido4
+#        ego2:
+#          image: SUBMISSION_CONTAINER
 #          environment:
-#            AIDONODE_NAME: npc0
-#            AIDONODE_DATA_IN: /fifos/npc0-in
-#            AIDONODE_DATA_OUT: fifo:/fifos/npc0-out
+#            AIDONODE_NAME: ego2
+#            AIDONODE_DATA_IN: /fifos/ego2-in
+#            AIDONODE_DATA_OUT: fifo:/fifos/ego2-out
+
+        npc0:
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy
+          environment:
+            AIDONODE_NAME: npc0
+            AIDONODE_DATA_IN: /fifos/npc0-in
+            AIDONODE_DATA_OUT: fifo:/fifos/npc0-out
+
+        npc1:
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy
+          environment:
+            AIDONODE_NAME: npc1
+            AIDONODE_DATA_IN: /fifos/npc1-in
+            AIDONODE_DATA_OUT: fifo:/fifos/npc1-out
 
         scenario_maker:
           environment:
@@ -102,6 +109,7 @@ steps:
                 - ETHZ_autolab_technical_track
               scenarios_per_map: 1
               robots_npcs: []
-              robots_pcs: [ego0, ego1, ego2]
-              robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
+              robots_pcs: [ego0, ego1, npc0, npc1]
+              robots_parked: [parked0]
+              # robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy

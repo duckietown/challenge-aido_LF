@@ -1,7 +1,7 @@
 PIP_INDEX_URL ?= https://pypi.org/simple
 
 
-define-challenge:
+define-challenge-serial:
 	$(MAKE) define-challenge-LF
 	$(MAKE) define-challenge-LF_test
 	$(MAKE) define-challenge-LFV
@@ -14,7 +14,7 @@ define-challenge:
 	# missing test
 
 
-define-challenge-parallel:  \
+define-challenge:  \
 	define-challenge-LF \
 	define-challenge-LF_test \
 	define-challenge-LFV \
@@ -27,25 +27,25 @@ define-challenge-parallel:  \
 define-challenge-LF:
 	dts challenges define --config LF.challenge.yaml
 
-define-challenge-LFV:
+define-challenge-LFV: define-challenge-LF
 	dts challenges define --config LFV.challenge.yaml
 
 define-challenge-LFV_multi:
 	dts challenges define --config LFV_multi.challenge.yaml
 
-define-challenge-LFVI:
+define-challenge-LFVI: define-challenge-LFV
 	dts challenges define --config LFVI.challenge.yaml
 
 define-challenge-LFVI_multi:
 	dts challenges define --config LFVI_multi.challenge.yaml
 
-define-challenge-LF_test:
+define-challenge-LF_test: define-challenge-LF
 	dts challenges define --config LF_test.challenge.yaml
 
-define-challenge-LFV_test:
+define-challenge-LFV_test: define-challenge-LFV define-challenge-LF_test
 	dts challenges define --config LFV_test.challenge.yaml
 
-define-challenge-LFVI_test:
+define-challenge-LFVI_test: define-challenge-LFVI  define-challenge-LFV_test
 	dts challenges define --config LFVI_test.challenge.yaml
 #
 
