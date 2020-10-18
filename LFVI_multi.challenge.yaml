@@ -45,21 +45,21 @@ steps:
         solution: !include comp_solution.yaml
 
 
-        ego0:
+        solution-ego0:
           image: SUBMISSION_CONTAINER
           environment:
             AIDONODE_NAME: ego0
             AIDONODE_DATA_IN: /fifos/ego0-in
             AIDONODE_DATA_OUT: fifo:/fifos/ego0-out
 
-        ego1:
+        solution-ego1:
           image: SUBMISSION_CONTAINER
           environment:
             AIDONODE_NAME: ego1
             AIDONODE_DATA_IN: /fifos/ego1-in
             AIDONODE_DATA_OUT: fifo:/fifos/ego1-out
 
-        ego2:
+        solution-ego2:
           image: SUBMISSION_CONTAINER
           environment:
             AIDONODE_NAME: ego2
