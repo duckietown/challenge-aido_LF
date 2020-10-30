@@ -42,12 +42,12 @@ steps:
 
               port: 10123 # visualization port
 
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
           ports:
             - 10123
 
         simulator:
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
 
           environment:
             AIDONODE_DATA_IN: /fifos/simulator-in
@@ -87,14 +87,14 @@ steps:
 #            AIDONODE_DATA_OUT: fifo:/fifos/ego2-out
 
         npc0:
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy-amd64
           environment:
             AIDONODE_NAME: npc0
             AIDONODE_DATA_IN: /fifos/npc0-in
             AIDONODE_DATA_OUT: fifo:/fifos/npc0-out
 
         npc1:
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy-amd64
           environment:
             AIDONODE_NAME: npc1
             AIDONODE_DATA_IN: /fifos/npc1-in
@@ -112,4 +112,4 @@ steps:
               robots_pcs: [ego0, ego1, npc0, npc1]
               robots_parked: [parked0]
               # robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64

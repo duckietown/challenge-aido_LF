@@ -84,4 +84,4 @@ steps:
               robots_npcs: []
               robots_pcs: [ego0, ego1, ego2]
               robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64

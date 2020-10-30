@@ -37,5 +37,5 @@ steps:
               scenarios_per_map: 5
               robots_npcs: []
               robots_pcs: [ego]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy
+          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 

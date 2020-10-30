@@ -17,7 +17,7 @@ environment:
 
     port: 10123 # visualization port
 
-image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy
+image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
 
 ports:
   - 10123
