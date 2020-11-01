@@ -1,7 +1,7 @@
 
 environment:
   experiment_manager_parameters: |
-    episodes_per_scenario: 2
+    episodes_per_scenario: 1
     episode_length_s: 15.0
     min_episode_length_s: 0.0
     seed: 20200922
@@ -19,5 +19,8 @@ environment:
 
 image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
 
-ports:
-  - 10123
+build:
+#
+#ports:
+#  - internal: 10123
+#    external:

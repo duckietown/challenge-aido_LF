@@ -3,6 +3,7 @@ PIP_INDEX_URL ?= https://pypi.org/simple
 
 define-challenge-serial:
 	$(MAKE) define-challenge-LF
+	$(MAKE) define-challenge-LFP
 	$(MAKE) define-challenge-LF_test
 	$(MAKE) define-challenge-LFV
 	$(MAKE) define-challenge-LFV_test
@@ -17,6 +18,7 @@ define-challenge-serial:
 define-challenge:  \
 	define-challenge-LF \
 	define-challenge-LF_test \
+	define-challenge-LFP \
 	define-challenge-LFV \
 	define-challenge-LFV_test \
 	define-challenge-LFV_multi \
@@ -26,6 +28,13 @@ define-challenge:  \
 
 define-challenge-LF:
 	dts challenges define --config LF.challenge.yaml
+
+define-challenge-LFP:
+	dts challenges define --config LFP.challenge.yaml
+
+define-challenge-LFP2:
+	./make_challenges.py
+	dts challenges define --config LFP2.challenge.yaml
 
 define-challenge-LFV: define-challenge-LF
 	dts challenges define --config LFV.challenge.yaml

@@ -1,39 +1,20 @@
-challenge: aido5-LFV-sim-validation
+challenge: aido5-LFP-sim-validation
 
-title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation]
+title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, validation 🏋)"
+tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
 description: |
   Lane following challenge.
 
 protocol: aido2_db18_agent-z2
+
 
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
 
 scoring: !include scoring.yaml
 
-
-dependencies:
-  aido5-LF-sim-validation:
-    description: The submission must first pass the LF validation.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
-
-
 steps:
-  LFVv-sim:
+  LFP-sim:
     title: Simulation step
     description: ""
     features_required:
@@ -45,6 +26,7 @@ steps:
         evaluator: !include comp_evaluator.yaml
         simulator: !include comp_simulator.yaml
         solution: !include comp_solution.yaml
+
         scenario_maker:
           environment:
             AIDONODE_DATA_IN: /fifos/scenario_maker-in
@@ -53,6 +35,8 @@ steps:
               maps:
               - ETHZ_autolab_technical_track
               scenarios_per_map: 4
-              robots_npcs: [npc0,npc1,npc2,npc3]
+              robots_npcs: []
               robots_pcs: [ego]
+              nduckies: 8
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
+
