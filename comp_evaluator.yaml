@@ -21,6 +21,7 @@ image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-am
 
 build:
 #
-#ports:
+ports:
+  - 10123
 #  - internal: 10123
 #    external:

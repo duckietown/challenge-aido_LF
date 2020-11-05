@@ -62,6 +62,7 @@ steps:
                 distortion: true
                 num_tris_distractors: 0
                 color_ground: [0, 0.3, 0] # green
+                enable_leds: true
               topdown_resolution: 600
               debug_no_video: false
 
@@ -113,3 +114,23 @@ steps:
               robots_parked: [parked0]
               # robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
+
+
+dependencies:
+#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
+  aido5-LF-sim-validation:
+    description: The submission must first pass the LF validation.
+    min_threshold: 2.0
+    scores:
+      good_enough:
+        description: Must have moved at least 20cm.
+        importance: 1.0
+        score_name: driven_lanedir_consec_median
+        score_min: 0.2
+        score_max: 10000.0
+    comparisons:
+      better-than-bea-straight:
+        description: Must be do better than the straight solution.
+        importance: 1.0
+        username: "1639"
+        sub_label: 'straight'

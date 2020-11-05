@@ -18,7 +18,7 @@ scoring: !include scoring.yaml
 
 dependencies:
   aido5-LFV-sim-validation:
-    description: The submission must first pass the testing.
+    description: The submission must first pass the validation.
     min_threshold: 2.0
     scores:
       good_enough:

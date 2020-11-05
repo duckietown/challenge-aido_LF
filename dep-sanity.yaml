@@ -1,0 +1,11 @@
+
+description: The submission must first pass the sanity test testing
+min_threshold: 1.0
+scores:
+  good_enough:
+    description: Must have succeeded
+    importance: 1.0
+    score_name: driven_lanedir_consec_median
+    score_min: 0.0
+    score_max: 10000.0
+comparisons: {}

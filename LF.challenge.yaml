@@ -39,3 +39,8 @@ steps:
               robots_pcs: [ego]
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 
+
+dependencies: {}
+#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
+
+
