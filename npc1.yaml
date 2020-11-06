@@ -1,0 +1,6 @@
+
+image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy-amd64
+environment:
+  AIDONODE_NAME: npc1
+  AIDONODE_DATA_IN: /fifos/npc1-in
+  AIDONODE_DATA_OUT: fifo:/fifos/npc1-out

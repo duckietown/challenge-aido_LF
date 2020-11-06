@@ -65,13 +65,6 @@ steps:
             AIDONODE_NAME: ego2
             AIDONODE_DATA_IN: /fifos/ego2-in
             AIDONODE_DATA_OUT: fifo:/fifos/ego2-out
-#
-#        npc0:
-#          image: ${AIDO_REGISTRY}/duckietown/aidonode-random_agent-full:daffy-aido4
-#          environment:
-#            AIDONODE_NAME: npc0
-#            AIDONODE_DATA_IN: /fifos/npc0-in
-#            AIDONODE_DATA_OUT: fifo:/fifos/npc0-out
 
         scenario_maker:
           environment:

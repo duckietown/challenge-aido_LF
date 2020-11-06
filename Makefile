@@ -20,9 +20,11 @@ define-challenge:  \
 	define-challenge-LF \
 	define-challenge-LF_test \
 	define-challenge-LFP \
+	define-challenge-LFP_test \
+	define-challenge-LFV_multi \
+	define-challenge-LFV_multi_test \
 	define-challenge-LFV \
 	define-challenge-LFV_test \
-	define-challenge-LFV_multi \
 	define-challenge-LFVI \
 	define-challenge-LFVI_test \
 	define-challenge-LFVI_multi
@@ -36,15 +38,21 @@ define-challenge-LF: define-challenge-sanity
 define-challenge-LFP: define-challenge-sanity
 	dts challenges define --config LFP.challenge.yaml
 
-define-challenge-LFP2: define-challenge-sanity
-	./make_challenges.py
-	dts challenges define --config LFP2.challenge.yaml
+define-challenge-LFP_test: define-challenge-LFP define-challenge-sanity
+	dts challenges define --config LFP_test.challenge.yaml
+#
+#define-challenge-LFP2: define-challenge-sanity
+#	./make_challenges.py
+#	dts challenges define --config LFP2.challenge.yaml
 
 define-challenge-LFV: define-challenge-LF define-challenge-sanity
 	dts challenges define --config LFV.challenge.yaml
 
 define-challenge-LFV_multi: define-challenge-sanity
 	dts challenges define --config LFV_multi.challenge.yaml
+
+define-challenge-LFV_multi_test: define-challenge-sanity define-challenge-LFV_multi
+	dts challenges define --config LFV_multi_test.challenge.yaml
 
 define-challenge-LFVI: define-challenge-LFV define-challenge-sanity
 	dts challenges define --config LFVI.challenge.yaml

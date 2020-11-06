@@ -1,37 +1,17 @@
-challenge: aido5-LFV_multi-sim-validation
+challenge: aido5-LFV_multi-sim-testing
 
-title: "LFV_multi 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation]
+title: "LFV_multi 🚗🚗🚗 - Lane following multibody (simulation 👾, testing 🥇))"
+tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation]
 description: |
-  <table id="variations">
-  <thead >
-  <th><code>LFV_multi</code></td>
-  <th></td>
-  </thead>
-  <tr>
 
-  <td>Control multiple Duckiebots</td>
-  <td></td>
-  </tr>
-  <tr>
-  <td>
-  <img src="https://i.imgur.com/Ifr8ugB.jpg" style='width: 15em'>
-  </td>
-  <td class='explain'>
 
-  <p>In this variation of the lane following challenge,
-  your agent is <strong>embodied in multiple robots</strong>.
+  In this variation of the lane following challenge,
+  your agent is *embodied in multiple robots*.
   Avoid the crashes with different versions of yourself.
-  </p>
 
-  <p>See the <a href="https://docs.duckietown.org/daffy/AIDO/out/lf_vm.html">documentation</a> for more details.</p>
+  See the [documentation] for more details.
 
-  </td>
-  </tr>
-  </table>
-
-  *Note*: this is the _validation_ challenge - you can see the output
-  but these are not the scores that count.
+  [documentation]: https://docs.duckietown.org/daffy/AIDO/out/lf_vm.html
 
 
 protocol: aido2_db18_agent-z2
@@ -133,8 +113,8 @@ steps:
 
 dependencies:
 #  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-  aido5-LF-sim-validation:
-    description: The submission must first pass the LF validation.
+  aido5-LFV_multi-sim-validation:
+    description: The submission must first pass the validation step.
     min_threshold: 2.0
     scores:
       good_enough:

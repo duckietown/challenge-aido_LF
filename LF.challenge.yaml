@@ -1,9 +1,35 @@
 challenge: aido5-LF-sim-validation
 
-title: "LF 🚗 - Lane following  (simulation 👾, validation 🏋)"
+title: "LF 🚗 - Lane following  2 (simulation 👾, validation 🏋)"
 tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
 description: |
-  Lane following challenge.
+
+  <table id="variations">
+  <thead >
+  <th><code>LF</code></td>
+  <th><code></code></td>
+
+  </thead>
+  <tr>
+  <td>Follow the lane</td>
+  <td></td>
+  </tr>
+  <tr>
+  <td>
+  <img src="https://i.imgur.com/sGTigpp.jpg" style='width: 15em'>
+  </td>
+  <td class='explain'>
+  <p>This is the basic lane following challenge.</p>
+
+  <p>You must follow the lane using the outputs of camera and encoders.</p>
+
+  <p>See the <a href="https://docs.duckietown.org/daffy/AIDO/out/lf.html">documentation</a> for more details.</p>
+  </td>
+  </tr>
+  </table>
+
+  *Note*: this is the _validation_ 🏋 challenge - you can see the output
+  but these are not the scores that count.
 
 protocol: aido2_db18_agent-z2
 

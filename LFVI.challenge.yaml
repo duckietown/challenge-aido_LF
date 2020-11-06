@@ -56,3 +56,7 @@ steps:
               robots_npcs: [npc0,npc1,npc2,npc3]
               robots_pcs: [ego]
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
+        npc0:  !include npc0.yaml
+        npc1:  !include npc1.yaml
+        npc2:  !include npc2.yaml
+        npc3:  !include npc3.yaml

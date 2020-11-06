@@ -3,7 +3,13 @@ challenge: aido5-LF-sim-testing
 title: "LF 🚗 - Lane following (simulation 👾, testing 🥇)"
 tags: [visible, ml-testing, aido5, aido5-embodied, LF, v4, simulation]
 description: |
-  Lane following challenge.
+  This is the basic lane following challenge.
+  You must follow the lane using the outputs of camera and encoders.
+
+  See the [documentation] for more details.
+
+  [documentation]: https://docs.duckietown.org/daffy/AIDO/out/lf.html
+
 
 protocol: aido2_db18_agent-z2
 

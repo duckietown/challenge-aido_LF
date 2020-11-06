@@ -1,37 +1,15 @@
-challenge: aido5-LFP-sim-validation
+challenge: aido5-LFP-sim-testing
 
-title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
+title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, testing 🥇)"
+tags: [visible, ml-testing, aido5, aido5-embodied, LF, v4, simulation]
 description: |
+  In this variation of the lane following challenge, you must follow
+  the lane and *avoid the duckies*.
 
-  <table id="variations">
-  <thead >
-  <th><code>LFP</code></td>
-  <th></td>
-  </thead>
-  <tr>
+  See the [documentation] for more details.
 
-  <td>Avoid the duckies pedestrians</td>
-  <td></td>
-  </tr>
-  <tr>
-  <td>
-  <img src="https://i.imgur.com/sGTigpp.jpg" style='width: 15em'>
-  </td>
-  <td class='explain'>
+  [documentation]: https://docs.duckietown.org/daffy/AIDO/out/lfp.html
 
-  <p>In this variation of the lane following challenge, you must follow
-  the lane and <strong>avoid the duckies</strong>.</p>
-
-  <p>See the <a href="https://docs.duckietown.org/daffy/AIDO/out/lfp.html">documentation</a> for more details.</p>
-
-  </td>
-  </tr>
-  </table>
-
-
-  *Note*: this is the _validation_ challenge - you can see the output
-  but these are not the scores that count.
 
 protocol: aido2_db18_agent-z2
 
@@ -69,8 +47,7 @@ steps:
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 
 dependencies:
-#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-  aido5-LF-sim-validation:
+  aido5-LFP-sim-validation:
     description: The submission must first pass the LF validation.
     min_threshold: 2.0
     scores:

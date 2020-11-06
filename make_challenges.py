@@ -49,18 +49,24 @@ from zuper_commons.fs import read_ustring_from_utf8_file, write_ustring_to_utf8_
 from zuper_commons.timing import now_utc
 from zuper_ipce import IESO, ipce_from_object, object_from_ipce
 
-from duckietown_challenges import (ChallengeDescription, ChallengeStep, ChallengeTransitions,
-                                   EvaluationParameters, Scoring, ServiceDefinition)
+from duckietown_challenges import (
+    ChallengeDescription,
+    ChallengeStep,
+    ChallengeTransitions,
+    EvaluationParameters,
+    Scoring,
+    ServiceDefinition,
+)
 from duckietown_challenges.challenge import STATE_ERROR, STATE_FAILED, STATE_START, Transition
 
 
 def main():
-    challenge_name = 'aido5-LFP-sim-validation'
-    tags = ['visible', 'ml-validation', 'aido5', 'aido5-embodied', 'LF', 'v4', 'simulation']
+    challenge_name = "aido5-LFP-sim-validation"
+    tags = ["visible", "ml-validation", "aido5", "aido5-embodied", "LF", "v4", "simulation"]
 
-    protocol = 'aido2_db18_agent-z2'
+    protocol = "aido2_db18_agent-z2"
 
-    scoring = read_from_file('scoring.yaml', Scoring)
+    scoring = read_from_file("scoring.yaml", Scoring)
 
     nsteps = 4
     steps = {}
@@ -80,45 +86,51 @@ def main():
     # - [step2, error, ERROR]
 
     for i in range(nsteps):
-        stepname = f'LFP-{i:02d}'
+        stepname = f"LFP-{i:02d}"
         services: Dict[str, ServiceDefinition] = {}
-        services['evaluator'] = read_from_file('comp_evaluator.yaml', ServiceDefinition)
+        services["evaluator"] = read_from_file("comp_evaluator.yaml", ServiceDefinition)
 
-        services['simulator'] = read_from_file('comp_simulator.yaml', ServiceDefinition)
+        services["simulator"] = read_from_file("comp_simulator.yaml", ServiceDefinition)
 
-        services['solution'] = read_from_file('comp_solution.yaml', ServiceDefinition)
+        services["solution"] = read_from_file("comp_solution.yaml", ServiceDefinition)
 
-        evaluation_parameters = EvaluationParameters(version='3', services=services)
-        step = ChallengeStep(name=stepname, title='step', description='step desc',
-                             evaluation_parameters=evaluation_parameters,
-                             timeout=3600,
-                             features_required={'compute_sims': 1},
-                             )
+        evaluation_parameters = EvaluationParameters(version="3", services=services)
+        step = ChallengeStep(
+            name=stepname,
+            title="step",
+            description="step desc",
+            evaluation_parameters=evaluation_parameters,
+            timeout=3600,
+            features_required={"compute_sims": 1},
+        )
 
         steps[stepname] = step
 
     transitions = []
     for stepname in steps:
-        transitions.append([STATE_START, 'success', stepname])
-        transitions.append([stepname, 'failed', STATE_FAILED])
-        transitions.append([stepname, 'error', STATE_ERROR])
+        transitions.append([STATE_START, "success", stepname])
+        transitions.append([stepname, "failed", STATE_FAILED])
+        transitions.append([stepname, "error", STATE_ERROR])
     transitions2 = []
     for t in transitions:
         transitions2.append(Transition(first=t[0], condition=t[1], second=t[2]))
 
     ct = ChallengeTransitions(steps=list(steps), transitions=transitions2)
-    cd = ChallengeDescription(name=challenge_name,
-                              title='The title',
-                              description='The description',
-                              ct=ct, dependencies={},
-                              date_open=now_utc(),
-                              date_close=now_utc() + timedelta(days=40),
-                              steps=steps,
-                              transitions=transitions,
-                              scoring=scoring,
-                              protocol=protocol,
-                              tags=tags)
-    write_to_file(f'LFP2.challenge.yaml', cd, ChallengeDescription)
+    cd = ChallengeDescription(
+        name=challenge_name,
+        title="The title",
+        description="The description",
+        ct=ct,
+        dependencies={},
+        date_open=now_utc(),
+        date_close=now_utc() + timedelta(days=40),
+        steps=steps,
+        transitions=transitions,
+        scoring=scoring,
+        protocol=protocol,
+        tags=tags,
+    )
+    write_to_file(f"LFP2.challenge.yaml", cd, ChallengeDescription)
 
 
 def write_to_file(fn: str, ob: object, K: type):
@@ -135,5 +147,5 @@ def read_from_file(fn: str, K: type):
     return object_from_ipce(y, K)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
