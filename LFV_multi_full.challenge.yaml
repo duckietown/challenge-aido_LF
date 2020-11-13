@@ -1,20 +1,12 @@
-challenge: aido5-LFV_multi-sim-testing
+challenge: aido5-LFV_multi_full-sim-validation
 
-title: "LFV_multi 🚗🚗🚗 - Lane following multibody (simulation 👾, testing 🥇))"
-tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation]
+title: "LFV_multi_full 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋)"
+tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation]
 description: |
+  This is `LFV_multi` with full state observability.
 
 
-  In this variation of the lane following challenge,
-  your agent is *embodied in multiple robots*.
-  Avoid the crashes with different versions of yourself.
-
-  See the [documentation] for more details.
-
-  [documentation]: https://docs.duckietown.org/daffy/AIDO/out/challenge_LFV_multi.html
-
-
-protocol: aido2_db18_agent-z2
+protocol: aido5-db20-full-z2
 
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
@@ -48,7 +40,7 @@ steps:
               timeout_initialization: 120
               timeout_regular: 120
               scenarios:
-                - /scenarios/sampled/LFV_multi
+                - /scenarios/sampled/LFV_multi_full
 
 
               port: 10123 # visualization port
@@ -104,33 +96,17 @@ steps:
             AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
             AIDONODE_CONFIG: |
               maps:
-              - ETH_small_loop_2_bordered
-              - zigzag_dists_bordered
-              - ETHZ_loop_bordered
-              - ETHZ_autolab_technical_track_bordered
+               - ETH_small_loop_2_bordered
+               - zigzag_dists_bordered
+               - ETHZ_loop_bordered
+               - ETHZ_autolab_technical_track_bordered
+
               scenarios_per_map: 1
               robots_npcs: [ ]
               robots_pcs: [ego0, ego1, ego2]
               robots_parked: [parked0, parked1]
-              # robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
+              pc_robot_protocol: PROTOCOL_FULL
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 
 
-dependencies:
-#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-  aido5-LFV_multi-sim-validation:
-    description: The submission must first pass the validation step.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
+dependencies: {}

@@ -1,8 +1,8 @@
 
 environment:
-  experiment_manager_parameters: |
+  experiment_manager_parameters:
     episodes_per_scenario: 1
-    episode_length_s: 15.0
+    episode_length_s: 60.0
     min_episode_length_s: 0.0
     seed: 20200922
     physics_dt: 0.05
@@ -16,12 +16,15 @@ environment:
     timeout_regular: 120
 
     port: 10123 # visualization port
+    scenarios:
+    - /scenarios/sampled/LF
 
-image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
 
 build:
-#
-ports:
-  - 10123
-#  - internal: 10123
-#    external:
+  context: .
+  dockerfile: Dockerfile.exp_manager
+  args:
+    SCENARIOS: sampling
+
+ports: [10123]
+

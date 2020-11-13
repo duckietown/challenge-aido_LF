@@ -1,0 +1,6 @@
+image: SUBMISSION_CONTAINER
+environment:
+  AIDONODE_NAME: ego3
+  AIDONODE_DATA_IN: /fifos/ego23in
+  AIDONODE_DATA_OUT: fifo:/fifos/ego3-out
+  AIDO_REQUIRE_GPU: "1"

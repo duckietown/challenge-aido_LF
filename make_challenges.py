@@ -21,7 +21,7 @@
 #     features_required:
 #       compute_sims: 1 # computation machine
 #
-#     timeout: 3600 # 1 hour
+#     timeout: 10000 # 1 hour
 #     evaluation_parameters:
 #       services:
 #         evaluator: !include comp_evaluator.yaml
@@ -37,14 +37,14 @@
 #               - ETHZ_autolab_technical_track
 #               scenarios_per_map: 1
 #               robots_npcs: []
-#               robots_pcs: [ego]
+#               robots_pcs: [ego0]
 #               nduckies: 8
 #           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 #
 from datetime import timedelta
+from typing import Dict
 
 from graphtage import yaml
-from typing import Dict
 from zuper_commons.fs import read_ustring_from_utf8_file, write_ustring_to_utf8_file
 from zuper_commons.timing import now_utc
 from zuper_ipce import IESO, ipce_from_object, object_from_ipce
@@ -56,8 +56,11 @@ from duckietown_challenges import (
     EvaluationParameters,
     Scoring,
     ServiceDefinition,
+    STATE_ERROR,
+    STATE_FAILED,
+    STATE_START,
+    Transition,
 )
-from duckietown_challenges.challenge import STATE_ERROR, STATE_FAILED, STATE_START, Transition
 
 
 def main():

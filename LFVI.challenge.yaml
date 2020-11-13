@@ -37,25 +37,59 @@ steps:
       compute_sims: 1 # computation machine
 
 
-    timeout: 3600 # 1 hour
+    timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
-        evaluator: !include comp_evaluator.yaml
-        simulator: !include comp_simulator.yaml
-        solution: !include comp_solution.yaml
+        evaluator:
 
-
-        scenario_maker:
           environment:
-            AIDONODE_DATA_IN: /fifos/scenario_maker-in
-            AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
-            AIDONODE_CONFIG: |
-              maps:
-              - udem1
-              scenarios_per_map: 1
-              robots_npcs: [npc0,npc1,npc2,npc3]
-              robots_pcs: [ego]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
+            experiment_manager_parameters:
+              episodes_per_scenario: 1
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 20200922
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+
+              port: 10123 # visualization port
+              scenarios:
+                - /scenarios/sampled/LFVI
+
+
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling
+
+          ports: [10123]
+
+
+          scenarios:
+            - /scenarios/sampled/LFP
+
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+
+#        scenario_maker:
+#          environment:
+#            AIDONODE_DATA_IN: /fifos/scenario_maker-in
+#            AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
+#            AIDONODE_CONFIG: |
+#              maps:
+#              - udem1
+#              scenarios_per_map: 1
+#              robots_npcs: [npc0,npc1,npc2,npc3]
+#              robots_pcs: [ego0]
+#          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
         npc0:  !include npc0.yaml
         npc1:  !include npc1.yaml
         npc2:  !include npc2.yaml

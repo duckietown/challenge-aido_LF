@@ -1,33 +1,19 @@
-challenge: aido5-LFVI_multi-sim-validation
+challenge: aido5-LFVI_multi_full-sim-validation
 
-title: "LFVI multibody 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+title: "LFVI multibody full  🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
 tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation]
-description: |
 
-protocol: aido2_db18_agent-z2
+description: |
+    This is `LFVI_multi` with full state observability.
+
+protocol: aido5-db20-full-z2
 
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
 
 scoring: !include scoring.yaml
 
-dependencies:
-  aido5-LFV-sim-validation:
-    description: The submission must first pass LFV testing.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
+dependencies: {}
 
 steps:
   LFVIv-sim:
@@ -40,8 +26,9 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
-
         simulator: !include comp_simulator.yaml
+
+
         solution-ego0: !include solution-ego0.yaml
         solution-ego1: !include solution-ego1.yaml
         solution-ego2: !include solution-ego2.yaml
@@ -66,5 +53,4 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFVI_multi
-
+                - /scenarios/sampled/LFVI_multi_full

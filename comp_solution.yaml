@@ -1,9 +1,0 @@
-
-image: SUBMISSION_CONTAINER
-environment:
-  AIDONODE_DATA_IN: /fifos/ego-in
-  AIDONODE_DATA_OUT: fifo:/fifos/ego-out
-  AIDO_REQUIRE_GPU: "1"
-
-build:
-ports: []

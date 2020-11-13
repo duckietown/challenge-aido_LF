@@ -1,18 +1,4 @@
-PIP_INDEX_URL ?= https://pypi.org/simple
 
-
-#define-challenge-serial:
-#	$(MAKE) define-challenge-LF
-#	$(MAKE) define-challenge-LFP
-#	$(MAKE) define-challenge-LF_test
-#	$(MAKE) define-challenge-LFV
-#	$(MAKE) define-challenge-LFV_test
-#	$(MAKE) define-challenge-LFV_multi
-#	# missing test
-#	$(MAKE) define-challenge-LFVI
-#	$(MAKE) define-challenge-LFVI_test
-#	$(MAKE) define-challenge-LFVI_multi
-#	# missing test
 
 
 define-challenge:  \
@@ -27,7 +13,20 @@ define-challenge:  \
 	define-challenge-LFV_test \
 	define-challenge-LFVI \
 	define-challenge-LFVI_test \
-	define-challenge-LFVI_multi
+	define-challenge-LFVI_multi \
+	define-challenge-LFV_multi_full \
+	define-challenge-LFVI_multi_full \
+	define-challenge-LFP_full
+
+define-challenge-LFVI_multi_full:
+	dts challenges define --config LFVI_multi_full.challenge.yaml
+
+define-challenge-LFV_multi_full:
+	dts challenges define --config LFV_multi_full.challenge.yaml
+
+define-challenge-LFP_full:
+	dts challenges define --config LFP_full.challenge.yaml
+
 
 define-challenge-sanity:
 	dts challenges define --config aido5-LF-sanity-sim-validation.challenge.yaml

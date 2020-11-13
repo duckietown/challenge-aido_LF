@@ -1,13 +1,13 @@
 challenge: aido5-LF-sim-validation
 
-title: "LF 🚗 - Lane following  2 (simulation 👾, validation 🏋)"
+title: "LF 🚗 - Lane following (simulation 👾, validation 🏋)"
 tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
 description: |
 
   <table id="variations">
   <thead >
-  <th><code>LF</code></td>
-  <th><code></code></td>
+  <th><code>LF</code></th>
+  <th><code></code></th>
 
   </thead>
   <tr>
@@ -23,7 +23,8 @@ description: |
 
   <p>You must follow the lane using the outputs of camera and encoders.</p>
 
-  <p>See the <a href="https://docs.duckietown.org/daffy/AIDO/out/lf.html">documentation</a> for more details.</p>
+  <p>See the <a href="https://docs.duckietown.org/daffy/AIDO/out/challenge_LF.html">documentation</a> for more details
+  .</p>
   </td>
   </tr>
   </table>
@@ -46,24 +47,44 @@ steps:
     features_required:
       compute_sims: 1 # computation machine
 
-    timeout: 3600 # 1 hour
+    timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
-        evaluator: !include comp_evaluator.yaml
-        simulator: !include comp_simulator.yaml
-        solution: !include comp_solution.yaml
+        evaluator:
 
-        scenario_maker:
           environment:
-            AIDONODE_DATA_IN: /fifos/scenario_maker-in
-            AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
-            AIDONODE_CONFIG: |
-              maps:
-              - ETHZ_autolab_technical_track
-              scenarios_per_map: 4
-              robots_npcs: []
-              robots_pcs: [ego]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
+            experiment_manager_parameters:
+              episodes_per_scenario: 1
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 20200922
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+
+              port: 10123 # visualization port
+              scenarios:
+                - /scenarios/sampled/LF
+
+
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling
+
+          ports: [10123]
+
+
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
 
 
 dependencies: {}
