@@ -1,11 +1,11 @@
-challenge: aido5-LFV-sim-validation
+challenge: aido5-LFV_full-sim-validation
 
 title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation]
+tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation, protocol-full]
 description: |
   Lane following challenge.
 
-protocol: aido2_db18_agent-z2
+protocol: aido5-db20-full-z2
 
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
@@ -13,24 +13,25 @@ date-close: 2020-12-05T00:00Z
 scoring: !include scoring.yaml
 
 
-dependencies:
-  #  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-  aido5-LF-sim-validation:
-    description: The submission must first pass the LF validation.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
+dependencies: {}
+#
+#  #  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
+#  aido5-LF-sim-validation:
+#    description: The submission must first pass the LF validation.
+#    min_threshold: 2.0
+#    scores:
+#      good_enough:
+#        description: Must have moved at least 20cm.
+#        importance: 1.0
+#        score_name: driven_lanedir_consec_median
+#        score_min: 0.2
+#        score_max: 10000.0
+#    comparisons:
+#      better-than-bea-straight:
+#        description: Must be do better than the straight solution.
+#        importance: 1.0
+#        username: "1639"
+#        sub_label: 'straight'
 
 
 steps:
@@ -62,14 +63,14 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFV
+                - /scenarios
 
 
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling
+              SCENARIOS: sampling/sampled/LFV_full
 
         simulator: !include comp_simulator.yaml
 

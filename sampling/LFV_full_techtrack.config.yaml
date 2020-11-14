@@ -1,12 +1,13 @@
-map_name: udem1
-robots_npcs: []
-robots_pcs: [ego0,ego1,ego2,ego3]
+map_name: ETHZ_autolab_technical_track_bordered
+robots_npcs: [npc0,npc1,npc2,npc3]
+robots_pcs: [ego0]
 robots_parked: []
 theta_tol_deg: 40
 dist_tol_m: 0.04
 min_dist: 0.5
 delta_y_m: 0.04
 only_straight: true
+
 
 
 nduckies: 0

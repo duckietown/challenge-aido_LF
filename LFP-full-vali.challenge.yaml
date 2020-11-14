@@ -1,7 +1,7 @@
 challenge: aido5-LFP_full-sim-validation
 
 title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
+tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation, protocol-full]
 description: |
 
   <table id="variations">
@@ -76,14 +76,14 @@ steps:
 
                 port: 10123 # visualization port
                 scenarios:
-                  - /scenarios/sampled/LFP_full
+                  - /scenarios
 
 
             build:
               context: .
               dockerfile: Dockerfile.exp_manager
               args:
-                SCENARIOS: sampling
+                SCENARIOS: sampling/sampled/LFP_full
 
             ports: [10123]
 

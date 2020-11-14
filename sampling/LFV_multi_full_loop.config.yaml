@@ -1,6 +1,6 @@
-map_name: udem1
+map_name: ETHZ_loop_bordered
 robots_npcs: []
-robots_pcs: [ego0,ego1,ego2,ego3]
+robots_pcs: [ego0, ego1, ego2 , ego3]
 robots_parked: []
 theta_tol_deg: 40
 dist_tol_m: 0.04

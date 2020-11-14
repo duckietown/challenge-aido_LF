@@ -1,7 +1,7 @@
-challenge: aido5-LFVI_multi-sim-validation
+challenge: aido5-LFVI-sim-validation
 
-title: "LFVI multibody 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
-tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation]
+title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation, protocol-normal]
 description: |
 
 protocol: aido2_db18_agent-z2
@@ -40,14 +40,15 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
-
-        simulator: !include comp_simulator.yaml
-        solution-ego0: !include solution-ego0.yaml
-        solution-ego1: !include solution-ego1.yaml
-        solution-ego2: !include solution-ego2.yaml
-        solution-ego3: !include solution-ego3.yaml
         evaluator:
 
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFVI
+
+          ports: [10123]
           environment:
             experiment_manager_parameters:
               episodes_per_scenario: 1
@@ -66,5 +67,15 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFVI_multi
+                - /scenarios
 
+
+
+
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+        npc0:  !include npc0.yaml
+        npc1:  !include npc1.yaml
+        npc2:  !include npc2.yaml
+        npc3:  !include npc3.yaml

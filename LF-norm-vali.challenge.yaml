@@ -1,7 +1,7 @@
 challenge: aido5-LF-sim-validation
 
 title: "LF 🚗 - Lane following (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
+tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation, protocol-normal]
 description: |
 
   <table id="variations">
@@ -70,14 +70,14 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LF
+                - /scenarios
 
 
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling
+              SCENARIOS: sampling/sampled/LF
 
           ports: [10123]
 

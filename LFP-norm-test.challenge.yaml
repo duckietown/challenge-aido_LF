@@ -1,14 +1,15 @@
-challenge: aido5-LF-sim-testing
+challenge: aido5-LFP-sim-testing
 
-title: "LF 🚗 - Lane following (simulation 👾, testing 🥇)"
-tags: [visible, ml-testing, aido5, aido5-embodied, LF, v4, simulation]
+title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, testing 🥇)"
+tags: [visible, ml-testing, aido5, aido5-embodied, LF, v4, simulation, protocol-normal,
+  competition]
 description: |
-  This is the basic lane following challenge.
-  You must follow the lane using the outputs of camera and encoders.
+  In this variation of the lane following challenge, you must follow
+  the lane and *avoid the duckies*.
 
   See the [documentation] for more details.
 
-  [documentation]: https://docs.duckietown.org/daffy/AIDO/out/challenge_LF.html
+  [documentation]: https://docs.duckietown.org/daffy/AIDO/out/challenge_LFP.html
 
 
 protocol: aido2_db18_agent-z2
@@ -17,35 +18,14 @@ protocol: aido2_db18_agent-z2
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
 
-
 scoring: !include scoring.yaml
 
-dependencies:
-#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-  aido5-LF-sim-validation:
-    description: The submission must first pass the testing.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
-
 steps:
-  LFt-sim:
+  LFP-sim:
     title: Simulation step
     description: ""
     features_required:
       compute_sims: 1 # computation machine
-
 
     timeout: 10000 # 1 hour
     evaluation_parameters:
@@ -74,11 +54,30 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LF_test
+                - /scenarios
 
 
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling
+              SCENARIOS: sampling/sampled/LFP_test
+
+          ports: [10123]
+dependencies:
+  aido5-LFP-sim-validation:
+    description: The submission must first pass the LF validation.
+    min_threshold: 2.0
+    scores:
+      good_enough:
+        description: Must have moved at least 20cm.
+        importance: 1.0
+        score_name: driven_lanedir_consec_median
+        score_min: 0.2
+        score_max: 10000.0
+    comparisons:
+      better-than-bea-straight:
+        description: Must be do better than the straight solution.
+        importance: 1.0
+        username: "1639"
+        sub_label: 'straight'

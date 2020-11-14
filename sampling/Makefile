@@ -16,6 +16,7 @@ all: \
 	sample-LF_full \
 	sample-LFP_full \
 	sample-LFV_full \
+	sample-LFV_multi_full \
 	sample-LFVI_multi_full
 
 clean:
@@ -41,10 +42,10 @@ sample-LF_full:
 	dt-make-scenarios --output sampled/LF_full --num 1 --config LF_full_techtrack.config.yaml
 
 sample-LFP_full:
-	dt-make-scenarios --output sampled/LF_full --num 1 --config LFP_full_zigzag.config.yaml
-	dt-make-scenarios --output sampled/LF_full --num 1 --config LFP_full_loop.config.yaml
-	dt-make-scenarios --output sampled/LF_full --num 1 --config LFP_full_small_loop.config.yaml
-	dt-make-scenarios --output sampled/LF_full --num 1 --config LFP_full_techtrack.config.yaml
+	dt-make-scenarios --output sampled/LFP_full --num 1 --config LFP_full_zigzag.config.yaml
+	dt-make-scenarios --output sampled/LFP_full --num 1 --config LFP_full_loop.config.yaml
+	dt-make-scenarios --output sampled/LFP_full --num 1 --config LFP_full_small_loop.config.yaml
+	dt-make-scenarios --output sampled/LFP_full --num 1 --config LFP_full_techtrack.config.yaml
 
 
 sample-LFP:
@@ -88,6 +89,14 @@ sample-LFV_multi:
 	dt-make-scenarios --output sampled/LFV_multi --num 1 --config LFV_multi_loop.config.yaml
 	dt-make-scenarios --output sampled/LFV_multi --num 1 --config LFV_multi_small_loop.config.yaml
 	dt-make-scenarios --output sampled/LFV_multi --num 1 --config LFV_multi_techtrack.config.yaml
+
+sample-LFV_multi_full:
+	dt-make-scenarios --output sampled/LFV_multi_full --num 1 --config LFV_multi_full_zigzag.config.yaml
+	dt-make-scenarios --output sampled/LFV_multi_full --num 1 --config LFV_multi_full_loop.config.yaml
+	dt-make-scenarios --output sampled/LFV_multi_full --num 1 --config LFV_multi_full_small_loop.config.yaml
+	dt-make-scenarios --output sampled/LFV_multi_full --num 1 --config LFV_multi_full_techtrack.config.yaml
+
+
 
 
 

@@ -1,19 +1,24 @@
-challenge: aido5-LFVI-sim-validation
+challenge: aido5-LFV-sim-testing
 
-title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
-tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation]
+title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, testing 🥇)"
+tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation, protocol-normal]
 description: |
+  Lane following challenge.
 
 protocol: aido2_db18_agent-z2
+
 
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
 
+
+
 scoring: !include scoring.yaml
+
 
 dependencies:
   aido5-LFV-sim-validation:
-    description: The submission must first pass LFV testing.
+    description: The submission must first pass the validation.
     min_threshold: 2.0
     scores:
       good_enough:
@@ -30,7 +35,7 @@ dependencies:
         sub_label: 'straight'
 
 steps:
-  LFVIv-sim:
+  LFVv-sim:
     title: Simulation step
     description: ""
     features_required:
@@ -40,8 +45,16 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
-        evaluator:
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
 
+
+
+        npc0:  !include npc0.yaml
+        npc1:  !include npc1.yaml
+        npc2:  !include npc2.yaml
+        npc3:  !include npc3.yaml
+        evaluator:
           environment:
             experiment_manager_parameters:
               episodes_per_scenario: 1
@@ -60,37 +73,11 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFVI
+                - /scenarios
 
 
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling
-
-          ports: [10123]
-
-
-          scenarios:
-            - /scenarios/sampled/LFP
-
-        simulator: !include comp_simulator.yaml
-        solution-ego0: !include solution-ego0.yaml
-
-
-#        scenario_maker:
-#          environment:
-#            AIDONODE_DATA_IN: /fifos/scenario_maker-in
-#            AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
-#            AIDONODE_CONFIG: |
-#              maps:
-#              - udem1
-#              scenarios_per_map: 1
-#              robots_npcs: [npc0,npc1,npc2,npc3]
-#              robots_pcs: [ego0]
-#          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
-        npc0:  !include npc0.yaml
-        npc1:  !include npc1.yaml
-        npc2:  !include npc2.yaml
-        npc3:  !include npc3.yaml
+              SCENARIOS: sampling/sampled/LFV_test

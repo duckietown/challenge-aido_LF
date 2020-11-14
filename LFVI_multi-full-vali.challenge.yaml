@@ -1,7 +1,7 @@
 challenge: aido5-LFVI_multi_full-sim-validation
 
 title: "LFVI multibody full  🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
-tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation]
+tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation, protocol-full]
 
 description: |
     This is `LFVI_multi` with full state observability.
@@ -33,8 +33,16 @@ steps:
         solution-ego1: !include solution-ego1.yaml
         solution-ego2: !include solution-ego2.yaml
         solution-ego3: !include solution-ego3.yaml
+
         evaluator:
 
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFVI_multi_full
+
+          ports: [10123]
           environment:
             experiment_manager_parameters:
               episodes_per_scenario: 1
@@ -53,4 +61,4 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFVI_multi_full
+              - /scenarios

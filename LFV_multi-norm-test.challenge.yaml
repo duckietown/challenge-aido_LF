@@ -1,7 +1,8 @@
 challenge: aido5-LFV_multi-sim-testing
 
 title: "LFV_multi 🚗🚗🚗 - Lane following multibody (simulation 👾, testing 🥇))"
-tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation]
+tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation, protocol-normal,
+competition]
 description: |
 
 
@@ -48,14 +49,19 @@ steps:
               timeout_initialization: 120
               timeout_regular: 120
               scenarios:
-                - /scenarios/sampled/LFV_multi
+                - /scenarios
 
 
               port: 10123 # visualization port
 
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
-          ports:
-            - 10123
+
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFV_multi
+
+          ports: [10123]
 
         simulator:
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
@@ -77,43 +83,12 @@ steps:
               topdown_resolution: 600
               debug_no_video: false
 
-        solution-ego0:
-          image: SUBMISSION_CONTAINER
-          environment:
-            AIDONODE_NAME: ego0
-            AIDONODE_DATA_IN: /fifos/ego0-in
-            AIDONODE_DATA_OUT: fifo:/fifos/ego0-out
-
-        solution-ego1:
-          image: SUBMISSION_CONTAINER
-          environment:
-            AIDONODE_NAME: ego1
-            AIDONODE_DATA_IN: /fifos/ego1-in
-            AIDONODE_DATA_OUT: fifo:/fifos/ego1-out
-        solution-ego2:
-          image: SUBMISSION_CONTAINER
-          environment:
-            AIDONODE_NAME: ego2
-            AIDONODE_DATA_IN: /fifos/ego2-in
-            AIDONODE_DATA_OUT: fifo:/fifos/ego2-out
+        solution-ego0: !include solution-ego0.yaml
+        solution-ego1: !include solution-ego1.yaml
+        solution-ego2: !include solution-ego2.yaml
+        solution-ego3: !include solution-ego3.yaml
 
 
-        scenario_maker:
-          environment:
-            AIDONODE_DATA_IN: /fifos/scenario_maker-in
-            AIDONODE_DATA_OUT: fifo:/fifos/scenario_maker-out
-            AIDONODE_CONFIG: |
-              maps:
-              - ETH_small_loop_2_bordered
-              - zigzag_dists_bordered
-              - ETHZ_loop_bordered
-              - ETHZ_autolab_technical_track_bordered
-              scenarios_per_map: 1
-              robots_npcs: [ ]
-              robots_pcs: [ego0, ego1, ego2]
-              robots_parked: [parked0, parked1]
-              # robots_parked: [parked0, parked1, parked2, parked3, parked4, parked5]
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 
 
 dependencies:

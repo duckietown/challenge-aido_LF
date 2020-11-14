@@ -1,24 +1,19 @@
-challenge: aido5-LFV-sim-testing
+challenge: aido5-LFVI_multi-sim-validation
 
-title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, testing 🥇)"
-tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation]
+title: "LFVI multibody 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation, protocol-normal]
 description: |
-  Lane following challenge.
 
 protocol: aido2_db18_agent-z2
-
 
 date-open: 2020-09-15T00:00Z
 date-close: 2020-12-05T00:00Z
 
-
-
 scoring: !include scoring.yaml
-
 
 dependencies:
   aido5-LFV-sim-validation:
-    description: The submission must first pass the validation.
+    description: The submission must first pass LFV testing.
     min_threshold: 2.0
     scores:
       good_enough:
@@ -35,7 +30,7 @@ dependencies:
         sub_label: 'straight'
 
 steps:
-  LFVv-sim:
+  LFVIv-sim:
     title: Simulation step
     description: ""
     features_required:
@@ -45,16 +40,21 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
+
         simulator: !include comp_simulator.yaml
         solution-ego0: !include solution-ego0.yaml
-
-
-
-        npc0:  !include npc0.yaml
-        npc1:  !include npc1.yaml
-        npc2:  !include npc2.yaml
-        npc3:  !include npc3.yaml
+        solution-ego1: !include solution-ego1.yaml
+        solution-ego2: !include solution-ego2.yaml
+        solution-ego3: !include solution-ego3.yaml
         evaluator:
+
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFVI_multi
+
+          ports: [10123]
           environment:
             experiment_manager_parameters:
               episodes_per_scenario: 1
@@ -73,11 +73,5 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFV_test
+                - /scenarios
 
-
-          build:
-            context: .
-            dockerfile: Dockerfile.exp_manager
-            args:
-              SCENARIOS: sampling

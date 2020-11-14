@@ -1,6 +1,6 @@
-map_name: udem1
-robots_npcs: []
-robots_pcs: [ego0,ego1,ego2,ego3]
+map_name: ETH_small_loop_2_bordered
+robots_npcs: [npc0]
+robots_pcs: [ego0]
 robots_parked: []
 theta_tol_deg: 40
 dist_tol_m: 0.04

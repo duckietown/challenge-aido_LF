@@ -1,7 +1,7 @@
 challenge: aido5-LFVI-sim-testing
 
 title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, testing 🥇) "
-tags: [visible, ml-testing, aido5, aido5-embodied, LFVI, v4, simulation]
+tags: [visible, ml-testing, aido5, aido5-embodied, LFVI, v4, simulation, protocol-normal]
 description: |
 
 protocol: aido2_db18_agent-z2
@@ -47,6 +47,11 @@ steps:
         solution-ego0: !include solution-ego0.yaml
 
         evaluator:
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFVI_test
 
           environment:
             experiment_manager_parameters:
@@ -66,7 +71,7 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios/sampled/LFVI_test
+                - /scenarios
 
         npc0:  !include npc0.yaml
         npc1:  !include npc1.yaml
