@@ -9,8 +9,8 @@ delta_y_m: 0.04
 only_straight: true
 
 nduckies: 0
-duckie_min_dist_from_other_duckie: 0.04
-duckie_min_dist_from_robot: 0.3
+duckie_min_dist_from_other_duckie: 0.3
+duckie_min_dist_from_robot: 0.4
 duckie_y_bounds: [-0.1, -0.04]
 pc_robot_protocol: PROTOCOL_FULL
 npc_robot_protocol: PROTOCOL_FULL
