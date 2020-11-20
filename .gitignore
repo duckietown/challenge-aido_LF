@@ -17,3 +17,4 @@ experiment_manager/requirements.resolved
 deps.dot
 deps.pdf
 out
+compmake-graph*
