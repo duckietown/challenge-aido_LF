@@ -95,7 +95,7 @@ sample-LFV_multi-norm-vali:
 	$(cmd) --output sampled/LFV_multi --num 1 --config LFV_multi_small_loop.config.yaml
 	$(cmd) --output sampled/LFV_multi --num 1 --config LFV_multi_zigzag.config.yaml
 	$(cmd) --output sampled/LFV_multi --num 1 --config LFV_multi_loop.config.yaml
-	
+
 	$(cmd) --output sampled/LFV_multi --num 1 --config LFV_multi_techtrack.config.yaml
 
 sample-LFV_multi-full-vali:

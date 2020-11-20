@@ -53,4 +53,3 @@ steps:
 
         simulator: !include comp_simulator.yaml
         solution-ego0: !include solution-ego0.yaml
-

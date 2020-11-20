@@ -81,4 +81,3 @@ steps:
         npc1:  !include npc1.yaml
         npc2:  !include npc2.yaml
         npc3:  !include npc3.yaml
-

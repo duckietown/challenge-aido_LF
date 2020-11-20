@@ -6,8 +6,8 @@
 To run everything, use:
 
     $ make test
-    
-    
+
+
 The output will be in the directory `./challenges-dir/`.
 
 
@@ -21,6 +21,5 @@ and set the variable `DT_ENV_DEVELOPER` to that repo's root directory.
 To run use:
 
     $ make test-with-local-repos
-    
+
 You can see how the repos are mounted in the file [`docker-compose-devel.yaml`](old/docker-compose-devel.yaml).
-  

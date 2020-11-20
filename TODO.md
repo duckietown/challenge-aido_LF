@@ -9,7 +9,7 @@ Simulator:
 Scorer:
 
 * Add score: length traveled
-* Add score: violation of "direction of travel" rule. 
+* Add score: violation of "direction of travel" rule.
 
 
 ## TODO for next revision (aido1_LF2)
