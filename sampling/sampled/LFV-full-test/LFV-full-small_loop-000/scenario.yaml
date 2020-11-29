@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          nGAcHh1R4L+vpWzTBofrvz0R7l15gAFAr6Vs0waH6z+cYBweHVHgvwAAAECNl/Q/AAAAAAAAAAAA
+          6V42l9wd4r9ZOVj2tWDqvzAw8tqFEfA/WTlY9rVg6j/pXjaX3B3ivwAAAECNl/Q/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -29,7 +29,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          I0pNLDl51D/hWXQ0hlHuv86mR+pCHPA/4Vl0NIZR7j8jSk0sOXnUPwAAAECNl/Q/AAAAAAAAAAAA
+          nRdo1Vg62T8K2+nWsmjtv0cgeSB7aQFACtvp1rJo7T+dF2jVWDrZPwAAAECNl/Q/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -63,24 +63,24 @@ environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Tra
   \        p:\n        - 0.9299999999999999\n        - -0.03899999999999999\n    \
   \    theta_deg: 180\n    tag:\n      ~TagInstance:\n        family: 36h11\n    \
   \    size: 0.08\n        tag_id: 342\n  tree_random_0:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.354259272329552\n\
-  \        - 1.2615063721221393\n    height: 0.25523631759217624\n  tree_random_1:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.6074990729303273\n\
+  \        - 1.5525353120760235\n    height: 0.29956063333324146\n  tree_random_1:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 2.722020306153997\n        - 1.9498099747321642\n    height: 0.1692712114209605\n\
+  \        - 1.539297979645006\n        - 2.8318323279020143\n    height: 0.23568394118093788\n\
   \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 0.1889840888526158\n        - 0.16038731254003066\n\
-  \    height: 0.3157108195740543\n  tree_random_3:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.4035224162358044\n\
-  \        - 2.5452854412531623\n    height: 0.32230026965385633\n  tree_random_4:\n\
+  \ 0.0\n        p:\n        - 0.2384782400836893\n        - 2.8386359409997515\n\
+  \    height: 0.3255703686486623\n  tree_random_3:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.4995375785103975\n\
+  \        - 0.49887694726191595\n    height: 0.19108051519422684\n  tree_random_4:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.3143861068246653\n        - 1.4717170187525854\n    height: 0.208304944516564\n\
+  \        - 0.17609077050010363\n        - 0.9988253462365914\n    height: 0.24998286484203855\n\
   \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 0.9184912683908756\n        - 2.611597183743719\n \
-  \   height: 0.15066923016568173\n  tree_random_6:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.587520242003883\n\
-  \        - 1.0524382232794849\n    height: 0.2409381417237654\n  tree_random_7:\n\
+  \ 0.0\n        p:\n        - 0.32111030843897437\n        - 2.2471117181677394\n\
+  \    height: 0.38904085629626217\n  tree_random_6:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.1644373936396284\n\
+  \        - 2.7552204106944767\n    height: 0.36377285267564774\n  tree_random_7:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.2821692908960579\n        - 2.6787625607765952\n    height: 0.2680359249911135\n\
+  \        - 1.4922010828046004\n        - 0.40608629874418223\n    height: 0.297816531314985\n\
   tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
   - - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n\
   \  - straight/S\n  - floor\n  - straight/N\n  - floor\n- - floor\n  - curve_left/S\n\

@@ -42,7 +42,7 @@
 #           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 #
 from datetime import timedelta
-from typing import Dict
+from typing import cast, Dict
 
 from graphtage import yaml
 from zuper_commons.fs import read_ustring_from_utf8_file, write_ustring_to_utf8_file
@@ -51,6 +51,7 @@ from zuper_ipce import IESO, ipce_from_object, object_from_ipce
 
 from duckietown_challenges import (
     ChallengeDescription,
+    ChallengeName,
     ChallengeStep,
     ChallengeTransitions,
     EvaluationParameters,
@@ -59,12 +60,13 @@ from duckietown_challenges import (
     STATE_ERROR,
     STATE_FAILED,
     STATE_START,
+    StepName,
     Transition,
 )
 
 
 def main():
-    challenge_name = "aido5-LFP-sim-validation"
+    challenge_name = cast(ChallengeName, "aido5-LFP-sim-validation")
     tags = ["visible", "ml-validation", "aido5", "aido5-embodied", "LF", "v4", "simulation"]
 
     protocol = "aido2_db18_agent-z2"
@@ -89,7 +91,7 @@ def main():
     # - [step2, error, ERROR]
 
     for i in range(nsteps):
-        stepname = f"LFP-{i:02d}"
+        stepname = cast(StepName, f"LFP-{i:02d}")
         services: Dict[str, ServiceDefinition] = {}
         services["evaluator"] = read_from_file("comp_evaluator.yaml", ServiceDefinition)
 

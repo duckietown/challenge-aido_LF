@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          v+/toC4y5D/O3Kv6X9LoP6veYHfgng1Aztyr+l/S6L+/7+2gLjLkPwAAACC0yAFAAAAAAAAAAAAA
+          j017AHVC77+c4yYVDGDLvwAAAKDIdgZAnOMmFQxgyz+PTXsAdULvvyX8FI6/X+8/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
