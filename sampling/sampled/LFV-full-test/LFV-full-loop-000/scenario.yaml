@@ -1,0 +1,139 @@
+robots:
+  ego0:
+    color: red
+    protocol: PROTOCOL_FULL
+    description: Playable robot ego0
+    controllable: true
+    configuration:
+      pose:
+        data: !!binary |
+          hgJLggxh4D9ytjOIjn3rv69yREoXcfA/crYziI596z+GAkuCDGHgPwAAAECNl/Q/AAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAPA/
+        dtype: float64
+        shape:
+        - 3
+        - 3
+      velocity:
+        data: !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+        dtype: float64
+        shape:
+        - 3
+        - 3
+  npc0:
+    color: blue
+    protocol: PROTOCOL_FULL
+    description: NPC robot npc0
+    controllable: true
+    configuration:
+      pose:
+        data: !!binary |
+          5YdYDzFh7T/ZAhxaPV3ZvwAAAECNl/Q/2QIcWj1d2T/lh1gPMWHtP+AfG0mVYug/AAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAPA/
+        dtype: float64
+        shape:
+        - 3
+        - 3
+      velocity:
+        data: !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+        dtype: float64
+        shape:
+        - 3
+        - 3
+  npc1:
+    color: blue
+    protocol: PROTOCOL_FULL
+    description: NPC robot npc1
+    controllable: true
+    configuration:
+      pose:
+        data: !!binary |
+          dZb6brAmzb8H3wZtuSjvv0mOI0NmhvA/B98Gbbko7z91lvpusCbNvwAAAKDvpwNAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAPA/
+        dtype: float64
+        shape:
+        - 3
+        - 3
+      velocity:
+        data: !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+        dtype: float64
+        shape:
+        - 3
+        - 3
+  npc2:
+    color: blue
+    protocol: PROTOCOL_FULL
+    description: NPC robot npc2
+    controllable: true
+    configuration:
+      pose:
+        data: !!binary |
+          4Mw7Tbdc078wi9OMHIDuv8Nkd7ezlwFAMIvTjByA7j/gzDtNt1zTvwAAACAEVghAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAPA/
+        dtype: float64
+        shape:
+        - 3
+        - 3
+      velocity:
+        data: !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+        dtype: float64
+        shape:
+        - 3
+        - 3
+duckies: {}
+environment: "tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n\
+  \  - floor\n  - floor\n- - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n\
+  \  - floor/E\n  - floor\n- - floor\n  - straight/N\n  - floor\n  - straight/N\n\
+  \  - floor\n  - floor\n- - floor\n  - straight/N\n  - floor\n  - curve_right/W\n\
+  \  - curve_left/N\n  - floor\n- - floor\n  - straight/N\n  - floor\n  - floor\n\
+  \  - straight/N\n  - floor\n- - floor\n  - straight/N\n  - floor\n  - floor\n  -\
+  \ straight/N\n  - floor\n- - floor\n  - curve_left/S\n  - straight/E\n  - straight/E\n\
+  \  - curve_left/E\n  - floor\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
+  \  - floor\nversion: 1\nobjects:\n  tree_random_0:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.4570832374464637\n\
+  \        - 3.7699501679793808\n    height: 0.2788630163006399\n  tree_random_1:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 1.6533193258888281\n        - 2.1782106187868346\n    height: 0.3680209451995314\n\
+  \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.6996416673747904\n        - 4.507316982951476\n \
+  \   height: 0.29525455277107204\n  tree_random_3:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.037660739986367\n\
+  \        - 3.248986621721725\n    height: 0.3905952806555243\n  tree_random_4:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 1.5155909190752845\n        - 1.3412508225550661\n    height: 0.38412826558290825\n\
+  \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.13865271075719876\n        - 2.1618196763782636\n\
+  \    height: 0.3583705942408275\n  tree_random_6:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.1542401401082554\n\
+  \        - 2.7692498848389246\n    height: 0.1756627918895867\n  tree_random_7:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 0.34753825399650295\n        - 0.6790524677604001\n    height: 0.3982511334751171\n\
+  \  tree_random_8:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 1.4280713920657648\n        - 0.22959785436213806\n\
+  \    height: 0.2615445346096164\n  tree_random_9:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.591723696816087\n\
+  \        - 3.43380817483348\n    height: 0.2918318764104138\n  tree_random_10:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 0.1959714991022477\n        - 1.6665494525652789\n    height: 0.3044061660498237\n\
+  \  tree_random_11:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.15941659827387059\n        - 0.455347441073951\n\
+  \    height: 0.37700615227085893\n  tree_random_12:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.8555271306195602\n\
+  \        - 1.594462498300342\n    height: 0.300295306120012\n  tree_random_13:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 1.4568599128331605\n        - 1.9144411517319557\n    height: 0.39111660411654037\n\
+  \  tree_random_14:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.3477894221632258\n        - 3.1703181256355744\n\
+  \    height: 0.3182849881518108\n  tree_random_15:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.5678969794738578\n\
+  \        - 2.5779740937344022\n    height: 0.3961912439291331\n"
+player_robots:
+- ego0
+scenario_name: LFV-full-loop-000

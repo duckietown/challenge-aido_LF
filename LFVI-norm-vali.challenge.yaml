@@ -46,7 +46,7 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFVI
+              SCENARIOS: sampling/sampled/LFVI-norm-vali
 
           ports: [10123]
           environment:

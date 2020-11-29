@@ -47,11 +47,12 @@ steps:
         solution-ego0: !include solution-ego0.yaml
 
         evaluator:
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFVI_test
+              SCENARIOS: sampling/sampled/LFVI-norm-test
 
           environment:
             experiment_manager_parameters:

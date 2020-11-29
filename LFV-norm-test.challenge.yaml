@@ -75,9 +75,9 @@ steps:
               scenarios:
                 - /scenarios
 
-
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFV_test
+              SCENARIOS: sampling/sampled/LFV-norm-test

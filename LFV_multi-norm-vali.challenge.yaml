@@ -73,14 +73,13 @@ steps:
               port: 10123 # visualization port
               scenarios:
                 - /scenarios
-
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFV_multi
+              SCENARIOS: sampling/sampled/LFV_multi-norm-vali
 
-          ports: [10123]
 
         simulator:
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64

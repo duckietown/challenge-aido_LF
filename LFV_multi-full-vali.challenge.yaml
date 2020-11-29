@@ -14,7 +14,7 @@ date-close: 2020-12-05T00:00Z
 scoring: !include scoring.yaml
 
 steps:
-  LFVmultibodyv-sim:
+  sim: &template
     title: Simulation step
     description: ""
     features_required:
@@ -41,18 +41,17 @@ steps:
               timeout_regular: 120
               scenarios:
                 - /scenarios
-
-
+#              evaluator_index: 0
+#              evaluator_total: 4
               port: 10123 # visualization port
 
-
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFV_multi_full
+              SCENARIOS: sampling/sampled/LFV_multi-full-vali
 
-          ports: [10123]
 
         simulator:
           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64

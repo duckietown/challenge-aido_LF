@@ -1,2 +1,11 @@
 
-out-zuper-make
+**/out-zuper-make
+**/smooth
+**/synthetic
+**/synthetic-F
+**/photos
+**/out
+**/out-*
+.git
+.DS_Store
+**/textures

@@ -73,14 +73,13 @@ steps:
               scenarios:
                 - /scenarios
 
-
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LF_full
+              SCENARIOS: sampling/sampled/LF-full-vali
 
-          ports: [10123]
 
 
         simulator: !include comp_simulator.yaml

@@ -1,0 +1,81 @@
+challenge: aido5-LFI-sim-testing
+
+title: "LFI -   Intersections (simulation 👾, testing 🏋) "
+tags: [visible, ml-validation, aido5, aido5-embodied, LFVI, v4, simulation, protocol-normal]
+description: |
+
+protocol: aido2_db18_agent-z2
+
+date-open: 2020-09-15T00:00Z
+date-close: 2020-12-05T00:00Z
+
+scoring: !include scoring.yaml
+
+dependencies:
+  aido5-LFV-sim-validation:
+    description: The submission must first pass LFV testing.
+    min_threshold: 2.0
+    scores:
+      good_enough:
+        description: Must have moved at least 20cm.
+        importance: 1.0
+        score_name: driven_lanedir_consec_median
+        score_min: 0.2
+        score_max: 10000.0
+    comparisons:
+      better-than-bea-straight:
+        description: Must be do better than the straight solution.
+        importance: 1.0
+        username: "1639"
+        sub_label: 'straight'
+
+steps:
+  LFVIv-sim:
+    title: Simulation step
+    description: ""
+    features_required:
+      compute_sims: 1 # computation machine
+
+
+    timeout: 10000 # 1 hour
+    evaluation_parameters:
+      services:
+        evaluator:
+
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFI-norm-vali
+
+          ports: [10123]
+          environment:
+            experiment_manager_parameters:
+              episodes_per_scenario: 1
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 20200922
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+
+              port: 10123 # visualization port
+              scenarios:
+                - /scenarios
+
+
+
+
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+        npc0:  !include npc0.yaml
+        npc1:  !include npc1.yaml
+        npc2:  !include npc2.yaml
+        npc3:  !include npc3.yaml

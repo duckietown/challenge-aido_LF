@@ -28,63 +28,21 @@ define-challenge:  \
 	define-challenge-LFVI-full-vali \
 	define-challenge-LFVI-full-test \
 	\
+	define-challenge-LFI-norm-vali \
+	define-challenge-LFI-norm-test \
+	define-challenge-LFI-full-vali \
+	define-challenge-LFI-full-test \
+	\
 	define-challenge-LFVI_multi-norm-vali \
 	define-challenge-LFVI_multi-norm-test \
 	define-challenge-LFVI_multi-full-vali \
 	define-challenge-LFVI_multi-full-test
 
 
-sample-LF-norm-vali:
-	$(MAKE) -C sampling sample-LF-norm-vali
-
-sample-LF-norm-test:
-	$(MAKE) -C sampling sample-LF-norm-test
-sample-LFP-norm-vali:
-	$(MAKE) -C sampling sample-LFP-norm-vali
-sample-LFP-norm-test:
-	$(MAKE) -C sampling sample-LFP-norm-test
-sample-LFV-norm-vali:
-	$(MAKE) -C sampling sample-LFV-norm-vali
-sample-LFV-norm-test:
-	$(MAKE) -C sampling sample-LFV-norm-test
-sample-LFV_multi-norm-vali:
-	$(MAKE) -C sampling sample-LFV_multi-norm-vali
-sample-LFV_multi-norm-test:
-	$(MAKE) -C sampling sample-LFV_multi-norm-test
-sample-LFVI-norm-vali:
-	$(MAKE) -C sampling sample-LFVI-norm-vali
-sample-LFVI-norm-test:
-	$(MAKE) -C sampling sample-LFVI-norm-test
+sample-%:
+	$(MAKE) -C sampling sample-$*
 
 
-sample-LFVI_multi-norm-test:
-	$(MAKE) -C sampling sample-LFVI_multi-norm-test
-sample-LF-full-vali:
-	$(MAKE) -C sampling sample-LF-full-vali
-sample-LFP-full-vali:
-	$(MAKE) -C sampling sample-LFP-full-vali
-sample-LFV-full-vali:
-	$(MAKE) -C sampling sample-LFV-full-vali
-sample-LFV_multi-full-vali:
-	$(MAKE) -C sampling sample-LFV_multi-full-vali
-sample-LFVI_multi-full-vali:
-	$(MAKE) -C sampling sample-LFVI_multi-full-vali
-sample-LF-full-test:
-	$(MAKE) -C sampling sample-LF-full-test
-sample-LFP-full-test:
-	$(MAKE) -C sampling sample-LFP-full-test
-sample-LFV-full-test:
-	$(MAKE) -C sampling sample-LFV-full-test
-sample-LFVI-full-vali:
-	$(MAKE) -C sampling sample-LFVI-full-vali
-sample-LFVI-full-test:
-	$(MAKE) -C sampling sample-LFVI-full-test
-sample-LFV_multi-full-test:
-	$(MAKE) -C sampling sample-LFV_multi-full-test
-sample-LFVI_multi-norm-vali:
-	$(MAKE) -C sampling sample-LFVI_multi-norm-vali
-sample-LFVI_multi-full-test:
-	$(MAKE) -C sampling sample-LFVI_multi-full-test
 # LF
 define-challenge-LF-norm-vali: sample-LF-norm-vali
 	dts challenges define --config LF-norm-vali.challenge.yaml
@@ -122,6 +80,24 @@ define-challenge-LFV-full-vali: sample-LFV-full-vali
 define-challenge-LFV-full-test: sample-LFV-full-test
 	echo TODO
 
+# LFI
+
+define-challenge-%: sample-%
+	dts challenges define --config $*.challenge.yaml
+#
+#define-challenge-LFI-norm-vali: sample-LFI-norm-vali
+#	dts challenges define --config LFI-norm-vali.challenge.yaml
+#
+#define-challenge-LFI-norm-test: sample-LFI-norm-test
+#	dts challenges define --config LFVI-norm-test.challenge.yaml
+#
+#
+#define-challenge-LFI-full-vali: sample-LFI-full-vali
+#	dts challenges define --config LFI-norm-vali.challenge.yaml
+#
+#define-challenge-LFI-full-test: sample-LFI-full-test
+#	dts challenges define --config LFVI-norm-test.challenge.yaml
+
 # LFVI
 
 define-challenge-LFVI-norm-vali: sample-LFVI-norm-vali define-challenge-LFV-norm-vali define-challenge-sanity
@@ -148,9 +124,9 @@ define-challenge-LFV_multi-norm-vali: sample-LFV_multi-norm-vali define-challeng
 define-challenge-LFV_multi-norm-test: sample-LFV_multi-norm-test define-challenge-sanity define-challenge-LFV_multi-norm-vali
 	dts challenges define --config LFV_multi-norm-test.challenge.yaml
 
-
-define-challenge-LFV_multi-full-vali: sample-LFV_multi-full-vali
-	dts challenges define --config LFV_multi-full-vali.challenge.yaml
+#
+#define-challenge-LFV_multi-full-vali: sample-LFV_multi-full-vali
+#	dts challenges define --config LFV_multi-full-vali.challenge.yaml
 
 
 define-challenge-LFV_multi-full-test: sample-LFV_multi-full-test define-challenge-sanity define-challenge-LFV_multi-norm-vali
@@ -158,16 +134,16 @@ define-challenge-LFV_multi-full-test: sample-LFV_multi-full-test define-challeng
 
 # LFVI_multi
 
-
-define-challenge-LFVI_multi-norm-vali: sample-LFVI_multi-norm-vali define-challenge-sanity
-	dts challenges define --config LFVI_multi-norm-vali.challenge.yaml
+#
+#define-challenge-LFVI_multi-norm-vali: sample-LFVI_multi-norm-vali define-challenge-sanity
+#	dts challenges define --config LFVI_multi-norm-vali.challenge.yaml
 
 define-challenge-LFVI_multi-norm-test: sample-LFVI_multi-norm-test define-challenge-sanity
 	echo TODO
 
 
-define-challenge-LFVI_multi-full-vali: sample-LFVI_multi-full-vali
-	dts challenges define --config LFVI_multi-full-vali.challenge.yaml
+#define-challenge-LFVI_multi-full-vali: sample-LFVI_multi-full-vali
+#	dts challenges define --config LFVI_multi-full-vali.challenge.yaml
 
 
 define-challenge-LFVI_multi-full-test: sample-LFVI_multi-full-test

@@ -56,14 +56,13 @@ steps:
               scenarios:
                 - /scenarios
 
-
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFP_test
+              SCENARIOS: sampling/sampled/LFP-norm-test
 
-          ports: [10123]
 dependencies:
   aido5-LFP-sim-validation:
     description: The submission must first pass the LF validation.

@@ -28,7 +28,6 @@ steps:
       services:
         simulator: !include comp_simulator.yaml
 
-
         solution-ego0: !include solution-ego0.yaml
         solution-ego1: !include solution-ego1.yaml
         solution-ego2: !include solution-ego2.yaml
@@ -40,7 +39,7 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFVI_multi_full
+              SCENARIOS: sampling/sampled/LFVI_multi-full-vali
 
           ports: [10123]
           environment:
