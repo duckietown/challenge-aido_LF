@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          OPy2c035lj/OmeYi8P3vv1tqeWfv+gVAzpnmIvD97z84/LZzTfmWPwAAAIDIduY/AAAAAAAAAAAA
+          d59z1eBA3T8a+0xqJ3bsv5JhWi84cdk/GvtMaid27D93n3PV4EDdPwAAAIDIduY/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -29,7 +29,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          ZW6BbjW+7r/ftMoX8sLRPwAAACC0yAFA37TKF/LC0b9lboFuNb7uv9Vj7Xt4itk/AAAAAAAAAAAA
+          6MazCxXa77+4Q/A1Opq4vwAAACC0yAFAuEPwNTqauD/oxrMLFdrvv4m0RWEW7Pk/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -51,7 +51,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          OwA04JJv77+QtVMu6O3HvwAAACC0yAFAkLVTLujtxz87ADTgkm/vv5hFJuY22wVAAAAAAAAAAAAA
+          1+lFTE836j+EdAaBklnivwAAACC28/0/hHQGgZJZ4j/X6UVMTzfqP7B6trAl08Y/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -73,7 +73,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          KiozaCg56j9tzxZN7lbiPwAAAIDIduY/bc8WTe5W4r8qKjNoKDnqP6YUfiob/sM/AAAAAAAAAAAA
+          vTWJyOivzj8ahEJOFxHvv/UiN7ATO/k/GoRCThcR7z+9NYnI6K/OPwAAACC28/0/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
