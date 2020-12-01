@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          rC+IlxSY7L/yp6IcWbvcvwAAACDdJAtA8qeiHFm73D+sL4iXFJjsv3vDqmU8RwZAAAAAAAAAAAAA
+          5yFDUVIYzb/yVphGkCnvv4Y/PiArVPk/8laYRpAp7z/nIUNRUhjNvwAAAKDvpwNAAAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -35,81 +35,94 @@ environment: "tiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n  -
   \ floor\n  - floor\n  - floor\n  - floor\n  - floor\n- - floor\n  - curve_left/S\n\
   \  - straight/E\n  - curve_left/E\n  - floor\n  - floor\n  - floor\n  - floor\n\
   \  - floor\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n  - floor\n \
-  \ - floor\n  - floor\n  - floor\nobjects:\n  bus1:\n    kind: bus\n    pos:\n  \
-  \  - 1.0\n    - 0.5\n    rotate: 10\n    height: 0.18\n    optional: true\n  bus2:\n\
-  \    kind: bus\n    pos:\n    - 2.4\n    - 0.65\n    rotate: -10\n    height: 0.18\n\
-  \    optional: true\n  bus3:\n    kind: bus\n    pos:\n    - 4.0\n    - 0.65\n \
-  \   rotate: -5\n    height: 0.19\n    optional: true\n  bus4:\n    kind: bus\n \
-  \   pos:\n    - 6.0\n    - 0.5\n    rotate: 0\n    height: 0.18\n    optional: true\n\
-  \  bus5:\n    kind: truck\n    pos:\n    - 7.5\n    - 0.5\n    rotate: 180\n   \
-  \ height: 0.2\n    optional: true\n  bus6:\n    kind: bus\n    pos:\n    - 8.3\n\
-  \    - 1.5\n    rotate: 90\n    height: 0.22\n    optional: true\n  bus7:\n    kind:\
-  \ bus\n    pos:\n    - 8.3\n    - 3.0\n    rotate: 95\n    height: 0.21\n    optional:\
-  \ true\n  bus8:\n    kind: truck\n    pos:\n    - 0.6\n    - 8.3\n    rotate: -30\n\
-  \    height: 0.25\n    optional: true\n  tree1:\n    kind: tree\n    pos:\n    -\
-  \ 1.4\n    - 4.6\n    height: 0.25\n  sign1:\n    kind: sign_blank\n    pos:\n \
-  \   - 5.95\n    - 2.4\n    rotate: -20\n    height: 0.18\n    optional: true\n \
-  \ tree_random_0:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 2.1930112493657603\n        - 0.3969451062703605\n\
-  \    height: 0.24866171558878902\n  tree_random_1:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.4624013175420655\n\
-  \        - 3.5776249119441794\n    height: 0.34066207817854177\n  tree_random_2:\n\
+  \ - floor\n  - floor\n  - floor\nobjects:\n  bus1:\n    kind: bus\n    place:\n\
+  \      tile:\n      - 0\n      - 8\n      relative:\n        ~SE2Transform:\n  \
+  \        p:\n          - 0.2\n          - 0\n          theta_deg: 20\n    height:\
+  \ 0.18\n    optional: true\n  bus2:\n    kind: bus\n    place:\n      tile:\n  \
+  \    - 2\n      - 8\n      relative:\n        ~SE2Transform:\n          p:\n   \
+  \       - 0\n          - 0\n          theta_deg: -12\n    rotate: -10\n    height:\
+  \ 0.18\n    optional: true\n  bus3:\n    kind: bus\n    place:\n      tile:\n  \
+  \    - 4\n      - 8\n      relative:\n        ~SE2Transform:\n          p:\n   \
+  \       - 0\n          - 0\n          theta_deg: 6\n    rotate: -5\n    height:\
+  \ 0.19\n    optional: true\n  bus4:\n    kind: bus\n    place:\n      tile:\n  \
+  \    - 6\n      - 8\n      relative:\n        ~SE2Transform:\n          p:\n   \
+  \       - 0\n          - 0\n          theta_deg: -8\n    rotate: 0\n    height:\
+  \ 0.18\n    optional: true\n  truck1:\n    kind: truck\n    place:\n      tile:\n\
+  \      - 7\n      - 8\n      relative:\n        ~SE2Transform:\n          p:\n \
+  \         - 0\n          - 0\n          theta_deg: 2\n    rotate: 180\n    height:\
+  \ 0.2\n    optional: true\n  bus5:\n    kind: bus\n    place:\n      tile:\n   \
+  \   - 8\n      - 7\n      relative:\n        ~SE2Transform:\n          p:\n    \
+  \      - 0\n          - 0\n          theta_deg: 80\n    height: 0.22\n    optional:\
+  \ true\n  bus6:\n    kind: bus\n    place:\n      tile:\n      - 8\n      - 5\n\
+  \      relative:\n        ~SE2Transform:\n          p:\n          - 0\n        \
+  \  - 0\n          theta_deg: 110\n    height: 0.21\n    optional: true\n  truck2:\n\
+  \    kind: truck\n    place:\n      tile:\n      - 0\n      - 0\n      relative:\n\
+  \        ~SE2Transform:\n          p:\n          - 0\n          - 0\n          theta_deg:\
+  \ -30\n    height: 0.25\n    optional: true\n  sign12:\n    kind: sign_blank\n \
+  \   place:\n      tile:\n      - 5\n      - 5\n      relative:\n        ~SE2Transform:\n\
+  \          p:\n          - 0.2\n          - 0\n          theta_deg: 2\n    rotate:\
+  \ -20\n    height: 0.18\n    optional: true\n  tree_random_0:\n    kind: tree\n\
+  \    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.256391150113581\n\
+  \        - 2.0113156912192074\n    height: 0.38655792856770627\n  tree_random_1:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.9284177697837852\n        - 2.5312316560271784\n    height: 0.3998698114235302\n\
-  \  tree_random_3:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 4.233036434615492\n        - 2.437459714242542\n  \
-  \  height: 0.16536024745821165\n  tree_random_4:\n    kind: tree\n    pose:\n  \
-  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.2092282576996765\n\
-  \        - 0.7991788681918682\n    height: 0.2484579983842552\n  tree_random_5:\n\
+  \        - 2.123112096491691\n        - 4.919457994541108\n    height: 0.37423406152190886\n\
+  \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 2.4263848762763356\n        - 1.403763120910135\n \
+  \   height: 0.2442759839329233\n  tree_random_3:\n    kind: tree\n    pose:\n  \
+  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.1362787744218608\n\
+  \        - 3.393362364897611\n    height: 0.28999922563755975\n  tree_random_4:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 3.2199213426452853\n        - 4.993224448036531\n    height: 0.3302431588945459\n\
-  \  tree_random_6:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 2.7747137653808434\n        - 3.0888396457152503\n\
-  \    height: 0.31651562993582133\n  tree_random_7:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.695961393382865\n\
-  \        - 4.430398321887983\n    height: 0.3121050119819445\n  tree_random_8:\n\
+  \        - 3.0952534957631483\n        - 4.784540862399792\n    height: 0.2501088620889178\n\
+  \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 3.753713610547587\n        - 0.1248687934470025\n \
+  \   height: 0.2376837546435107\n  tree_random_6:\n    kind: tree\n    pose:\n  \
+  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 4.372935105311313\n\
+  \        - 0.13160014390508604\n    height: 0.17520864916270093\n  tree_random_7:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 4.793160140500953\n        - 2.069519987432527\n    height: 0.2752359710880671\n\
-  \  tree_random_9:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 4.744803746911337\n        - 4.297537499942697\n  \
-  \  height: 0.1848602207711233\n  tree_random_10:\n    kind: tree\n    pose:\n  \
-  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.041542120409126\n\
-  \        - 0.9036312347404418\n    height: 0.2587863822029358\n  tree_random_11:\n\
+  \        - 4.7839409908669825\n        - 1.8900401021836564\n    height: 0.17728153509593977\n\
+  \  tree_random_8:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.46088739656768585\n        - 1.3695433423827281\n\
+  \    height: 0.21946499309836182\n  tree_random_9:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.8577594143165754\n\
+  \        - 3.0534590003617508\n    height: 0.31097396412230993\n  tree_random_10:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 2.564459210607505\n        - 0.6932160227793825\n    height: 0.2500342556461206\n\
-  \  tree_random_12:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 2.000065093910813\n        - 3.199893659281366\n  \
-  \  height: 0.18817723316864232\n  tree_random_13:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.923782842292881\n\
-  \        - 0.39713054920657354\n    height: 0.229323064452756\n  tree_random_14:\n\
+  \        - 5.070976122171917\n        - 3.363172560195814\n    height: 0.3319952037537468\n\
+  \  tree_random_11:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 4.348515418030481\n        - 0.7731564435002126\n \
+  \   height: 0.32697289437463717\n  tree_random_12:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 4.749494906798091\n\
+  \        - 3.5805578364075834\n    height: 0.20358052908215643\n  tree_random_13:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 4.830792343778111\n        - 2.7399557908004457\n    height: 0.20499387227102056\n\
-  \  tree_random_15:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 4.306341793760787\n        - 1.3148914426956757\n \
-  \   height: 0.18021025413530603\n  tree_random_16:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.07627277379315944\n\
-  \        - 1.4106066346881325\n    height: 0.39705095741708557\n  tree_random_17:\n\
+  \        - 2.6095834861384004\n        - 0.4338465047586535\n    height: 0.3160540745742112\n\
+  \  tree_random_14:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.3770584174250824\n        - 0.8280650495048367\n\
+  \    height: 0.33674938549515065\n  tree_random_15:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.9726371631729556\n\
+  \        - 0.282345771707766\n    height: 0.3426760683331239\n  tree_random_16:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 4.213001652681802\n        - 4.895905376751038\n    height: 0.2876341866692187\n\
-  \  tree_random_18:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 0.34364982991214166\n        - 0.48386685027756693\n\
-  \    height: 0.1925467867869405\n  tree_random_19:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.8591486018769787\n\
-  \        - 4.841144987447263\n    height: 0.15384881544867632\n  tree_random_20:\n\
+  \        - 1.8365028140564823\n        - 3.0493725712861144\n    height: 0.2371331673253809\n\
+  \  tree_random_17:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 2.778158700950378\n        - 4.562804499607913\n  \
+  \  height: 0.16245595396821327\n  tree_random_18:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 5.013047798490196\n\
+  \        - 2.5701471697801797\n    height: 0.37378821776870597\n  tree_random_19:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 1.4925532086667892\n        - 1.2942860079246268\n    height: 0.3717364830970562\n\
-  \  tree_random_21:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 1.2976869803476272\n        - 4.797738974335267\n \
-  \   height: 0.2362842510980159\n  tree_random_22:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.413273219637935\n\
-  \        - 1.4282790480495806\n    height: 0.35910945493679414\n  tree_random_23:\n\
+  \        - 1.0582998943490942\n        - 0.321692083114289\n    height: 0.24127956155512756\n\
+  \  tree_random_20:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.907611337824559\n        - 2.716993928530858\n  \
+  \  height: 0.20666474495249706\n  tree_random_21:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 4.3760810246838115\n\
+  \        - 2.5312691651798414\n    height: 0.27211167465277925\n  tree_random_22:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 4.232428610181469\n        - 0.9904426953777088\n    height: 0.3218921265922382\n\
-  \  tree_random_24:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 3.7845507783504733\n        - 3.6003904522346164\n\
-  \    height: 0.3441680316388691\n  tree_random_25:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.5046990569645893\n\
-  \        - 0.32576351729722275\n    height: 0.1706982667207021\ntile_size: 0.585\n"
+  \        - 4.854400148583573\n        - 4.9643582569765865\n    height: 0.1583893681484637\n\
+  \  tree_random_23:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 3.571145572746455\n        - 2.169098207131586\n  \
+  \  height: 0.16430057289255895\n  tree_random_24:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 4.567398816331682\n\
+  \        - 1.2420072605237371\n    height: 0.25262948724530926\n  tree_random_25:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 1.8466258630666863\n        - 2.7316805356063507\n    height: 0.3187104820969889\n\
+  tile_size: 0.585\n"
 player_robots:
 - ego0
 scenario_name: LF-norm-zigzag-000

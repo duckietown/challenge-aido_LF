@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          PBADgTzf6j+dOmKxB2DhvwAAAECNl/Q/nTpisQdg4T88EAOBPN/qP+pP3Rn9HP4/AAAAAAAAAAAA
+          8eDcLuU67L96CYEGJCPePwAAAIA/Nfo/egmBBiQj3r/x4Nwu5TrsvywpQwxPqO8/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -25,7 +25,7 @@ duckies:
   duckie00:
     pose:
       data: !!binary |
-        avmRYfVH7L8gMkpf/vHdv6m1sqQDsPw/IDJKX/7x3T9q+ZFh9Ufsvygm5aTV9vw/AAAAAAAAAAAA
+        /5Xv4FRl1b/gDkKtqCjuP0vj39lCru8/4A5Crago7r//le/gVGXVvwWXA0frZeY/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -35,7 +35,7 @@ duckies:
   duckie01:
     pose:
       data: !!binary |
-        whFZsxDY1D+AqlvrWUHuPyA+GgwFSvE/gKpb61lB7r/CEVmzENjUPwAAAMB6Q/U/AAAAAAAAAAAA
+        yzrNfFsk6z9mz7gLQ/Pgv9U7y12sHvE/Zs+4C0Pz4D/LOs18WyTrPwAAAGBnkfc/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -61,24 +61,24 @@ environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Tra
   \        p:\n        - 0.9299999999999999\n        - -0.03899999999999999\n    \
   \    theta_deg: 180\n    tag:\n      ~TagInstance:\n        family: 36h11\n    \
   \    size: 0.08\n        tag_id: 342\n  tree_random_0:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.4846240312620418\n\
-  \        - 0.33268762334841906\n    height: 0.15112980508368376\n  tree_random_1:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.6333412175922013\n\
+  \        - 2.1348982267259786\n    height: 0.2951530046340516\n  tree_random_1:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.09986268073130078\n        - 1.3038795785600328\n    height: 0.15878558236689574\n\
+  \        - 1.366964736369184\n        - 1.673125589408328\n    height: 0.2548595458482519\n\
   \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 2.6649799759548145\n        - 1.971742238932796\n \
-  \   height: 0.15309743298575518\n  tree_random_3:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.7362100803166305\n\
-  \        - 1.6936658400099844\n    height: 0.32776472467253615\n  tree_random_4:\n\
+  \ 0.0\n        p:\n        - 2.10017557407045\n        - 2.442913859421095\n   \
+  \ height: 0.20029628712402367\n  tree_random_3:\n    kind: tree\n    pose:\n   \
+  \   ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.873094654677356\n\
+  \        - 2.6230421964334356\n    height: 0.39103726093227786\n  tree_random_4:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 1.4589497621624012\n        - 1.4139194204523755\n    height: 0.36243009530484144\n\
+  \        - 2.6606838033755333\n        - 2.5373862770501336\n    height: 0.1793133737577685\n\
   \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 1.691506732017819\n        - 2.7593564125599435\n \
-  \   height: 0.26464363992076134\n  tree_random_6:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.7093364729813081\n\
-  \        - 0.4253677986768364\n    height: 0.2670741478247313\n  tree_random_7:\n\
+  \ 0.0\n        p:\n        - 2.438350557530147\n        - 2.4314203259889555\n \
+  \   height: 0.19207401754116296\n  tree_random_6:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.62552428723755\n\
+  \        - 0.3367726566573307\n    height: 0.24999140578709214\n  tree_random_7:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.7358688500202593\n        - 2.642699044440849\n    height: 0.20040575354262938\n\
+  \        - 1.238980702446807\n        - 0.2576835490683873\n    height: 0.2989008056255659\n\
   tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
   - - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n\
   \  - straight/S\n  - floor\n  - straight/N\n  - floor\n- - floor\n  - curve_left/S\n\

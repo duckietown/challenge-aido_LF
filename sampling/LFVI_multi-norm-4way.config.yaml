@@ -1,4 +1,4 @@
-map_name: 4way
+map_name: 4way_bordered
 robots_npcs: []
 robots_pcs: [ego0,ego1,ego2,ego3]
 robots_parked: []
@@ -7,7 +7,7 @@ dist_tol_m: 0.04
 min_dist: 0.5
 delta_y_m: 0.04
 only_straight: true
-tree_density: 0.0
+tree_density: 0.8
 
 nduckies: 0
 duckie_min_dist_from_other_duckie: 0.3

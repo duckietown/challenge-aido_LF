@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          OEmwGbT/779bp5VFhmyBPwAAAKDIdgZAW6eVRYZsgb84SbAZtP/vv5kfN/UIBAtAAAAAAAAAAAAA
+          YWUf13Aq0T/luzAy1tPuP7NMRyaKceg/5bswMtbT7r9hZR/XcCrRPwAAAKDIdgZAAAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -29,7 +29,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          9fKK26WHlr/aHeNXBP7vPxGvbdz9UP8/2h3jVwT+77/18orbpYeWvwAAAKDIdgZAAAAAAAAAAAAA
+          u+uHmONl778DfkfjE7bIPwAAACDdJAtAA35H4xO2yL+764eY42Xvv8TgOuOTCQtAAAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -51,7 +51,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          0M2oPkII7r/KFiwnsRjWPwAAAKDIdgZAyhYsJ7EY1r/Qzag+Qgjuv4YoaCbrMe8/AAAAAAAAAAAA
+          F0/qSpn+779onVyrUvCSvwAAAIA/Nfo/aJ1cq1Lwkj8XT+pKmf7vvwVcV5Tk1wpAAAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -73,7 +73,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          IrtFYXz/7z9/SoEO3vGGPwAAAECNl/Q/f0qBDt7xhr8iu0VhfP/vPyUrKf8Gsec/AAAAAAAAAAAA
+          u89Ss0Dw2r8JJqnc9wbtPxlPiY7RLP4/CSap3PcG7b+7z1KzQPDavwAAAKDIdgZAAAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -90,33 +90,125 @@ robots:
 duckies: {}
 environment: "tiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
   \  - floor\n  - floor\n- - floor\n  - curve_left/W\n  - straight/W\n  - 3way_left/W\n\
-  \  - straight/W\n  - straight/W\n  - curve_left/N\n  - asphalt\n- - floor\n  - straight/S\n\
-  \  - grass\n  - straight/N\n  - asphalt\n  - asphalt\n  - straight/N\n  - asphalt\n\
-  - - floor\n  - 3way_left/S\n  - straight/W\n  - 3way_left/N\n  - asphalt\n  - asphalt\n\
-  \  - straight/N\n  - asphalt\n- - floor\n  - straight/S\n  - grass\n  - straight/N\n\
-  \  - asphalt\n  - curve_right/N\n  - curve_left/E\n  - asphalt\n- - floor\n  - curve_left/S\n\
+  \  - straight/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n  - straight/S\n\
+  \  - grass\n  - straight/N\n  - floor\n  - floor\n  - straight/N\n  - floor\n- -\
+  \ floor\n  - 3way_left/S\n  - straight/W\n  - 3way_left/N\n  - floor\n  - floor\n\
+  \  - straight/N\n  - floor\n- - floor\n  - straight/S\n  - grass\n  - straight/N\n\
+  \  - floor\n  - curve_right/N\n  - curve_left/E\n  - floor\n- - floor\n  - curve_left/S\n\
   \  - straight/E\n  - 3way_left/E\n  - straight/E\n  - curve_left/E\n  - asphalt\n\
-  \  - asphalt\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
-  \  - floor\n  - floor\nobjects:\n  tree1:\n    kind: tree\n    pos:\n    - 2.5\n\
-  \    - 4.5\n    rotate: 180\n    height: 0.25\n    optional: true\n  duckie1:\n\
-  \    kind: duckie\n    pos:\n    - 2.5\n    - 2.9\n    rotate: -90\n    height:\
-  \ 0.08\n    optional: true\n  sign1:\n    kind: sign_stop\n    pos:\n    - 2.08\n\
-  \    - 4.05\n    rotate: 90\n    height: 0.18\n  sign2:\n    kind: sign_left_T_intersect\n\
-  \    pos:\n    - 0.94\n    - 3.96\n    rotate: 90\n    height: 0.18\n  sign3:\n\
-  \    kind: sign_stop\n    pos:\n    - 2.08\n    - 2.96\n    rotate: -90\n    height:\
-  \ 0.18\n  sign4:\n    kind: sign_right_T_intersect\n    pos:\n    - 0.94\n    -\
-  \ 3.05\n    rotate: -90\n    height: 0.18\n  sign5:\n    kind: sign_stop\n    pos:\n\
-  \    - 0.94\n    - 4.05\n    rotate: 0\n    height: 0.18\n  sign6:\n    kind: sign_T_intersect\n\
-  \    pos:\n    - 0.94\n    - 2.96\n    rotate: 0\n    height: 0.18\n  house1:\n\
-  \    kind: house\n    pos:\n    - 4.8\n    - 2.6\n    rotate: 90\n    height: 0.5\n\
-  \    optional: true\n  truck1:\n    kind: truck\n    pos:\n    - 1.6\n    - 6.3\n\
-  \    rotate: 0\n    height: 0.2\n    optional: true\n  bus1:\n    kind: bus\n  \
-  \  pos:\n    - 2.0\n    - 0.5\n    rotate: 0\n    height: 0.18\n    optional: true\n\
-  \  bus2:\n    kind: bus\n    pos:\n    - 4\n    - 0.5\n    rotate: 0\n    height:\
-  \ 0.18\n    optional: true\n  bus3:\n    kind: bus\n    pos:\n    - 6.0\n    - 0.5\n\
-  \    rotate: 0\n    height: 0.18\n    optional: true\n  truck3:\n    kind: truck\n\
-  \    pos:\n    - 7.5\n    - 0.5\n    rotate: 180\n    height: 0.2\n    optional:\
-  \ true\ntile_size: 0.585\n"
+  \  - floor\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n  - floor\n \
+  \ - floor\n  - floor\ntile_size: 0.585\nobjects:\n  tree_random_0:\n    kind: tree\n\
+  \    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 4.465852244116655\n\
+  \        - 2.519090525055141\n    height: 0.3408723807791436\n  tree_random_1:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 3.632814563914019\n        - 0.15800241032491155\n    height: 0.34203911364563117\n\
+  \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 3.373408586343161\n        - 2.6886064926298388\n \
+  \   height: 0.3253176844379969\n  tree_random_3:\n    kind: tree\n    pose:\n  \
+  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 3.913724343348148\n\
+  \        - 3.7893197607281954\n    height: 0.24716580677316366\n  tree_random_4:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 3.243232191067134\n        - 3.8403486917387717\n    height: 0.23334869357683505\n\
+  \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 3.401873218407695\n        - 2.1058985277464903\n \
+  \   height: 0.23650426598250945\n  tree_random_6:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.018486702851003\n\
+  \        - 3.5984765095153404\n    height: 0.19738849750130325\n  tree_random_7:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 2.4014870076850765\n        - 2.858919206033415\n    height: 0.17447027337491347\n\
+  \  tree_random_8:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.673870398007421\n        - 3.810179525454432\n  \
+  \  height: 0.246083680822524\n  tree_random_9:\n    kind: tree\n    pose:\n    \
+  \  ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.14312852544729726\n\
+  \        - 0.8176977544902971\n    height: 0.15185084550836886\n  tree_random_10:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 0.08253702180402353\n        - 0.3551003591729544\n    height: 0.1782005293396157\n\
+  \  tree_random_11:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.24752619877954696\n        - 2.1505162125521338\n\
+  \    height: 0.2909612808706082\n  tree_random_12:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.693652919367104\n\
+  \        - 3.7841868921933677\n    height: 0.3953574999477853\n  tree_random_13:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 0.5014095867097306\n        - 0.0894590716041613\n    height: 0.2549084039711139\n\
+  \  tree_random_14:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 4.4104396150334635\n        - 1.3853605777765217\n\
+  \    height: 0.2076056380503923\n  tree_random_15:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.0390877192240418\n\
+  \        - 3.7923414000392897\n    height: 0.2306698991538627\n  tree_random_16:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 4.468155385651894\n        - 2.2422772372282096\n    height: 0.3122076172560113\n\
+  \  tree_random_17:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 3.2297432155076615\n        - 0.1461710292014421\n\
+  \    height: 0.24100255353418598\n  tree_random_18:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.783992264715729\n\
+  \        - 1.4281148530058776\n    height: 0.3283845548792908\n  tree_random_19:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 0.3058776962224189\n        - 2.611427330450929\n    height: 0.3911688071466388\n\
+  \  tree_random_20:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 1.2327148339743046\n        - 0.2219954034452213\n\
+  \    height: 0.2896558276098453\n  tree_random_21:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.3303968902324677\n\
+  \        - 1.572972479630583\n    height: 0.1858215674647198\n  tree_random_22:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 2.1153840728694875\n        - 0.5184241356373845\n    height: 0.30717641063901846\n\
+  \  tree_random_23:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 4.436319295982528\n        - 3.7288855600342004\n \
+  \   height: 0.1826648075079424\n  0-sign_stop:\n    kind: sign_stop\n    pose:\n\
+  \      ~SE2Transform:\n        theta: -2.4492937079641734e-16\n        p:\n    \
+  \    - 1.731599906682968\n        - 2.9015999829769132\n    height: 0.18\n  1-sign_left_T_intersect:\n\
+  \    kind: sign_left_T_intersect\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ -2.4492937079641734e-16\n        p:\n        - 1.7315999066829681\n        - 3.5333999598026278\n\
+  \    height: 0.18\n  2-sign_stop:\n    kind: sign_stop\n    pose:\n      ~SE2Transform:\n\
+  \        theta_deg: -90\n        p:\n        - 1.6613999092578888\n        - 3.5333999598026278\n\
+  \    height: 0.18\n  3-sign_T_intersect:\n    kind: sign_T_intersect\n    pose:\n\
+  \      ~SE2Transform:\n        theta_deg: -90\n        p:\n        - 2.3633998835086825\n\
+  \        - 3.5333999598026278\n    height: 0.18\n  4-sign_stop:\n    kind: sign_stop\n\
+  \    pose:\n      ~SE2Transform:\n        theta_deg: -180\n        p:\n        -\
+  \ 2.293199886083603\n        - 3.5333999598026278\n    height: 0.18\n  5-sign_right_T_intersect:\n\
+  \    kind: sign_right_T_intersect\n    pose:\n      ~SE2Transform:\n        theta_deg:\
+  \ -180\n        p:\n        - 2.3633998835086825\n        - 2.9015999829769132\n\
+  \    height: 0.18\n  6-sign_stop:\n    kind: sign_stop\n    pose:\n      ~SE2Transform:\n\
+  \        theta_deg: 90\n        p:\n        - 1.1933999264240265\n        - 1.731599906682968\n\
+  \    height: 0.18\n  7-sign_left_T_intersect:\n    kind: sign_left_T_intersect\n\
+  \    pose:\n      ~SE2Transform:\n        theta_deg: 90\n        p:\n        - 0.5615999495983123\n\
+  \        - 1.7315999066829681\n    height: 0.18\n  8-sign_stop:\n    kind: sign_stop\n\
+  \    pose:\n      ~SE2Transform:\n        theta: -2.4492935931208266e-16\n     \
+  \   p:\n        - 0.5615999495983123\n        - 1.6613999092578888\n    height:\
+  \ 0.18\n  9-sign_T_intersect:\n    kind: sign_T_intersect\n    pose:\n      ~SE2Transform:\n\
+  \        theta: -2.4492935931208266e-16\n        p:\n        - 0.5615999495983124\n\
+  \        - 2.3633998835086825\n    height: 0.18\n  10-sign_stop:\n    kind: sign_stop\n\
+  \    pose:\n      ~SE2Transform:\n        theta_deg: -90\n        p:\n        -\
+  \ 0.5615999495983124\n        - 2.293199886083603\n    height: 0.18\n  11-sign_right_T_intersect:\n\
+  \    kind: sign_right_T_intersect\n    pose:\n      ~SE2Transform:\n        theta_deg:\
+  \ -90\n        p:\n        - 1.1933999264240267\n        - 2.3633998835086825\n\
+  \    height: 0.18\n  12-sign_stop:\n    kind: sign_stop\n    pose:\n      ~SE2Transform:\n\
+  \        theta_deg: -90\n        p:\n        - 1.7315999066829681\n        - 2.3633998835086825\n\
+  \    height: 0.18\n  13-sign_left_T_intersect:\n    kind: sign_left_T_intersect\n\
+  \    pose:\n      ~SE2Transform:\n        theta_deg: -90\n        p:\n        -\
+  \ 2.3633998835086825\n        - 2.3633998835086825\n    height: 0.18\n  14-sign_stop:\n\
+  \    kind: sign_stop\n    pose:\n      ~SE2Transform:\n        theta_deg: -180\n\
+  \        p:\n        - 2.3633998835086825\n        - 2.4335998809337616\n    height:\
+  \ 0.18\n  15-sign_T_intersect:\n    kind: sign_T_intersect\n    pose:\n      ~SE2Transform:\n\
+  \        theta_deg: -180\n        p:\n        - 2.3633998835086825\n        - 1.7315999066829681\n\
+  \    height: 0.18\n  16-sign_stop:\n    kind: sign_stop\n    pose:\n      ~SE2Transform:\n\
+  \        theta_deg: 90\n        p:\n        - 2.3633998835086825\n        - 1.8017999041080475\n\
+  \    height: 0.18\n  17-sign_right_T_intersect:\n    kind: sign_right_T_intersect\n\
+  \    pose:\n      ~SE2Transform:\n        theta_deg: 90\n        p:\n        - 1.7315999066829681\n\
+  \        - 1.7315999066829681\n    height: 0.18\n  18-sign_stop:\n    kind: sign_stop\n\
+  \    pose:\n      ~SE2Transform:\n        theta_deg: -180\n        p:\n        -\
+  \ 2.3633998835086825\n        - 1.1933999264240265\n    height: 0.18\n  19-sign_left_T_intersect:\n\
+  \    kind: sign_left_T_intersect\n    pose:\n      ~SE2Transform:\n        theta_deg:\
+  \ -180\n        p:\n        - 2.3633998835086825\n        - 0.5615999495983124\n\
+  \    height: 0.18\n  20-sign_stop:\n    kind: sign_stop\n    pose:\n      ~SE2Transform:\n\
+  \        theta_deg: 90\n        p:\n        - 2.4335998809337616\n        - 0.5615999495983124\n\
+  \    height: 0.18\n  21-sign_T_intersect:\n    kind: sign_T_intersect\n    pose:\n\
+  \      ~SE2Transform:\n        theta_deg: 90\n        p:\n        - 1.7315999066829681\n\
+  \        - 0.5615999495983124\n    height: 0.18\n  22-sign_stop:\n    kind: sign_stop\n\
+  \    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.8017999041080475\n\
+  \        - 0.5615999495983124\n    height: 0.18\n  23-sign_right_T_intersect:\n\
+  \    kind: sign_right_T_intersect\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 1.7315999066829681\n        - 1.1933999264240265\n\
+  \    height: 0.18\n"
 player_robots:
 - ego0
 scenario_name: LFVI-full-udem1-000

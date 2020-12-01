@@ -40,7 +40,7 @@ define-challenge:  \
 
 
 sample-%:
-	$(MAKE) -C sampling sample-$*
+	# $(MAKE) -C sampling sample-$*
 
 
 # LF

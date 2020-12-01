@@ -1,4 +1,4 @@
-map_name: 4way
+map_name: 4way_bordered
 robots_npcs: [npc0,npc1,npc2]
 robots_pcs: [ego0]
 robots_parked: []
@@ -15,4 +15,4 @@ duckie_min_dist_from_robot: 0.4
 duckie_y_bounds: [-0.1, -0.04]
 pc_robot_protocol: PROTOCOL_FULL
 npc_robot_protocol: PROTOCOL_FULL
-tree_density: 0.0
+tree_density: 0.8
