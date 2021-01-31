@@ -1,8 +1,8 @@
 
+define-challenge:
+	echo REMOVED
 
-
-define-challenge:  \
-	define-challenge-sanity \
+define-challenge-old:  \
 	define-challenge-LF-norm-vali \
 	define-challenge-LF-norm-test \
 	define-challenge-LF-full-vali \
