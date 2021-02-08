@@ -1,0 +1,30 @@
+robots:
+  ego0:
+    color: red
+    protocol: PROTOCOL_NORMAL
+    description: Playable robot ego0
+    controllable: true
+    configuration:
+      pose:
+        data: !!binary |
+          eTidCXta679oV04wXpvgvwAAAIAW2fA/aFdOMF6b4D95OJ0Je1rrv1gRgo66Bfk/AAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAPA/
+        dtype: float64
+        shape:
+        - 3
+        - 3
+      velocity:
+        data: !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+        dtype: float64
+        shape:
+        - 3
+        - 3
+duckies: {}
+environment: "tiles:\n- - curve_left/W\n  - straight/W\n  - curve_left/N\n- - straight/S\n\
+  \  - asphalt\n  - straight/N\n- - curve_left/S\n  - straight/E\n  - curve_left/E\n\
+  tile_size: 0.585\nobjects: {}\n"
+player_robots:
+- ego0
+scenario_name: LF-norm-anc-exp-006

@@ -1,0 +1,88 @@
+challenge: anc-06-LF-sim-validation
+
+title: "LF 🚗 - Lane following (simulation 👾, Experimentation - AnC 🏋)"
+tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation, protocol-normal]
+description: |
+
+  <table id="variations">
+  <thead >
+  <th><code>LF</code></th>
+  <th><code></code></th>
+
+  </thead>
+  <tr>
+  <td>Follow the lane</td>
+  <td></td>
+  </tr>
+  <tr>
+  <td>
+  <img src="https://i.imgur.com/sGTigpp.jpg" style='width: 15em'>
+  </td>
+  <td class='explain'>
+  <p>This is an experimental challenge for sim2real evaluation.</p>
+
+  <p>You must follow the lane using the outputs of camera and encoders.</p>
+
+  <p>See the Anthony Courchesne for more details
+  .</p>
+  </td>
+  </tr>
+  </table>
+
+  *Note*: this is the _validation_ 🏋 challenge - you can see the output
+  but these are not the scores that count.
+
+protocol: aido2_db18_agent-z2
+
+
+date-open: 2021-02-01T00:00Z
+date-close: 2021-03-29T00:00Z
+
+scoring: !include scoring.yaml
+
+steps:
+  LFv-sim:
+    title: Simulation step
+    description: ""
+    features_required:
+      compute_sims: 1 # computation machine
+
+    timeout: 10000 # 1 hour
+    evaluation_parameters:
+      services:
+        evaluator:
+
+          environment:
+            experiment_manager_parameters:
+              episodes_per_scenario: 1
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 888
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+
+              port: 10123 # visualization port
+              scenarios:
+                - /scenarios
+
+          ports: [10123]
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LF-norm-anc-exp
+
+        simulator: !include comp_simulator_exp06.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+
+
+dependencies: {}
+#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
