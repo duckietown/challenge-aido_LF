@@ -2,7 +2,7 @@
 define-challenge:
 	echo REMOVED
 
-define-challenge-old:  \
+define-challenges-old:  \
 	define-challenge-LF-norm-vali \
 	define-challenge-LF-norm-test \
 	define-challenge-LF-full-vali \
