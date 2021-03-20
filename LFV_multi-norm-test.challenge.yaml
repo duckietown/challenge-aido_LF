@@ -93,7 +93,7 @@ steps:
 
 dependencies:
 #  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-  aido5-LFV_multi-sim-validation:
+  aido-LFV_multi-sim-validation:
     description: The submission must first pass the validation step.
     min_threshold: 2.0
     scores:
