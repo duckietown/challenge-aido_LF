@@ -14,7 +14,7 @@ date-close: 2021-12-31T00:00Z
 scoring: !include scoring-2.yaml
 
 dependencies:
-  aido5-LFVI-sim-validation:
+  aido-LFVI-sim-validation:
     description: The submission must first pass the testing.
     min_threshold: 2.0
     scores:

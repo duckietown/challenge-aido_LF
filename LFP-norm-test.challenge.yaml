@@ -64,7 +64,7 @@ steps:
               SCENARIOS: sampling/sampled/LFP-norm-test
 
 dependencies:
-  aido5-LFP-sim-validation:
+  aido-LFP-sim-validation:
     description: The submission must first pass the LF validation.
     min_threshold: 2.0
     scores:
