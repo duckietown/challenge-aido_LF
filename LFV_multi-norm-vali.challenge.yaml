@@ -1,7 +1,7 @@
-challenge: aido5-LFV_multi-sim-validation
+challenge: aido-LFV_multi-sim-validation
 
 title: "LFV_multi 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido5, aido5-embodied, LFV, v4, simulation, protocol-normal]
+tags: [visible, ml-validation, aido, aido-embodied, LFV, v4, simulation, protocol-normal]
 description: |
   <table id="variations">
   <thead >
@@ -37,8 +37,8 @@ description: |
 
 protocol: aido2_db18_agent-z2
 
-date-open: 2020-09-15T00:00Z
-date-close: 2020-12-10T00:00Z
+date-open: 2021-01-31T00:00Z
+date-close: 2021-12-31T00:00Z
 
 scoring: !include scoring-2.yaml
 

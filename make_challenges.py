@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# challenge: aido5-LFP-sim-validation
+# challenge: aido-LFP-sim-validation
 #
 # title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, validation 🏋)"
-# tags: [visible, ml-validation, aido5, aido5-embodied, LF, v4, simulation]
+# tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation]
 # description: |
 #   Lane following challenge.
 #
 # protocol: aido2_db18_agent-z2
 #
 #
-# date-open: 2020-09-15T00:00Z
+# date-open: 2021-01-31T00:00Z
 # date-close: 2020-12-05T00:00Z
 #
 # scoring: !include scoring.yaml

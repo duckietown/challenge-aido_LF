@@ -1,7 +1,7 @@
-challenge: aido5-LFP-sim-testing
+challenge: aido-LFP-sim-testing
 
 title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, testing 🥇)"
-tags: [visible, ml-testing, aido5, aido5-embodied, LF, v4, simulation, protocol-normal,
+tags: [visible, ml-testing, aido, aido-embodied, LF, v4, simulation, protocol-normal,
   competition]
 description: |
   In this variation of the lane following challenge, you must follow
@@ -15,8 +15,8 @@ description: |
 protocol: aido2_db18_agent-z2
 
 
-date-open: 2020-09-15T00:00Z
-date-close: 2020-12-10T00:00Z
+date-open: 2021-01-31T00:00Z
+date-close: 2021-12-31T00:00Z
 
 scoring: !include scoring-2.yaml
 

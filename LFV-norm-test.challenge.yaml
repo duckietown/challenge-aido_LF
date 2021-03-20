@@ -1,15 +1,15 @@
-challenge: aido5-LFV-sim-testing
+challenge: aido-LFV-sim-testing
 
 title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, testing 🥇)"
-tags: [visible, ml-testing, aido5, aido5-embodied, LFV, v4, simulation, protocol-normal]
+tags: [visible, ml-testing, aido, aido-embodied, LFV, v4, simulation, protocol-normal]
 description: |
   Lane following challenge.
 
 protocol: aido2_db18_agent-z2
 
 
-date-open: 2020-09-15T00:00Z
-date-close: 2020-12-10T00:00Z
+date-open: 2021-01-31T00:00Z
+date-close: 2021-12-31T00:00Z
 
 
 
