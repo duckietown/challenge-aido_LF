@@ -23,6 +23,14 @@ all: \
 	sample-LFV_multi-full-vali \
 	sample-LFVI_multi-full-vali
 
+
+BV=python -m duckietown_world.world_duckietown.sample_braitenberg
+sample-BV:
+	rm -rf  sampled/mooc-BV1
+	$(BV) --nduckies 40 --ntiles 8 --scenario-name t10d10 -o sampled/mooc-BV1/t08d40/scenario.yaml
+	$(BV) --nduckies 20 --ntiles 8 --scenario-name t10d20 -o sampled/mooc-BV1/t08d20/scenario.yaml
+	$(BV) --nduckies 60 --ntiles 8 --scenario-name t10d30 -o sampled/mooc-BV1/t08d60/scenario.yaml
+
 clean:
 	rm -rf sampled
 

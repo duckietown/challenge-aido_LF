@@ -36,7 +36,8 @@ define-challenges-old:  \
 	define-challenge-LFVI_multi-norm-vali \
 	define-challenge-LFVI_multi-norm-test \
 	define-challenge-LFVI_multi-full-vali \
-	define-challenge-LFVI_multi-full-test
+	define-challenge-LFVI_multi-full-test \
+	define-challenge-mooc-BV1
 
 
 sample-%:
