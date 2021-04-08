@@ -41,7 +41,7 @@ dependencies:
         sub_label: 'straight'
 
 steps:
-  LFt-sim:
+  sim:
     title: Simulation step
     description: ""
     features_required:

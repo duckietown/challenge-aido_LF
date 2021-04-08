@@ -32,7 +32,7 @@ dependencies:
         sub_label: 'straight'
 
 steps:
-  LFVIt-sim:
+  sim:
     title: Simulation step
     description: ""
     features_required:

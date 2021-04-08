@@ -34,7 +34,7 @@ dependencies:
 
 
 steps:
-  LFVv-sim:
+  sim:
     title: Simulation step
     description: ""
     features_required:

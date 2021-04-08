@@ -75,8 +75,8 @@ steps:
                 camera_height: 480
                 distortion: true
                 num_tris_distractors: 0
-                color_ground: [0, 0, 0] # black
-                color_sky: [0, 0, 0.1] # dark blue
+                #color_ground: [0, 0, 0] # black
+                #color_sky: [0, 0, 0.1] # dark blue
                 enable_leds: true
 
               terminate_on_ool: false

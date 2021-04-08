@@ -43,7 +43,7 @@ date-close: 2021-12-31T00:00Z
 scoring: !include scoring-2.yaml
 
 steps:
-  LFVmultibodyv-sim:
+  sim:
     title: Simulation step
     description: ""
     features_required:
