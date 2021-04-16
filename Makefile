@@ -44,7 +44,7 @@ sample-%:
 	# $(MAKE) -C sampling sample-$*
 
 define-challenge-mooc-BV1: # sample-mooc-BV1
-	dts challenges define --config mooc-BV1.challenge.yaml --replicate sim:3
+	dts challenges define --config mooc-BV1.challenge.yaml --replicate sim:5
 
 
 # LF

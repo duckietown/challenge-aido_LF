@@ -14,12 +14,12 @@ date-close: 2021-12-31T00:00Z
 scoring:
   scores:
 
-    - name: survival_time_median
-      short: Survival time
+    - name: distance-from-start
+      short: Distance from starting point.
       description: |
-        This is the median survival time.
+        Distance from starting point
       order: higher-is-better
-      discretization: 2.0
+      discretization: 0.05
 
 steps:
   sim:
