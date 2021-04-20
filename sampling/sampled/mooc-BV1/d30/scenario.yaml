@@ -7,7 +7,7 @@ robots:
     configuration:
       pose:
         data: !!binary |
-          AAAAAAAA8D8AAAAAAAAAgLgehetRuNI/AAAAAAAAAAAAAAAAAADwP7gehetRuPI/AAAAAAAAAAAA
+          zTt/Zp6g5j/MO39mnqDmv5qZmZmZmck/zDt/Zp6g5j/NO39mnqDmP5qZmZmZmck/AAAAAAAAAAAA
           AAAAAAAAAAAAAAAAAPA/
         dtype: float64
         shape:
@@ -25,7 +25,7 @@ duckies:
   duckie0:
     pose:
       data: !!binary |
-        zipqakjz0D9fLzOZdtvuvyTy2y58y7g/Xy8zmXbb7j/OKmpqSPPQPw7HXRxoQxFAAAAAAAAAAAAA
+        EhcvFLflyT92UwqLlFbvP2sgIgiDx6E/dlMKi5RW778SFy8Ut+XJPwmz5+IOu+4/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -35,7 +35,7 @@ duckies:
   duckie1:
     pose:
       data: !!binary |
-        aDyj3yTO779NWlLIUzO8P2P+x/n9JgpATVpSyFMzvL9oPKPfJM7vv7VrldfuWP8/AAAAAAAAAAAA
+        L8RLiP4K1j85bSFdxgruv6u5y+5ZOg1AOW0hXcYK7j8vxEuI/grWP4gDdXKzvfs/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -45,7 +45,7 @@ duckies:
   duckie2:
     pose:
       data: !!binary |
-        cgS3I2fs7z86D1YyZbKxP/k6sIFYf8c/Og9WMmWysb9yBLcjZ+zvP8pfYvSWqAxAAAAAAAAAAAAA
+        uqjrfDsJ6T92FNsGBe7jv0hnYdAeMQ5AdhTbBgXu4z+6qOt8OwnpP/r4NlwfaAZAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -55,7 +55,7 @@ duckies:
   duckie3:
     pose:
       data: !!binary |
-        7ZZ7kngU6b87qlqZ3t/jv8PiRw30be8/O6pamd7f4z/tlnuSeBTpvyg8mSn8cao/AAAAAAAAAAAA
+        wQpTKKi977+wG4W62kHAvwehLG8AtxFAsBuFutpBwD/BClMoqL3vv4TabNjWVdM/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -65,7 +65,7 @@ duckies:
   duckie4:
     pose:
       data: !!binary |
-        glA1XUpZ5z+LdOfG3OHlv/VABNQYvgBAi3Tnxtzh5T+CUDVdSlnnP/H2otcm8gJAAAAAAAAAAAAA
+        BSUsbRZj4b+U+rkmQt3qPxe4cmxHxQlAlPq5JkLd6r8FJSxtFmPhv0U/BajlSNU/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -75,7 +75,7 @@ duckies:
   duckie5:
     pose:
       data: !!binary |
-        n6ooGEyx4r9vt+BrC/npv53wQMBNI/s/b7fgawv56T+fqigYTLHiv2SGUodhaw1AAAAAAAAAAAAA
+        eELbOEcs5r92vZwRqxLnv9CfGcz6sApAdr2cEasS5z94Qts4Ryzmv3+k7gHQChBAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -85,7 +85,7 @@ duckies:
   duckie6:
     pose:
       data: !!binary |
-        GGquI6Pt2r8grOErkwftv1Ncbq0FDvs/IKzhK5MH7T8Yaq4jo+3av9GAj+2XGRFAAAAAAAAAAAAA
+        nqlA8qee6j/yua1oWsLhP8A/jqqmBvw/8rmtaFrC4b+eqUDyp57qPzOgs0sD9wdAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -95,7 +95,7 @@ duckies:
   duckie7:
     pose:
       data: !!binary |
-        hhb0gHTI5L9uvJlCGFXoP8obJKxtURFAbryZQhhV6L+GFvSAdMjkvxjzQqYFTv8/AAAAAAAAAAAA
+        gV6VsHaY5r/F1Aktw6jmvznm0ZHwpPY/xdQJLcOo5j+BXpWwdpjmv13nEfpazwVAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -105,7 +105,7 @@ duckies:
   duckie8:
     pose:
       data: !!binary |
-        3iwyddjL778BVEkmWde8v5B1+b7UqQ5AAVRJJlnXvD/eLDJ12MvvvwBIrRbyqBFAAAAAAAAAAAAA
+        qauxHMi96b8gHfmKlQLjv9MEV1CRy9I/IB35ipUC4z+pq7EcyL3pv654F0miSwNAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -115,7 +115,7 @@ duckies:
   duckie9:
     pose:
       data: !!binary |
-        c4smEkLD7T/cclC0j4LXvyYNpnanlAdA3HJQtI+C1z9ziyYSQsPtP8eUwuDSO/g/AAAAAAAAAAAA
+        NmMVgEhl6D9snQaAcbXkP4wSm26JhxFAbJ0GgHG15L82YxWASGXoP7jHwi/rAQ1AAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -125,7 +125,7 @@ duckies:
   duckie10:
     pose:
       data: !!binary |
-        p6wGaMqF1T+Zen374SLuv5v6ZN/PWxBAmXp9++Ei7j+nrAZoyoXVP33DniV+W+w/AAAAAAAAAAAA
+        fdrXUyr77L/wRu0C5iLbP1bPcS+TxcE/8EbtAuYi27992tdTKvvsv+CqQHSx5v4/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -135,7 +135,7 @@ duckies:
   duckie11:
     pose:
       data: !!binary |
-        DO74rgjpvT/aN9fO5Mfvv2pJU2wYvv4/2jfXzuTH7z8M7viuCOm9PxJ3BPC2zAZAAAAAAAAAAAAA
+        hLIf8ROT4D9WW93IgV/rv2QEFmrxFOY/VlvdyIFf6z+Esh/xE5PgP5yVheAzhf0/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -145,7 +145,7 @@ duckies:
   duckie12:
     pose:
       data: !!binary |
-        4vzWOW1QiL8D2jozbP/vP/vRBQ5uvwVAA9o6M2z/77/i/NY5bVCIv8jvYpkV7sE/AAAAAAAAAAAA
+        qGM2EN+Q3j9VmeEuVx3sP85ZhQXD4QJAVZnhLlcd7L+oYzYQ35DeP1VnSixHKAdAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -155,7 +155,7 @@ duckies:
   duckie13:
     pose:
       data: !!binary |
-        /3jIwN+b4D+axZ9eLFrrP/kyawWQ2dM/msWfXixa67//eMjA35vgP85900yaygJAAAAAAAAAAAAA
+        +BbUQyTPxj9o6SDv4nzvP6KA8X/0WRBAaOkg7+J877/4FtRDJM/GP98pNsWVfg9AAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -165,7 +165,7 @@ duckies:
   duckie14:
     pose:
       data: !!binary |
-        bdolJ8eG7j8yv/RZgzLTv3wHieMRP/A/Mr/0WYMy0z9t2iUnx4buP8xRSBC07wBAAAAAAAAAAAAA
+        95eRTgsH7b+7qC7j7O/av4peOaWz+fY/u6gu4+zv2j/3l5FOCwftv4mho2a+m9o/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -175,7 +175,7 @@ duckies:
   duckie15:
     pose:
       data: !!binary |
-        /Hata26TtD/Nbrwjf+XvP0remh03f7w/zW68I3/l77/8dq1rbpO0P7/Foc4o8OM/AAAAAAAAAAAA
+        OHiDiJDH7z80mHkaY/+9vySUaZOzpPU/NJh5GmP/vT84eIOIkMfvPyqbhfckUQlAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -185,7 +185,7 @@ duckies:
   duckie16:
     pose:
       data: !!binary |
-        ipAvh40li78NapbBR//vP/4e93NLBvM/DWqWwUf/77+KkC+HjSWLv+eAc0qKAO0/AAAAAAAAAAAA
+        yPUpGVLV2T9Dt3w0/UbtP1ei5Ub/gO8/Q7d8NP1G7b/I9SkZUtXZP24rfuxw7uI/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -195,7 +195,7 @@ duckies:
   duckie17:
     pose:
       data: !!binary |
-        DE8UbKI56j/+n+bQP1biPzN06QXWUAVA/p/m0D9W4r8MTxRsojnqP7xgigAf9xBAAAAAAAAAAAAA
+        q1yEJwjf7r/onjCFNtnQv6YuHNcH1fA/6J4whTbZ0D+rXIQnCN/uvyC3uCSfQQ5AAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -205,7 +205,7 @@ duckies:
   duckie18:
     pose:
       data: !!binary |
-        wxQXN/J26D927f20kKDkv0YoUrcYWQNAdu39tJCg5D/DFBc38nboPwHSysDOShJAAAAAAAAAAAAA
+        EfSWA4LBtr/c/KxHkt/vv1oxKCDprhBA3PysR5Lf7z8R9JYDgsG2v2RpDGXK9us/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -215,7 +215,7 @@ duckies:
   duckie19:
     pose:
       data: !!binary |
-        DtzochVl6L9JdWCjrbXkv/EdX3sTJ/k/SXVgo6215D8O3OhyFWXov2hVs/oWobs/AAAAAAAAAAAA
+        CglpP7qE4L8kQc4WLWjrvybxpK54KhBAJEHOFi1o6z8KCWk/uoTgvwhAfQfbG/Q/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -225,7 +225,7 @@ duckies:
   duckie20:
     pose:
       data: !!binary |
-        u8GeOz661L9qD+O6eEbuP1Mu0Eo5rwFAag/junhG7r+7wZ47PrrUvyCbEJ4aZpg/AAAAAAAAAAAA
+        9d8UwpiX1r8oYzUpnvDtvwQQZpRFDPM/KGM1KZ7w7T/13xTCmJfWv8TWWwH5EME/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -235,7 +235,7 @@ duckies:
   duckie21:
     pose:
       data: !!binary |
-        ZckOhNbe4z/AdB3PSRXpPzBa0sNYcRFAwHQdz0kV6b9lyQ6E1t7jPz0wsi+QKAZAAAAAAAAAAAAA
+        y5rxf87o2b/hWmXerkLtv4b2zaQ9ZfU/4Vpl3q5C7T/LmvF/zujZv4e94yC5l/0/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -245,7 +245,7 @@ duckies:
   duckie22:
     pose:
       data: !!binary |
-        mCcoxoCY7z9MMnGKRkjEv4OP4bR+qQlATDJxikZIxD+YJyjGgJjvPwjL6WLkBhBAAAAAAAAAAAAA
+        ed8qDZlJ5b86Lea7buTnP0tLPbuJguQ/Oi3mu27k57953yoNmUnlv1CjT0jFZeY/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -255,7 +255,7 @@ duckies:
   duckie23:
     pose:
       data: !!binary |
-        vkMbsWjHsj9YgM8C7unvvz4J8znJcus/WIDPAu7p7z++QxuxaMeyP8rWxIN6de0/AAAAAAAAAAAA
+        1sGorsru3r9X+s0znQPsvwnT8VQd0Q5AV/rNM50D7D/Wwaiuyu7ev1OMorOtmuQ/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -265,7 +265,7 @@ duckies:
   duckie24:
     pose:
       data: !!binary |
-        FO2g2zsm0z/F5LCwtIjuP/ebjbO2IA9AxeSwsLSI7r8U7aDbOybTP2Q8Rnob1/M/AAAAAAAAAAAA
+        0V1LwaBe7z8elFit8UfJv5xwuOMRm/Y/HpRYrfFHyT/RXUvBoF7vP7LcDoKx1gtAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -275,7 +275,7 @@ duckies:
   duckie25:
     pose:
       data: !!binary |
-        wTE+VZ5W4L9Z9IfFwoPrv4fxQLx1vw5AWfSHxcKD6z/BMT5Vnlbgv/xC+rSQ59c/AAAAAAAAAAAA
+        ZcOeSsN+5T86CNVjpbTnvyikPR1SwxFAOgjVY6W05z9lw55Kw37lP/eqbfBhNAJAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -285,7 +285,7 @@ duckies:
   duckie26:
     pose:
       data: !!binary |
-        nDEqaBON6L9I5g/eNIbkP1YhfH64TuI/SOYP3jSG5L+cMSpoE43ov9jQB0XpGA9AAAAAAAAAAAAA
+        oyIvGFD/7z8CLh5je4aKP7POk5xIa8g/Ai4eY3uGir+jIi8YUP/vP5Pb6R6+WBJAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -295,7 +295,7 @@ duckies:
   duckie27:
     pose:
       data: !!binary |
-        s8IV5hLH17+sPySgo7XtP0aaFPuTWw1ArD8koKO17b+zwhXmEsfXv3csdAK3oO4/AAAAAAAAAAAA
+        FAfMRGl+6b8CLsKOPlfjP3/65jf5ygFAAi7Cjj5X478UB8xEaX7pv+AnRSTG1vI/AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -305,7 +305,7 @@ duckies:
   duckie28:
     pose:
       data: !!binary |
-        sp6S2KWN7z+5xq0H9k/Fv3UcDZAAIwRAucatB/ZPxT+ynpLYpY3vP7ksIQx7aglAAAAAAAAAAAAA
+        mBx9ePnc7L/kmI4/cKLbv1F5fDZbENI/5JiOP3Ci2z+YHH14+dzsv4W/eo89SBBAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
@@ -315,7 +315,7 @@ duckies:
   duckie29:
     pose:
       data: !!binary |
-        /kLuIkwU3j+9zwQV2j7sv3/mzf8ephFAvc8EFdo+7D/+Qu4iTBTePwjdobrDQhBAAAAAAAAAAAAA
+        zLMBWMoX4794S+NiEa7pvxZz5+l5xQJAeEvjYhGu6T/MswFYyhfjv6eE99VZWwJAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAPA/
       dtype: float64
       shape:
