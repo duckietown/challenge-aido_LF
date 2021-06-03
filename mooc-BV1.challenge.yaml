@@ -2,7 +2,7 @@ challenge: mooc-BV1
 
 title: "Braitenberg 1"
 tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation,
-        protocol-normal]
+        protocol-normal, mooc]
 description: ""
 
 protocol:  aido2_db18_agent-z2
