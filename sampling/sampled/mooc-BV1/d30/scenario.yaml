@@ -6,325 +6,200 @@ robots:
     controllable: true
     configuration:
       pose:
-        data: !!binary |
-          zTt/Zp6g5j/MO39mnqDmv5qZmZmZmck/zDt/Zp6g5j/NO39mnqDmP5qZmZmZmck/AAAAAAAAAAAA
-          AAAAAAAAAAAAAAAAAPA/
-        dtype: float64
-        shape:
-        - 3
-        - 3
+        x: 0.2
+        y: 0.2
+        theta_deg: 44.99999999999999
       velocity:
-        data: !!binary |
-          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          AAAAAAAAAAAAAAAAAAAA
-        dtype: float64
-        shape:
-        - 3
-        - 3
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
 duckies:
   duckie0:
     pose:
-      data: !!binary |
-        EhcvFLflyT92UwqLlFbvP2sgIgiDx6E/dlMKi5RW778SFy8Ut+XJPwmz5+IOu+4/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.4575083492356242
+      y: 4.256387522779204
+      theta_deg: 126.5725531829536
     color: yellow
   duckie1:
     pose:
-      data: !!binary |
-        L8RLiP4K1j85bSFdxgruv6u5y+5ZOg1AOW0hXcYK7j8vxEuI/grWP4gDdXKzvfs/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 2.229703775975473
+      y: 4.341455506185674
+      theta_deg: 71.28357835544077
     color: yellow
   duckie2:
     pose:
-      data: !!binary |
-        uqjrfDsJ6T92FNsGBe7jv0hnYdAeMQ5AdhTbBgXu4z+6qOt8OwnpP/r4NlwfaAZAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 1.0314865550089836
+      y: 4.479877461156917
+      theta_deg: -62.815594256420155
     color: yellow
   duckie3:
     pose:
-      data: !!binary |
-        wQpTKKi977+wG4W62kHAvwehLG8AtxFAsBuFutpBwD/BClMoqL3vv4TabNjWVdM/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 0.03138839206568487
+      y: 4.421552063747756
+      theta_deg: -161.52014861588475
     color: yellow
   duckie4:
     pose:
-      data: !!binary |
-        BSUsbRZj4b+U+rkmQt3qPxe4cmxHxQlAlPq5JkLd6r8FJSxtFmPhv0U/BajlSNU/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.6737256491085946
+      y: 3.169970329926391
+      theta_deg: -45.598835799491205
     color: yellow
   duckie5:
     pose:
-      data: !!binary |
-        eELbOEcs5r92vZwRqxLnv9CfGcz6sApAdr2cEasS5z94Qts4Ryzmv3+k7gHQChBAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.069204225950236
+      y: 1.5078617633998634
+      theta_deg: -28.29757534925442
     color: yellow
   duckie6:
     pose:
-      data: !!binary |
-        nqlA8qee6j/yua1oWsLhP8A/jqqmBvw/8rmtaFrC4b+eqUDyp57qPzOgs0sD9wdAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 0.471257655713108
+      y: 2.287758700632241
+      theta_deg: -126.45080455779865
     color: yellow
   duckie7:
     pose:
-      data: !!binary |
-        gV6VsHaY5r/F1Aktw6jmvznm0ZHwpPY/xdQJLcOo5j+BXpWwdpjmv13nEfpazwVAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 0.10077704721648621
+      y: 0.8595189105491353
+      theta_deg: -1.3732246229380112
     color: yellow
   duckie8:
     pose:
-      data: !!binary |
-        qauxHMi96b8gHfmKlQLjv9MEV1CRy9I/IB35ipUC4z+pq7EcyL3pv654F0miSwNAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 4.600698724060523
+      y: 4.179046405276944
+      theta_deg: -85.92443244978107
     color: yellow
   duckie9:
     pose:
-      data: !!binary |
-        NmMVgEhl6D9snQaAcbXkP4wSm26JhxFAbJ0GgHG15L82YxWASGXoP7jHwi/rAQ1AAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 0.9066081853917302
+      y: 1.9833099519226176
+      theta_deg: -147.8458040086636
     color: yellow
   duckie10:
     pose:
-      data: !!binary |
-        fdrXUyr77L/wRu0C5iLbP1bPcS+TxcE/8EbtAuYi27992tdTKvvsv+CqQHSx5v4/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 0.4802112332115086
+      y: 1.7749605538625246
+      theta_deg: -76.5663351302653
     color: yellow
   duckie11:
     pose:
-      data: !!binary |
-        hLIf8ROT4D9WW93IgV/rv2QEFmrxFOY/VlvdyIFf6z+Esh/xE5PgP5yVheAzhf0/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.4155259757512657
+      y: 1.6072512165911117
+      theta_deg: 88.95050398662708
     color: yellow
   duckie12:
     pose:
-      data: !!binary |
-        qGM2EN+Q3j9VmeEuVx3sP85ZhQXD4QJAVZnhLlcd7L+oYzYQ35DeP1VnSixHKAdAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 2.7006344175786983
+      y: 0.2576315703149279
+      theta_deg: -173.09827440064475
     color: yellow
   duckie13:
     pose:
-      data: !!binary |
-        +BbUQyTPxj9o6SDv4nzvP6KA8X/0WRBAaOkg7+J877/4FtRDJM/GP98pNsWVfg9AAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 1.8505049401871512
+      y: 3.816081065434821
+      theta_deg: -172.35301125708617
     color: yellow
   duckie14:
     pose:
-      data: !!binary |
-        95eRTgsH7b+7qC7j7O/av4peOaWz+fY/u6gu4+zv2j/3l5FOCwftv4mho2a+m9o/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 4.161764267542216
+      y: 0.4284874089629223
+      theta_deg: 53.6633659685064
     color: yellow
   duckie15:
     pose:
-      data: !!binary |
-        OHiDiJDH7z80mHkaY/+9vySUaZOzpPU/NJh5GmP/vT84eIOIkMfvPyqbhfckUQlAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 4.642257016955341
+      y: 1.8078634000883758
+      theta_deg: 79.68834194516718
     color: yellow
   duckie16:
     pose:
-      data: !!binary |
-        yPUpGVLV2T9Dt3w0/UbtP1ei5Ub/gO8/Q7d8NP1G7b/I9SkZUtXZP24rfuxw7uI/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 4.372043067242077
+      y: 3.146133134321559
+      theta_deg: -73.61209802141425
     color: yellow
   duckie17:
     pose:
-      data: !!binary |
-        q1yEJwjf7r/onjCFNtnQv6YuHNcH1fA/6J4whTbZ0D+rXIQnCN/uvyC3uCSfQQ5AAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.7468819319492996
+      y: 1.2995032283491226
+      theta_deg: 66.09947261231943
     color: yellow
   duckie18:
     pose:
-      data: !!binary |
-        EfSWA4LBtr/c/KxHkt/vv1oxKCDprhBA3PysR5Lf7z8R9JYDgsG2v2RpDGXK9us/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.4069541716393723
+      y: 0.6526055843984401
+      theta_deg: -109.54511028390147
     color: yellow
   duckie19:
     pose:
-      data: !!binary |
-        CglpP7qE4L8kQc4WLWjrvybxpK54KhBAJEHOFi1o6z8KCWk/uoTgvwhAfQfbG/Q/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 4.602512468188628
+      y: 3.8172167328532995
+      theta_deg: -163.67245152595189
     color: yellow
   duckie20:
     pose:
-      data: !!binary |
-        9d8UwpiX1r8oYzUpnvDtvwQQZpRFDPM/KGM1KZ7w7T/13xTCmJfWv8TWWwH5EME/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 2.9770169209355815
+      y: 2.532882963980837
+      theta_deg: -6.268127171425196
     color: yellow
   duckie21:
     pose:
-      data: !!binary |
-        y5rxf87o2b/hWmXerkLtv4b2zaQ9ZfU/4Vpl3q5C7T/LmvF/zujZv4e94yC5l/0/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 1.4050487710603583
+      y: 3.2726774461124775
+      theta_deg: -78.52748835144298
     color: yellow
   duckie22:
     pose:
-      data: !!binary |
-        ed8qDZlJ5b86Lea7buTnP0tLPbuJguQ/Oi3mu27k57953yoNmUnlv1CjT0jFZeY/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 2.9990760515107096
+      y: 1.2130557314772317
+      theta_deg: 40.72282928842583
     color: yellow
   duckie23:
     pose:
-      data: !!binary |
-        1sGorsru3r9X+s0znQPsvwnT8VQd0Q5AV/rNM50D7D/Wwaiuyu7ev1OMorOtmuQ/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 4.604383964240751
+      y: 2.5914571470104493
+      theta_deg: 166.57221568748525
     color: yellow
   duckie24:
     pose:
-      data: !!binary |
-        0V1LwaBe7z8elFit8UfJv5xwuOMRm/Y/HpRYrfFHyT/RXUvBoF7vP7LcDoKx1gtAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.118804711874439
+      y: 3.727313033768966
+      theta_deg: -119.48203274036325
     color: yellow
   duckie25:
     pose:
-      data: !!binary |
-        ZcOeSsN+5T86CNVjpbTnvyikPR1SwxFAOgjVY6W05z9lw55Kw37lP/eqbfBhNAJAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 3.2281925045148117
+      y: 2.316570528413364
+      theta_deg: 81.44510555852197
     color: yellow
   duckie26:
     pose:
-      data: !!binary |
-        oyIvGFD/7z8CLh5je4aKP7POk5xIa8g/Ai4eY3uGir+jIi8YUP/vP5Pb6R6+WBJAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 1.393456604475423
+      y: 1.189005397983628
+      theta_deg: 41.838772740610935
     color: yellow
   duckie27:
     pose:
-      data: !!binary |
-        FAfMRGl+6b8CLsKOPlfjP3/65jf5ygFAAi7Cjj5X478UB8xEaX7pv+AnRSTG1vI/AAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 1.1875615193583693
+      y: 1.6067979289881005
+      theta_deg: 91.04769601958405
     color: yellow
   duckie28:
     pose:
-      data: !!binary |
-        mBx9ePnc7L/kmI4/cKLbv1F5fDZbENI/5JiOP3Ci2z+YHH14+dzsv4W/eo89SBBAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 2.159491798745592
+      y: 3.456079171501756
+      theta_deg: 157.12960111288163
     color: yellow
   duckie29:
     pose:
-      data: !!binary |
-        zLMBWMoX4794S+NiEa7pvxZz5+l5xQJAeEvjYhGu6T/MswFYyhfjv6eE99VZWwJAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAPA/
-      dtype: float64
-      shape:
-      - 3
-      - 3
+      x: 1.5149756326787645
+      y: 0.7889876870693658
+      theta_deg: 20.850545041886118
     color: yellow
 environment: "tiles:\n- &id001\n  - asphalt\n  - asphalt\n  - asphalt\n  - asphalt\n\
   \  - asphalt\n  - asphalt\n  - asphalt\n  - asphalt\n- *id001\n- *id001\n- *id001\n\
   - *id001\n- *id001\n- *id001\n- *id001\ntile_size: 0.585\n"
+payload_yaml: 'info: fill here the yaml
+
+  '
 player_robots:
 - ego0
 scenario_name: d30
