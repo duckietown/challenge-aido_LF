@@ -35,13 +35,13 @@ sample-BV:
 
 
 clean:
-	rm -rf sampled
+	# rm -rf sampled
 
-cmd=dt-make-scenarios
+
 image=$(AIDO_REGISTRY)/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
 cmd=docker run --rm -it -v $(PWD):$(PWD) -w $(PWD) --entrypoint /project/launch1.sh  $(image) dt-make-scenarios
 cmd=./sampling.py dt-make-scenarios --styles synthetic
-
+cmd=dt-make-scenarios --styles synthetic
 outdir=$(PWD)/sampled
 indir=$(PWD)
 
