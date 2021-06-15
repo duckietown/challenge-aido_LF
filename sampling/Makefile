@@ -21,7 +21,8 @@ all: \
 	sample-LFP-full-vali \
 	sample-LFV-full-vali \
 	sample-LFV_multi-full-vali \
-	sample-LFVI_multi-full-vali
+	sample-LFVI_multi-full-vali \
+	sample-LFV_multi-state-vali
 
 
 BV=python -m duckietown_world.world_duckietown.sample_braitenberg

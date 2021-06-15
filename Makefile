@@ -172,3 +172,7 @@ define-challenge-sanity:
 
 black:
 	black -l 120 -t py38 .
+
+
+define-challenge-GT:
+	dts challenges define --config LFV_multi-state-vali.challenge.yaml --replicate sim:3
