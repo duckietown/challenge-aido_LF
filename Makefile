@@ -1,8 +1,8 @@
 
-define-challenge:
-	echo REMOVED
+# define-challenge:
+# 	echo REMOVED
 
-define-challenges-old:  \
+define-challenge:  \
 	define-challenge-LF-norm-vali \
 	define-challenge-LF-norm-test \
 	define-challenge-LF-full-vali \
@@ -37,7 +37,8 @@ define-challenges-old:  \
 	define-challenge-LFVI_multi-norm-test \
 	define-challenge-LFVI_multi-full-vali \
 	define-challenge-LFVI_multi-full-test \
-	define-challenge-mooc-BV1
+	define-challenge-mooc-BV1 \
+	define-challenge-GT
 
 
 sample-%:
