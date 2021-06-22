@@ -49,7 +49,7 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: scenarios-gt
+              SCENARIOS: sampling/sampled/LFV_multi-state-vali
 
 
         simulator:

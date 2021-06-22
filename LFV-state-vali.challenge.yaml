@@ -5,7 +5,7 @@ tags: [visible, ml-validation, aido, aido-embodied, LFV, v4, simulation, protoco
 description: |
   Lane following challenge.
 
-protocol: aido5-db20-full-z2
+protocol: aido5-db20-state-z2
 
 date-open: 2021-01-31T00:00Z
 date-close: 2021-12-31T00:00Z

@@ -4,7 +4,7 @@ title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulatio
 tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-state]
 description: |
 
-protocol: aido2_db18_agent-z2
+protocol: aido5-db20-state-z2
 
 date-open: 2021-01-31T00:00Z
 date-close: 2021-12-31T00:00Z

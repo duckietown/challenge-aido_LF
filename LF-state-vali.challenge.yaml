@@ -33,7 +33,7 @@ description: |
   *Note*: this is the _validation_ 🏋 challenge - you can see the output
   but these are not the scores that count.
 
-protocol:  aido5-db20-full-z2
+protocol: aido5-db20-state-z2
 
 
 date-open: 2021-01-31T00:00Z

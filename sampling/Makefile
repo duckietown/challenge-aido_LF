@@ -75,9 +75,11 @@ outdir=$(PWD)/sampled
 indir=$(PWD)
 
 sampled/%-vali:
-	$(cmd) --output sampled/$*-vali.tmp --num 1 $**.config.yaml
+	$(cmd) --seed 43 --output sampled/$*-vali.tmp --num 1 $*.multiconfig.yaml
+	rm -rf sampled/$*-vali
 	mv sampled/$*-vali.tmp sampled/$*-vali
 
 sampled/%-test:
-	$(cmd) --output sampled/$*-test --num 1 $**.config.yaml
+	$(cmd) --seed 45 --output sampled/$*-test.tmp --num 1 $*.multiconfig.yaml
+	rm -rf sampled/$*-vali
 	mv sampled/$*-test.tmp sampled/$*-test
