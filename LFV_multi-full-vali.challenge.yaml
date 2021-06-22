@@ -1,4 +1,4 @@
-challenge: aido-LFV_multi_full-sim-validation
+challenge: aido-LFV_multi-full-sim-validation
 
 title: "LFV_multi_full 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋)"
 tags: [visible, ml-validation, aido, aido-embodied, LFV, v4, simulation, protocol-full]

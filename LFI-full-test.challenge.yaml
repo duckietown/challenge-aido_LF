@@ -46,7 +46,7 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFI-full-vali
+              SCENARIOS: sampling/sampled/LFI-full-test
 
           ports: [10123]
           environment:

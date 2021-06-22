@@ -1,7 +1,7 @@
-challenge: aido-LFP-full-sim-validation
+challenge: aido-LFP-state-sim-validation
 
 title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, validation 🏋)"
-tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation, protocol-full]
+tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation, protocol-state]
 description: |
 
   <table id="variations">
@@ -83,7 +83,7 @@ steps:
               context: .
               dockerfile: Dockerfile.exp_manager
               args:
-                SCENARIOS: sampling/sampled/LFP-full-vali
+                SCENARIOS: sampling/sampled/LFP-state-vali
 
 
 dependencies: {}

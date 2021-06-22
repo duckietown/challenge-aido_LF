@@ -1,33 +1,19 @@
-challenge: aido-LFI-sim-testing
+challenge: aido-LFVI_multi-state-sim-validation
 
-title: "LFI -   Intersections (simulation 👾, testing 🏋) "
-tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-normal]
+title: "LFVI multibody state  🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-state]
+
 description: |
+    This is `LFVI_multi` with full state observability.
 
-protocol: aido2_db18_agent-z2
+protocol: aido5-db20-full-z2
 
 date-open: 2021-01-31T00:00Z
 date-close: 2021-12-31T00:00Z
 
 scoring: !include scoring-2.yaml
 
-dependencies:
-  aido-LFV-sim-validation:
-    description: The submission must first pass LFV testing.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
+dependencies: {}
 
 steps:
   sim:
@@ -40,13 +26,20 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
+        simulator: !include comp_simulator.yaml
+
+        solution-ego0: !include solution-ego0.yaml
+        solution-ego1: !include solution-ego1.yaml
+        solution-ego2: !include solution-ego2.yaml
+        solution-ego3: !include solution-ego3.yaml
+
         evaluator:
 
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFI-norm-test
+              SCENARIOS: sampling/sampled/LFVI_multi-state-vali
 
           ports: [10123]
           environment:
@@ -67,15 +60,4 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios
-
-
-
-
-        simulator: !include comp_simulator.yaml
-        solution-ego0: !include solution-ego0.yaml
-
-        npc0:  !include npc0.yaml
-        npc1:  !include npc1.yaml
-        npc2:  !include npc2.yaml
-        npc3:  !include npc3.yaml
+              - /scenarios

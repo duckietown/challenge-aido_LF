@@ -1,7 +1,7 @@
 challenge: aido-LFV_multi-state-sim-validation
 
-title: "LFV_multi_full - state 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋) (full state)"
-tags: [visible, ml-validation, aido, aido-embodied, LFV, v4, simulation, protocol-full]
+title: "LFV_multi_state - state 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋) (full state)"
+tags: [visible, ml-validation, aido, aido-embodied, LFV, v4, simulation, protocol-state]
 description: |
   This is `LFV_multi` with state observability.
 

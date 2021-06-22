@@ -7,36 +7,50 @@ define-challenge:  \
 	define-challenge-LF-norm-test \
 	define-challenge-LF-full-vali \
 	define-challenge-LF-full-test \
+	define-challenge-LF-state-vali \
+	define-challenge-LF-state-test \
 	\
 	define-challenge-LFP-norm-vali \
 	define-challenge-LFP-norm-test \
 	define-challenge-LFP-full-vali \
 	define-challenge-LFP-full-test \
+	define-challenge-LFP-state-vali \
+	define-challenge-LFP-state-test \
 	\
 	define-challenge-LFV-full-vali \
 	define-challenge-LFV-full-test \
 	define-challenge-LFV-norm-vali \
 	define-challenge-LFV-norm-test \
+	define-challenge-LFV-state-vali \
+	define-challenge-LFV-state-test \
 	\
 	define-challenge-LFV_multi-norm-vali \
 	define-challenge-LFV_multi-norm-test \
 	define-challenge-LFV_multi-full-vali \
 	define-challenge-LFV_multi-full-test \
+	define-challenge-LFV_multi-state-vali \
+	define-challenge-LFV_multi-state-test \
 	\
 	define-challenge-LFVI-norm-vali \
 	define-challenge-LFVI-norm-test \
 	define-challenge-LFVI-full-vali \
 	define-challenge-LFVI-full-test \
+	define-challenge-LFVI-state-vali \
+	define-challenge-LFVI-state-test \
 	\
 	define-challenge-LFI-norm-vali \
 	define-challenge-LFI-norm-test \
 	define-challenge-LFI-full-vali \
 	define-challenge-LFI-full-test \
+	define-challenge-LFI-state-vali \
+	define-challenge-LFI-state-test \
 	\
 	define-challenge-LFVI_multi-norm-vali \
 	define-challenge-LFVI_multi-norm-test \
 	define-challenge-LFVI_multi-full-vali \
 	define-challenge-LFVI_multi-full-test \
+	define-challenge-LFVI_multi-state-vali \
+	define-challenge-LFVI_multi-state-test \
 	define-challenge-mooc-BV1 \
 	define-challenge-GT
 
@@ -89,19 +103,6 @@ define-challenge-LFV-full-test: sample-LFV-full-test
 
 define-challenge-%: sample-%
 	dts challenges define --config $*.challenge.yaml --replicate sim:4
-#
-#define-challenge-LFI-norm-vali: sample-LFI-norm-vali
-#	dts challenges define --config LFI-norm-vali.challenge.yaml
-#
-#define-challenge-LFI-norm-test: sample-LFI-norm-test
-#	dts challenges define --config LFVI-norm-test.challenge.yaml
-#
-#
-#define-challenge-LFI-full-vali: sample-LFI-full-vali
-#	dts challenges define --config LFI-norm-vali.challenge.yaml
-#
-#define-challenge-LFI-full-test: sample-LFI-full-test
-#	dts challenges define --config LFVI-norm-test.challenge.yaml
 
 # LFVI
 
