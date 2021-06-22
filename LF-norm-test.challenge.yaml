@@ -22,7 +22,6 @@ date-close: 2021-12-31T00:00Z
 scoring: !include scoring.yaml
 
 dependencies:
-#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
   aido-LF-sim-validation:
     description: The submission must first pass the testing.
     min_threshold: 2.0

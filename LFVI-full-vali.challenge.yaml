@@ -1,17 +1,19 @@
-challenge: aido-LFI-full-sim-validation
+challenge: aido-LFVI-full-sim-validation
 
-title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, testing 🥇) "
 tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-full]
 description: |
 
 protocol: aido5-db20-full-z2
 
+
 date-open: 2021-01-31T00:00Z
 date-close: 2021-12-31T00:00Z
 
-scoring: !include scoring-2.yaml
-dependencies: {}
 
+scoring: !include scoring-2.yaml
+
+dependencies: {}
 steps:
   sim:
     title: Simulation step
@@ -23,15 +25,18 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
-        evaluator:
 
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+        evaluator:
+          ports: [10123]
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFI-full-vali
+              SCENARIOS: sampling/sampled/LFVI-full-vali
 
-          ports: [10123]
           environment:
             experiment_manager_parameters:
               episodes_per_scenario: 1
@@ -51,12 +56,6 @@ steps:
               port: 10123 # visualization port
               scenarios:
                 - /scenarios
-
-
-
-
-        simulator: !include comp_simulator.yaml
-        solution-ego0: !include solution-ego0.yaml
 
         npc0:  !include npc0.yaml
         npc1:  !include npc1.yaml

@@ -1,8 +1,8 @@
-challenge: aido-LF-state-sim-validation
+challenge: aido-LF-full-sim-testing
 
-title: "LF 🚗 - Lane following (simulation 👾, validation 🏋)"
+title: "LF 🚗 - Lane following (simulation 👾, testing 🥇)"
 tags: [visible, ml-testing, aido, aido-embodied, LF, v4, simulation,
-        protocol-state]
+        protocol-full]
 description: |
 
   <table id="variations">
@@ -33,7 +33,7 @@ description: |
   *Note*: this is the _validation_ 🏋 challenge - you can see the output
   but these are not the scores that count.
 
-protocol: aido5-db20-state-z2
+protocol:  aido5-db20-full-z2
 
 
 date-open: 2021-01-31T00:00Z
@@ -78,16 +78,15 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LF-state-test
+              SCENARIOS: sampling/sampled/LF-full-test
 
 
 
         simulator: !include comp_simulator.yaml
         solution-ego0: !include solution-ego0.yaml
 
-
 dependencies:
-  aido-LF-state-sim-validation:
+  aido-LF-sim-validation:
     description: The submission must first pass the LF validation.
     min_threshold: 2.0
     scores:
@@ -102,4 +101,4 @@ dependencies:
         description: Must be do better than the straight solution.
         importance: 1.0
         username: "1639"
-        sub_label: "baseline-simple-yield"
+        sub_label: 'straight'

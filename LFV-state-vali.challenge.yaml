@@ -15,24 +15,6 @@ scoring: !include scoring-2.yaml
 
 dependencies: {}
 #
-#  #  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
-#  aido5-LF-sim-validation:
-#    description: The submission must first pass the LF validation.
-#    min_threshold: 2.0
-#    scores:
-#      good_enough:
-#        description: Must have moved at least 20cm.
-#        importance: 1.0
-#        score_name: driven_lanedir_consec_median
-#        score_min: 0.2
-#        score_max: 10000.0
-#    comparisons:
-#      better-than-bea-straight:
-#        description: Must be do better than the straight solution.
-#        importance: 1.0
-#        username: "1639"
-#        sub_label: 'straight'
-
 
 steps:
   sim:

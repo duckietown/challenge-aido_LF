@@ -1,8 +1,10 @@
-challenge: aido-LFI-state-sim-testing
+challenge: aido-LFVI_multi-state-sim-testing
 
-title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+title: "LFVI multibody state  🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
 tags: [visible, ml-testing, aido, aido-embodied, LFVI, v4, simulation, protocol-state]
+
 description: |
+    This is `LFVI_multi` with full state observability.
 
 protocol: aido5-db20-state-z2
 
@@ -12,8 +14,8 @@ date-close: 2021-12-31T00:00Z
 scoring: !include scoring-2.yaml
 
 dependencies:
-  aido-LFI-sim-validation:
-    description: The submission must first pass LFV testing.
+  aido-LFVI_multi-state-sim-validation:
+    description: The submission must first pass the LF validation.
     min_threshold: 2.0
     scores:
       good_enough:
@@ -40,13 +42,20 @@ steps:
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
+        simulator: !include comp_simulator.yaml
+
+        solution-ego0: !include solution-ego0.yaml
+        solution-ego1: !include solution-ego1.yaml
+        solution-ego2: !include solution-ego2.yaml
+        solution-ego3: !include solution-ego3.yaml
+
         evaluator:
 
           build:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LFI-state-test
+              SCENARIOS: sampling/sampled/LFVI_multi-state-test
 
           ports: [10123]
           environment:
@@ -67,15 +76,4 @@ steps:
 
               port: 10123 # visualization port
               scenarios:
-                - /scenarios
-
-
-
-
-        simulator: !include comp_simulator.yaml
-        solution-ego0: !include solution-ego0.yaml
-
-        npc0:  !include npc0.yaml
-        npc1:  !include npc1.yaml
-        npc2:  !include npc2.yaml
-        npc3:  !include npc3.yaml
+              - /scenarios

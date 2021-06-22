@@ -57,7 +57,7 @@ define-challenge:  \
 
 
 sample-%:
-	# $(MAKE) -C sampling sample-$*
+	 $(MAKE) -C sampling sampled/$*
 
 
 define-challenge-%: sample-%

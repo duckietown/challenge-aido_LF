@@ -1,16 +1,38 @@
-challenge: aido-LFI-full-sim-validation
+challenge: aido-LFV-state-sim-testing
 
-title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
-tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-full]
+title: "LFV 🚗🚗 - Lane following + Vehicles (simulation 👾, testing 🥇)"
+tags: [visible, ml-testing, aido, aido-embodied, LFV, v4, simulation, protocol-state]
 description: |
+  Lane following challenge.
 
-protocol: aido5-db20-full-z2
+protocol: aido5-db20-state-z2
 
 date-open: 2021-01-31T00:00Z
 date-close: 2021-12-31T00:00Z
 
 scoring: !include scoring-2.yaml
+
+
 dependencies: {}
+#
+#  #  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
+aido5-LFV-state-sim-validation:
+  description: The submission must first pass the LF validation.
+  min_threshold: 2.0
+  scores:
+    good_enough:
+      description: Must have moved at least 20cm.
+      importance: 1.0
+      score_name: driven_lanedir_consec_median
+      score_min: 0.2
+      score_max: 10000.0
+  comparisons:
+    better-than-bea-straight:
+      description: Must be do better than the straight solution.
+      importance: 1.0
+      username: "1639"
+      sub_label: "baseline-simple-yield"
+
 
 steps:
   sim:
@@ -19,19 +41,10 @@ steps:
     features_required:
       compute_sims: 1 # computation machine
 
-
     timeout: 10000 # 1 hour
     evaluation_parameters:
       services:
         evaluator:
-
-          build:
-            context: .
-            dockerfile: Dockerfile.exp_manager
-            args:
-              SCENARIOS: sampling/sampled/LFI-full-vali
-
-          ports: [10123]
           environment:
             experiment_manager_parameters:
               episodes_per_scenario: 1
@@ -52,11 +65,18 @@ steps:
               scenarios:
                 - /scenarios
 
-
-
+          ports: [10123]
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFV-state-test
 
         simulator: !include comp_simulator.yaml
+
+
         solution-ego0: !include solution-ego0.yaml
+
 
         npc0:  !include npc0.yaml
         npc1:  !include npc1.yaml
