@@ -1,4 +1,4 @@
-challenge: aido-LF-state-sim-validation
+challenge: aido-LF-state-sim-testing
 
 title: "LF 🚗 - Lane following (simulation 👾, validation 🏋)"
 tags: [visible, ml-testing, aido, aido-embodied, LF, v4, simulation,
