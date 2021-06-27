@@ -86,7 +86,7 @@ steps:
         solution-ego0: !include solution-ego0.yaml
 
 dependencies:
-  aido-LF-sim-validation:
+  aido-LF-full-sim-validation:
     description: The submission must first pass the LF validation.
     min_threshold: 2.0
     scores:
