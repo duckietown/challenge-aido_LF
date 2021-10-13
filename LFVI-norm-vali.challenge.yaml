@@ -7,7 +7,7 @@ description: |
 protocol: aido2_db18_agent-z2
 
 date-open: 2021-01-31T00:00Z
-date-close: 2021-12-31T00:00Z
+date-close: 2021-12-30T00:00Z
 
 scoring: !include scoring-2.yaml
 
