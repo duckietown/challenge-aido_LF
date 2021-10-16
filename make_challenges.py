@@ -39,7 +39,7 @@
 #               robots_npcs: []
 #               robots_pcs: [ego0]
 #               nduckies: 8
-#           image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
+#           image: ${REGISTRY}/duckietown/challenge-aido_lf-scenario_maker:daffy-amd64
 #
 from datetime import timedelta
 from typing import cast, Dict
