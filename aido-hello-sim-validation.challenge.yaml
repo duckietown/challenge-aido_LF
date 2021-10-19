@@ -1,4 +1,4 @@
-challenge: aido-LF-sanity-sim-validation
+challenge: aido-hello-sim-validation
 
 title: "Sanity check"
 tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation]

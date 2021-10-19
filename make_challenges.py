@@ -44,7 +44,7 @@
 from datetime import timedelta
 from typing import cast, Dict
 
-from graphtage import yaml
+import yaml
 from zuper_commons.fs import read_ustring_from_utf8_file, write_ustring_to_utf8_file
 from zuper_commons.timing import now_utc
 from zuper_ipce import IESO, ipce_from_object, object_from_ipce

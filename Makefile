@@ -53,7 +53,8 @@ define-challenge:  \
 	define-challenge-LFVI_multi-state-test \
 	\
 	define-challenge-mooc-BV1 \
-	define-challenge-GT
+	define-challenge-GT \
+	define-challenge-sanity
 
 
 sample-%:
@@ -163,10 +164,9 @@ define-challenge-GT:
 
 
 
-#
-#define-challenge-sanity:
-#	echo "SKIP"
-#	# dts challenges define --config aido5-LF-sanity-sim-valiation.challenge.yaml
+
+define-challenge-sanity:
+	 dts challenges define --config aido-hello-sim-validation.challenge.yaml
 
 #
 #define-challenge-LFP2: sample-sanity
