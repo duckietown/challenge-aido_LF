@@ -1,11 +1,11 @@
-challenge: aido-hello-sim-validation
+challenge: aido-hello-sim-state-validation
 
-title: "Sanity check"
-tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation, protocol-full]
+title: "Sanity check (full)"
+tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation]
 description: |
   Very short "challenge". Sanity check.
 
-protocol: aido2_db18_agent-z2
+protocol: aido5-db20-state-z2
 
 
 date-open: 2021-01-31T00:00Z
@@ -48,7 +48,7 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/LF-norm-vali/loop-000
+              SCENARIOS: sampling/sampled/LF-state-vali/loop-000
 
 
         simulator: !include comp_simulator.yaml

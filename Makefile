@@ -166,7 +166,9 @@ define-challenge-GT:
 
 
 define-challenge-sanity:
-	 dts challenges define --config aido-hello-sim-validation.challenge.yaml
+	dts challenges define --config aido-hello-sim-validation.challenge.yaml
+	dts challenges define --config aido-hello-sim-full-validation.challenge.yaml
+	dts challenges define --config aido-hello-sim-state-validation.challenge.yaml
 
 #
 #define-challenge-LFP2: sample-sanity
