@@ -1,0 +1,87 @@
+payload_yaml: ''
+player_robots:
+- ego0
+- ego1
+- ego2
+- ego3
+
+scenario_name: LFV_multi-state-udem-000
+
+robots:
+  ego0:
+    color: red
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego0
+    controllable: true
+    configuration:
+      pose:
+        x: 1.19
+        y: 2.01
+        theta_deg: -90.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  ego1:
+    color: green
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego1
+    controllable: true
+    configuration:
+      pose:
+        x: 2.01
+        y: 2.25
+        theta_deg: 180.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  ego2:
+    color: blue
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego2
+    controllable: true
+    configuration:
+      pose:
+        x: 2.25
+        y: 3.07
+        theta_deg: 180.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  ego3:
+    color: red
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego3
+    controllable: true
+    configuration:
+      pose:
+        x: 3.07
+        y: 3.3125
+        theta_deg: -90.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+duckies: {}
+environment: |
+  # udem1-empty
+  # The following section defines the grid layout.
+  #
+  # Each row is an array of tiles descriptions.
+  # The top-left tile in this file maps to coordinates (0, 0) in the world
+  # Each tile contains a string with the kind of tile and its orientation.
+  # The orientations are North, South, East, West. This is the direction in
+  # which the agent is expected to drive when going onto this tile.
+  tiles:
+  - [floor    , floor         , floor     , floor         , floor     , floor         , floor         , floor]
+  - [floor    , curve_left/W  , straight/W, 3way_left/W   , straight/W, straight/W    , curve_left/N  , floor]
+  - [floor    , straight/S    , grass     , straight/N    , floor   , floor       , straight/N    , floor]
+  - [floor    , 3way_left/S   , straight/W, 3way_left/N   , floor   , floor       , straight/N    , floor]
+  - [floor    , straight/S    , grass     , straight/N    , floor   , curve_right/N , curve_left/E  , floor]
+  - [floor    , curve_left/S  , straight/E, 3way_left/E   , straight/E, curve_left/E  , asphalt       , floor]
+  - [floor    , floor         , floor     , floor         , floor     , floor         , floor         , floor]
+
+
+  tile_size: 0.585

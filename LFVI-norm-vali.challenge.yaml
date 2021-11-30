@@ -11,23 +11,7 @@ date-close: 2021-12-31T00:00Z
 
 scoring: !include scoring-2.yaml
 
-dependencies:
-  aido-LFV-sim-validation:
-    description: The submission must first pass LFV testing.
-    min_threshold: 2.0
-    scores:
-      good_enough:
-        description: Must have moved at least 20cm.
-        importance: 1.0
-        score_name: driven_lanedir_consec_median
-        score_min: 0.2
-        score_max: 10000.0
-    comparisons:
-      better-than-bea-straight:
-        description: Must be do better than the straight solution.
-        importance: 1.0
-        username: "1639"
-        sub_label: 'straight'
+dependencies: {}
 
 steps:
   sim:

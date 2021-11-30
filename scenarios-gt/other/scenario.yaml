@@ -1,0 +1,96 @@
+payload_yaml: ''
+player_robots:
+- ego0
+- ego1
+- ego2
+- ego3
+
+scenario_name: LFV_multi-state-4way-000
+# 1:[4.50, 1.20,  180] 3.19 1.276
+#2:[3.75, 2.75, 90] 2.755 2.175
+#3:[3.75, 4.30, 90] 2.755 3.074
+#4:[2.30, 3.75, 0] 1.914  2.7492
+
+robots:
+  ego0:
+    color: red
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego0
+    controllable: true
+    configuration:
+      pose:
+        x: 3.19
+        y: 1.276
+        theta_deg: 180.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  ego1:
+    color: green
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego1
+    controllable: true
+    configuration:
+      pose:
+        x: 2.75
+        y: 2.175
+        theta_deg: 90.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  ego2:
+    color: blue
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego2
+    controllable: true
+    configuration:
+      pose:
+        x: 2.75
+        y: 3.074
+        theta_deg: 90.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  ego3:
+    color: red
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego3
+    controllable: true
+    configuration:
+      pose:
+        x: 1.914
+        y: 2.7492
+        theta_deg: 0.0
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+duckies: {}
+environment: |
+  # 5x5 counter-clockwise loop with a 4-way intersection in the middle
+  # Designed to test the 4-way intersection tile and traffic light
+  tiles:
+  - [floor, floor, floor, floor, floor, floor, floor]
+  - [floor, curve_left/W , straight/W, 3way_left/W   , straight/W, curve_left/N, floor]
+  - [floor, straight/S   , asphalt   , straight/N    , asphalt   , straight/N, floor]
+  - [floor, 3way_left/S  , straight/W, 4way          , straight/E, 3way_left/N, floor]
+  - [floor, straight/S   , asphalt   , straight/S    , asphalt   , straight/N, floor]
+  - [floor, curve_left/S , straight/E, 3way_left/E   , straight/E, curve_left/E, floor]
+  - [floor, floor, floor, floor, floor, floor, floor]
+
+  objects:
+    trafficlight:
+      kind: trafficlight
+      place:
+        tile: [3,3]
+        relative:
+          ~SE2Transform:
+            p: [-0.18,-0.18]
+            theta_deg: 135
+      height: 0.4
+      optional: true
+
+  tile_size: 0.585

@@ -1,4 +1,4 @@
-challenge: aido-LFP_full-sim-validation
+challenge: aido-LFP-full-sim-validation
 
 title: "LFP 🚗 - Lane following with Duckies  (simulation 👾, validation 🏋)"
 tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation, protocol-full]

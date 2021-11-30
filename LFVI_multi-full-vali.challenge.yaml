@@ -1,4 +1,4 @@
-challenge: aido-LFVI_multi_full-sim-validation
+challenge: aido-LFVI_multi-full-sim-validation
 
 title: "LFVI multibody full  🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
 tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-full]

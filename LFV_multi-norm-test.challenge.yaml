@@ -64,7 +64,7 @@ steps:
 
 
         simulator:
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
 
           environment:
             AIDONODE_DATA_IN: /fifos/simulator-in
@@ -92,7 +92,6 @@ steps:
 
 
 dependencies:
-#  aido5-LF-sanity-sim-validation: !include dep-sanity.yaml
   aido-LFV_multi-sim-validation:
     description: The submission must first pass the validation step.
     min_threshold: 2.0

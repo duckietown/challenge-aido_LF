@@ -1,6 +1,7 @@
 
 
-image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-minimal-agent-full:daffy-amd64
+image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-baseline-simple-yield:daffy-amd64
+
 environment:
   AIDONODE_NAME: npc2
   AIDONODE_DATA_IN: /fifos/npc2-in

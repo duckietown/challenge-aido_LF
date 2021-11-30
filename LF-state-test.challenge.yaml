@@ -1,0 +1,105 @@
+challenge: aido-LF-state-sim-testing
+
+title: "LF 🚗 - Lane following (simulation 👾, validation 🏋)"
+tags: [visible, ml-testing, aido, aido-embodied, LF, v4, simulation,
+        protocol-state]
+description: |
+
+  <table id="variations">
+  <thead >
+  <th><code>LF</code></th>
+  <th><code></code></th>
+
+  </thead>
+  <tr>
+  <td>Follow the lane</td>
+  <td></td>
+  </tr>
+  <tr>
+  <td>
+  <img src="https://i.imgur.com/sGTigpp.jpg" style='width: 15em'>
+  </td>
+  <td class='explain'>
+  <p>This is the basic lane following challenge.</p>
+
+  <p>You must follow the lane using the outputs of camera and encoders.</p>
+
+  <p>See the <a href="https://docs.duckietown.org/daffy/AIDO/out/challenge_LF.html">documentation</a> for more details
+  .</p>
+  </td>
+  </tr>
+  </table>
+
+  *Note*: this is the _validation_ 🏋 challenge - you can see the output
+  but these are not the scores that count.
+
+protocol: aido5-db20-state-z2
+
+
+date-open: 2021-01-31T00:00Z
+date-close: 2021-12-31T00:00Z
+
+scoring: !include scoring-2.yaml
+
+steps:
+  sim:
+    title: Simulation step
+    description: ""
+    features_required:
+      compute_sims: 1 # computation machine
+
+    timeout: 10000 # 1 hour
+    evaluation_parameters:
+      services:
+        evaluator:
+
+          environment:
+            experiment_manager_parameters:
+              episodes_per_scenario: 1
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 20200922
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+
+              port: 10123 # visualization port
+              scenarios:
+                - /scenarios
+
+          ports: [10123]
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LF-state-test
+
+
+
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+
+dependencies:
+  aido-LF-state-sim-validation:
+    description: The submission must first pass the LF validation.
+    min_threshold: 2.0
+    scores:
+      good_enough:
+        description: Must have moved at least 20cm.
+        importance: 1.0
+        score_name: driven_lanedir_consec_median
+        score_min: 0.2
+        score_max: 10000.0
+    comparisons:
+      better-than-bea-straight:
+        description: Must be do better than the straight solution.
+        importance: 1.0
+        username: "1639"
+        sub_label: "baseline-simple-yield"

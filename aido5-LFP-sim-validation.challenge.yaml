@@ -70,7 +70,7 @@ steps:
             AIDONODE_DATA_OUT: fifo:/fifos/ego-out
         evaluator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
           ports:
           - external: 10123
             internal: 10123
@@ -107,7 +107,7 @@ steps:
               '
         simulator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
           ports: []
           environment:
             AIDONODE_CONFIG: "env_constructor: Simulator\nenv_parameters:\n  max_steps:\
@@ -135,7 +135,7 @@ steps:
             AIDONODE_DATA_OUT: fifo:/fifos/ego-out
         evaluator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
           ports:
           - external: 10123
             internal: 10123
@@ -172,7 +172,7 @@ steps:
               '
         simulator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
           ports: []
           environment:
             AIDONODE_CONFIG: "env_constructor: Simulator\nenv_parameters:\n  max_steps:\
@@ -200,7 +200,7 @@ steps:
             AIDONODE_DATA_OUT: fifo:/fifos/ego-out
         evaluator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
           ports:
           - external: 10123
             internal: 10123
@@ -237,7 +237,7 @@ steps:
               '
         simulator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
           ports: []
           environment:
             AIDONODE_CONFIG: "env_constructor: Simulator\nenv_parameters:\n  max_steps:\
@@ -265,7 +265,7 @@ steps:
             AIDONODE_DATA_OUT: fifo:/fifos/ego-out
         evaluator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-experiment_manager:daffy-amd64
           ports:
           - external: 10123
             internal: 10123
@@ -302,7 +302,7 @@ steps:
               '
         simulator:
           build: null
-          image: ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
           ports: []
           environment:
             AIDONODE_CONFIG: "env_constructor: Simulator\nenv_parameters:\n  max_steps:\

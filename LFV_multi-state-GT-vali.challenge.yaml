@@ -1,0 +1,82 @@
+challenge: aido-LFV_multi-state-sim-validation
+
+title: "LFV_multi_state - state 🚗🚗🚗 - Lane following multibody (simulation 👾, validation 🏋) (full state)"
+tags: [visible, ml-validation, aido, aido-embodied, LFV, v4, simulation, protocol-state]
+description: |
+  This is `LFV_multi` with state observability.
+
+protocol: aido5-db20-state-z2
+
+date-open: 2021-01-31T00:00Z
+date-close: 2021-12-31T00:00Z
+
+scoring: !include scoring-2.yaml
+
+steps:
+  sim: &template
+    title: Simulation step
+    description: ""
+    features_required:
+      compute_sims: 1 # computation machine
+
+    timeout: 10000 # 1 hour
+    evaluation_parameters:
+      services:
+        evaluator:
+          environment:
+            experiment_manager_parameters:
+              episodes_per_scenario: 3
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 20200922
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+              scenarios:
+                - /scenarios
+#              evaluator_index: 0
+#              evaluator_total: 4
+              port: 10123 # visualization port
+
+          ports: [10123]
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: scenarios-gt
+
+
+        simulator:
+          image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+
+          environment:
+            AIDONODE_DATA_IN: /fifos/simulator-in
+            AIDONODE_DATA_OUT: fifo:/fifos/simulator-out
+            AIDONODE_CONFIG: |
+              env_constructor: Simulator
+              env_parameters:
+                max_steps: 500001 # we don't want the gym to reset itself
+                domain_rand: 0
+                camera_width: 640
+                camera_height: 480
+                distortion: true
+                num_tris_distractors: 0
+                color_ground: [0, 0.3, 0] # green
+                enable_leds: true
+              topdown_resolution: 0
+              debug_no_video: false
+
+        solution-ego0: !include solution-ego0.yaml
+        solution-ego1: !include solution-ego1.yaml
+        solution-ego2: !include solution-ego2.yaml
+        solution-ego3: !include solution-ego3.yaml
+
+
+
+dependencies: {}

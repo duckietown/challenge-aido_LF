@@ -3,4 +3,3 @@ environment:
   AIDONODE_NAME: ego1
   AIDONODE_DATA_IN: /fifos/ego1-in
   AIDONODE_DATA_OUT: fifo:/fifos/ego1-out
-  AIDO_REQUIRE_GPU: "1"

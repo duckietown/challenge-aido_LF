@@ -1,0 +1,78 @@
+robots:
+  ego0:
+    color: red
+    protocol: PROTOCOL_STATE
+    description: Playable robot ego0
+    controllable: true
+    configuration:
+      pose:
+        x: 1.2869999408721924
+        y: 0.7575252432244508
+        theta_deg: -30.79563468881768
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+  npc0:
+    color: blue
+    protocol: PROTOCOL_STATE
+    description: NPC robot npc0
+    controllable: true
+    configuration:
+      pose:
+        x: 1.2869999408721924
+        y: 1.8980470467639758
+        theta_deg: -29.328722865120948
+      velocity:
+        x: 0.0
+        y: 0.0
+        theta_deg: 0.0
+duckies: {}
+environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
+  \        p:\n        - 0.646\n        - 1.1219999999999999\n        theta_deg: 270\n\
+  \    tag:\n      ~TagInstance:\n        family: 36h11\n        size: 0.08\n    \
+  \    tag_id: 325\n  tag330:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
+  \        p:\n        - 0.138\n        - 0.14500000000000002\n        theta_deg:\
+  \ 135\n    tag:\n      ~TagInstance:\n        family: 36h11\n        size: 0.08\n\
+  \        tag_id: 330\n  tag331:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
+  \        p:\n        - 0.15100000000000002\n        - 1.617\n        theta_deg:\
+  \ 45\n    tag:\n      ~TagInstance:\n        family: 36h11\n        size: 0.08\n\
+  \        tag_id: 331\n  tag332:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
+  \        p:\n        - 1.6119999999999999\n        - 0.153\n        theta_deg: 225\n\
+  \    tag:\n      ~TagInstance:\n        family: 36h11\n        size: 0.08\n    \
+  \    tag_id: 332\n  tag333:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
+  \        p:\n        - 1.617\n        - 1.6059999999999999\n        theta_deg: 315\n\
+  \    tag:\n      ~TagInstance:\n        family: 36h11\n        size: 0.08\n    \
+  \    tag_id: 333\n  tag342:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
+  \        p:\n        - 0.9299999999999999\n        - -0.03899999999999999\n    \
+  \    theta_deg: 180\n    tag:\n      ~TagInstance:\n        family: 36h11\n    \
+  \    size: 0.08\n        tag_id: 342\n  tree_random_0:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.655288462174876\n\
+  \        - 2.241005784440365\n    height: 0.3890866411318745\n  tree_random_1:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 1.6813374005497546\n        - 0.5248625449666576\n    height: 0.2396007266177332\n\
+  \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.5033782511547684\n        - 0.8501733733819554\n\
+  \    height: 0.2782639650309173\n  tree_random_3:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.599931165128766\n\
+  \        - 1.6376757178301076\n    height: 0.15961552549725153\n  tree_random_4:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 0.4963821217804246\n        - 2.6000301324062196\n    height: 0.2540800524000443\n\
+  \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
+  \ 0.0\n        p:\n        - 0.5232077276808367\n        - 0.06743462794014965\n\
+  \    height: 0.3510795393684033\n  tree_random_6:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.3332569946315005\n\
+  \        - 2.0362131053850034\n    height: 0.2758192886739409\n  tree_random_7:\n\
+  \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
+  \        - 1.0743221930587117\n        - 0.08576242639922488\n    height: 0.17687827257448108\n\
+  tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
+  - - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n\
+  \  - straight/S\n  - floor\n  - straight/N\n  - floor\n- - floor\n  - curve_left/S\n\
+  \  - straight/E\n  - curve_left/E\n  - floor\n- - floor\n  - floor\n  - floor\n\
+  \  - floor\n  - floor\n"
+payload_yaml: 'info: fill here the yaml
+
+  '
+player_robots:
+- ego0
+scenario_name: loop2-000

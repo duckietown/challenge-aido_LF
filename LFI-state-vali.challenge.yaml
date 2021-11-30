@@ -1,0 +1,66 @@
+challenge: aido-LFI-state-sim-validation
+
+title: "LFVI 🚗🚗🚦 - Lane following + Vehicles + Intersections (simulation 👾, validation 🏋) "
+tags: [visible, ml-validation, aido, aido-embodied, LFVI, v4, simulation, protocol-state]
+description: |
+
+protocol: aido5-db20-state-z2
+
+date-open: 2021-01-31T00:00Z
+date-close: 2021-12-31T00:00Z
+
+scoring: !include scoring-2.yaml
+
+dependencies: {}
+
+
+steps:
+  sim:
+    title: Simulation step
+    description: ""
+    features_required:
+      compute_sims: 1 # computation machine
+
+
+    timeout: 10000 # 1 hour
+    evaluation_parameters:
+      services:
+        evaluator:
+
+          build:
+            context: .
+            dockerfile: Dockerfile.exp_manager
+            args:
+              SCENARIOS: sampling/sampled/LFI-state-vali
+
+          ports: [10123]
+          environment:
+            experiment_manager_parameters:
+              episodes_per_scenario: 1
+              episode_length_s: 60.0
+              min_episode_length_s: 0.0
+              seed: 20200922
+              physics_dt: 0.05
+              max_failures: 2
+              fifo_dir: /fifos
+              sim_in: /fifos/simulator-in
+              sim_out: /fifos/simulator-out
+              sm_in: /fifos/scenario_maker-in
+              sm_out: /fifos/scenario_maker-out
+              timeout_initialization: 120
+              timeout_regular: 120
+
+              port: 10123 # visualization port
+              scenarios:
+                - /scenarios
+
+
+
+
+        simulator: !include comp_simulator.yaml
+        solution-ego0: !include solution-ego0.yaml
+
+        npc0:  !include npc0.yaml
+        npc1:  !include npc1.yaml
+        npc2:  !include npc2.yaml
+        npc3:  !include npc3.yaml
