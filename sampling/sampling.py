@@ -6,11 +6,11 @@ from docker import DockerClient
 from duckietown_docker_utils import ENV_REGISTRY, generic_docker_run, logger
 
 # cmd=dt-make-scenarios
-# image=$(REGISTRY)/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+# image=$(REGISTRY)/duckietown/challenge-aido_lf-simulator-gym:daffy
 # cmd=docker run --rm -it -v $(PWD):$(PWD) -w $(PWD) --entrypoint /project/launch1.sh  $(image)
 # dt-make-scenarios
 
-image = "${%s}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64" % ENV_REGISTRY
+image = "${%s}/duckietown/challenge-aido_lf-simulator-gym:daffy" % ENV_REGISTRY
 
 rest = sys.argv[1:]
 logname = "a.log"

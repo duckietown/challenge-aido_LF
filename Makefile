@@ -1,6 +1,8 @@
 
 # define-challenge:
 # 	echo REMOVED
+DTC=dts challenges
+DTC=dt-challenges-cli
 
 define-challenge:  \
 	define-challenge-LF-norm-vali \
@@ -62,34 +64,34 @@ sample-%:
 
 
 define-challenge-%: sample-%
-	dts challenges define --config $*.challenge.yaml --replicate sim:4
+	$(DTC) define --config $*.challenge.yaml --replicate sim:4
 
 define-challenge-mooc-BV1: # sample-mooc-BV1
-	dts challenges define --config mooc-BV1.challenge.yaml --replicate sim:5
+	$(DTC) define --config mooc-BV1.challenge.yaml --replicate sim:5
 
 define-challenge-GT:
-	dts challenges define --config LFV_multi-state-GT-vali.challenge.yaml --replicate sim:3
+	$(DTC) define --config LFV_multi-state-GT-vali.challenge.yaml --replicate sim:3
 
 
 # LF
 #define-challenge-LF-norm-vali: sample-LF-norm-vali
-#	dts challenges define --config LF-norm-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LF-norm-vali.challenge.yaml --replicate sim:4
 #define-challenge-LF-norm-test: sample-LF-norm-test define-challenge-LF-norm-vali define-challenge-sanity
-#	dts challenges define --config LF-norm-test.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LF-norm-test.challenge.yaml --replicate sim:4
 #define-challenge-LF-full-vali: sample-LF-full-vali
-#	dts challenges define --config LF-full-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LF-full-vali.challenge.yaml --replicate sim:4
 #define-challenge-LF-full-test: sample-LF-full-test
 #	echo TODO
 # LFP
 #
 #define-challenge-LFP-norm-vali: sample-LFP-norm-vali
-#	dts challenges define --config LFP-norm-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFP-norm-vali.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFP-norm-test: sample-LFP-norm-test define-challenge-LFP-norm-vali
-#	dts challenges define --config LFP-norm-test.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFP-norm-test.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFP-full-vali: sample-LFP-full-vali
-#	dts challenges define --config LFP-full-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFP-full-vali.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFP-full-test: sample-LFP-full-test
 #	echo TODO
@@ -97,83 +99,83 @@ define-challenge-GT:
 # LFV
 #
 #define-challenge-LFV-norm-vali: sample-LFV-norm-vali define-challenge-LF-norm-vali define-challenge-sanity
-#	dts challenges define --config LFV-norm-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFV-norm-vali.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFV-norm-test: sample-LFV-norm-test define-challenge-LFV-norm-vali define-challenge-LF-norm-test define-challenge-sanity
-#	dts challenges define --config LFV-norm-test.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFV-norm-test.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFV-full-vali: sample-LFV-full-vali
-#	dts challenges define --config LFV-full-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFV-full-vali.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFV-full-test: sample-LFV-full-test
-#	dts challenges define --config LFVI-full-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFVI-full-vali.challenge.yaml --replicate sim:4
 
 # LFI
 
 ## LFVI
 #
 #define-challenge-LFVI-norm-vali: sample-LFVI-norm-vali define-challenge-LFV-norm-vali define-challenge-sanity
-#	dts challenges define --config LFVI-norm-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFVI-norm-vali.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFVI-norm-test: sample-LFVI-norm-test \
 #	define-challenge-LFVI-norm-vali define-challenge-LFV-norm-test \
 #	define-challenge-sanity
-#	dts challenges define --config LFVI-norm-test.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFVI-norm-test.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFVI-full-vali: sample-LFVI-full-vali
-#	dts challenges define --config LFVI-full-vali.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFVI-full-vali.challenge.yaml --replicate sim:4
 #
 #define-challenge-LFVI-full-test: sample-LFVI-full-test
-#	dts challenges define --config LFVI-full-test.challenge.yaml --replicate sim:4
+#	$(DTC) define --config LFVI-full-test.challenge.yaml --replicate sim:4
 #
 ## LFV_multi
 #
 #
 #
 #define-challenge-LFV_multi-norm-vali: sample-LFV_multi-norm-vali define-challenge-sanity
-#	dts challenges define --config LFV_multi-norm-vali.challenge.yaml --replicate sim:2
+#	$(DTC) define --config LFV_multi-norm-vali.challenge.yaml --replicate sim:2
 #
 #define-challenge-LFV_multi-norm-test: sample-LFV_multi-norm-test define-challenge-sanity define-challenge-LFV_multi-norm-vali
-#	dts challenges define --config LFV_multi-norm-test.challenge.yaml --replicate sim:2
+#	$(DTC) define --config LFV_multi-norm-test.challenge.yaml --replicate sim:2
 #
 ##
 ##define-challenge-LFV_multi-full-vali: sample-LFV_multi-full-vali
-##	dts challenges define --config LFV_multi-full-vali.challenge.yaml
+##	$(DTC) define --config LFV_multi-full-vali.challenge.yaml
 #
 #
 #define-challenge-LFV_multi-full-test: sample-LFV_multi-full-test define-challenge-sanity define-challenge-LFV_multi-norm-vali
-#	dts challenges define --config LFV_multi-full-test.challenge.yaml --replicate sim:2
+#	$(DTC) define --config LFV_multi-full-test.challenge.yaml --replicate sim:2
 #
 ## LFVI_multi
 #
 ##
 ##define-challenge-LFVI_multi-norm-vali: sample-LFVI_multi-norm-vali define-challenge-sanity
-##	dts challenges define --config LFVI_multi-norm-vali.challenge.yaml
+##	$(DTC) define --config LFVI_multi-norm-vali.challenge.yaml
 #
 #define-challenge-LFVI_multi-norm-test: sample-LFVI_multi-norm-test define-challenge-sanity
-#	dts challenges define --config LFVO_multi-norm-test.challenge.yaml --replicate sim:2
+#	$(DTC) define --config LFVO_multi-norm-test.challenge.yaml --replicate sim:2
 #
 #
 ##define-challenge-LFVI_multi-full-vali: sample-LFVI_multi-full-vali
-##	dts challenges define --config LFVI_multi-full-vali.challenge.yaml
+##	$(DTC) define --config LFVI_multi-full-vali.challenge.yaml
 #
 #
 #define-challenge-LFVI_multi-full-test: sample-LFVI_multi-full-test
-#	dts challenges define --config LFV_multi-full-test.challenge.yaml --replicate sim:2
+#	$(DTC) define --config LFV_multi-full-test.challenge.yaml --replicate sim:2
 #
 
 
 
 
 define-challenge-sanity:
-	dts challenges define --config aido-hello-sim-validation.challenge.yaml
-	dts challenges define --config aido-hello-sim-full-validation.challenge.yaml
-	dts challenges define --config aido-hello-sim-state-validation.challenge.yaml
+	$(DTC) define --config aido-hello-sim-validation.challenge.yaml
+	$(DTC) define --config aido-hello-sim-full-validation.challenge.yaml
+	$(DTC) define --config aido-hello-sim-state-validation.challenge.yaml
 
 #
 #define-challenge-LFP2: sample-sanity
 #	./make_challenges.py
-#	dts challenges define --config LFP2.challenge.yaml
+#	$(DTC) define --config LFP2.challenge.yaml
 
 
 #

@@ -1,4 +1,4 @@
-image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy-amd64
+image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy
 
 environment:
   AIDONODE_DATA_IN: /fifos/simulator-in

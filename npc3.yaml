@@ -1,4 +1,4 @@
-image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-baseline-simple-yield:daffy-amd64
+image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-baseline-simple-yield:daffy
 
 environment:
   AIDONODE_NAME: npc3
