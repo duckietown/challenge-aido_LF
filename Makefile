@@ -54,7 +54,7 @@ define-challenge:  \
 	define-challenge-LFVI_multi-state-vali \
 	define-challenge-LFVI_multi-state-test \
 	\
-	define-challenge-mooc-BV1 \
+	define-challenge-lx22-BV1 \
 	define-challenge-GT \
 	define-challenge-sanity
 
@@ -95,3 +95,6 @@ define-challenge-sanity3:
 #
 #black:
 #	black -l 120 -t py38 .
+
+baselines-submit:
+	make -C baselines

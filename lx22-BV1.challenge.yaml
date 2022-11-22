@@ -1,4 +1,4 @@
-challenge: mooc-BV1
+challenge: lx2-BV1
 
 title: "Braitenberg 1"
 tags: [visible, ml-validation, aido, aido-embodied, LF, v4, simulation,
@@ -58,7 +58,7 @@ steps:
             context: .
             dockerfile: Dockerfile.exp_manager
             args:
-              SCENARIOS: sampling/sampled/mooc-BV1
+              SCENARIOS: sampling/sampled/lx22-BV1
 
         simulator:
           image: ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-simulator-gym:daffy
