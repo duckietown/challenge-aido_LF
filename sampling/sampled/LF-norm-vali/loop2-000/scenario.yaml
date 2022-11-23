@@ -1,18 +1,21 @@
 robots:
   ego0:
     color: red
+    dynamics: duckietown_world.world_duckietown.pwm_dynamics.get_DB18_nominal
     protocol: PROTOCOL_NORMAL
     description: Playable robot ego0
     controllable: true
     configuration:
       pose:
         x: 1.2869999408721924
-        y: 1.9275252003091066
-        theta_deg: -30.795634688817696
+        y: 0.7575252432244508
+        theta_deg: -30.79563468881768
       velocity:
         x: 0.0
         y: 0.0
         theta_deg: 0.0
+    dynamics_params:
+      delay: 0.15
 duckies: {}
 environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
   \        p:\n        - 0.646\n        - 1.1219999999999999\n        theta_deg: 270\n\
@@ -33,24 +36,24 @@ environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Tra
   \        p:\n        - 0.9299999999999999\n        - -0.03899999999999999\n    \
   \    theta_deg: 180\n    tag:\n      ~TagInstance:\n        family: 36h11\n    \
   \    size: 0.08\n        tag_id: 342\n  tree_random_0:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.3172625534532023\n\
-  \        - 2.662865337797287\n    height: 0.2720191368377694\n  tree_random_1:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.241680751788812\n\
+  \        - 2.653048516454618\n    height: 0.3678648809035424\n  tree_random_1:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.10366878952669425\n        - 1.9086864656826028\n    height: 0.3234242171673018\n\
+  \        - 0.077770520324451\n        - 2.114396466713058\n    height: 0.18809577832086385\n\
   \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 0.2894852601939826\n        - 1.4578021054564783\n\
-  \    height: 0.1538606379554998\n  tree_random_3:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.6065111199785864\n\
-  \        - 0.2236864191446596\n    height: 0.35909383671753536\n  tree_random_4:\n\
+  \ 0.0\n        p:\n        - 0.4175288682536846\n        - 1.64269127350102\n  \
+  \  height: 0.31427402658711573\n  tree_random_3:\n    kind: tree\n    pose:\n  \
+  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.4262319679448514\n\
+  \        - 0.38797210803471394\n    height: 0.19299231845090303\n  tree_random_4:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 2.672782004196378\n        - 0.6566970530715244\n    height: 0.2309700200288427\n\
+  \        - 2.5228804902555253\n        - 0.9305058114581855\n    height: 0.30025103946580856\n\
   \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 1.3069521168637268\n        - 1.5622223467033498\n\
-  \    height: 0.1746406656642498\n  tree_random_6:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.3287510807169721\n\
-  \        - 2.813999124389514\n    height: 0.3582988831928847\n  tree_random_7:\n\
+  \ 0.0\n        p:\n        - 1.6285240172055642\n        - 1.3731067702972344\n\
+  \    height: 0.2893096796910145\n  tree_random_6:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.1796500657439573\n\
+  \        - 2.4729058980997163\n    height: 0.301884407411638\n  tree_random_7:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.8729101336668823\n        - 0.3478465072586951\n    height: 0.16613297026917673\n\
+  \        - 0.8189553996775447\n        - 0.1712754624012262\n    height: 0.17505873449386988\n\
   tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
   - - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n\
   \  - straight/S\n  - floor\n  - straight/N\n  - floor\n- - floor\n  - curve_left/S\n\

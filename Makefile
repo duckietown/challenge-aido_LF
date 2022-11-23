@@ -56,7 +56,7 @@ define-challenge:  \
 	\
 	define-challenge-lx22-BV1 \
 	define-challenge-GT \
-	define-challenge-sanity
+	define-special-sanity
 
 
 sample-%:
@@ -66,8 +66,8 @@ sample-%:
 define-challenge-%: sample-%
 	$(DTC) define  --write-debug $@  --config $*.challenge.yaml --replicate sim:4
 
-define-challenge-mooc-BV1: # sample-mooc-BV1
-	$(DTC) define --write-debug $@ --config mooc-BV1.challenge.yaml --replicate sim:5
+define-challenge-lx22-BV1: # sample-mooc-BV1
+	$(DTC) define --write-debug $@ --config lx22-BV1.challenge.yaml --replicate sim:5
 
 define-challenge-GT:
 	$(DTC) define  --write-debug $@  --config LFV_multi-state-GT-vali.challenge.yaml --replicate sim:3
@@ -75,13 +75,13 @@ define-challenge-GT:
 
 
 
-define-challenge-sanity: define-challenge-sanity1 define-challenge-sanity2 define-challenge-sanity3
+define-special-sanity: define-special-sanity1 define-special-sanity2 define-special-sanity3
 
-define-challenge-sanity1:
+define-special-sanity1:
 	$(DTC) define --write-debug $@ --config aido-hello-sim-validation.challenge.yaml
-define-challenge-sanity2:
+define-special-sanity2:
 	$(DTC) define --write-debug $@  --config aido-hello-sim-full-validation.challenge.yaml
-define-challenge-sanity3:
+define-special-sanity3:
 	$(DTC) define --write-debug $@  --config aido-hello-sim-state-validation.challenge.yaml
 
 #
@@ -98,3 +98,36 @@ define-challenge-sanity3:
 
 baselines-submit:
 	make -C baselines
+
+
+
+quick:
+	make -C ../../src/aido-base-python3 build
+	make -C ../../src/gym-duckietown build
+	make -C ../../aido/challenge-aido_LF-simulator-gym build
+	make -C ../../aido/challenge-aido_LF-experiment_manager build
+
+
+BUILD=dt-build_utils-cli aido-container-build --use-branch daffy --ignore-untagged --ignore-dirty --force-login --push --platforms linux/amd64,linux/arm64 --buildx
+
+dn=..
+
+build-evals:
+	# $(BUILD) -C ../../src/aido-base-python3
+	# $(BUILD) -C ../../src/gym-duckietown
+	# $(BUILD) -C ../../aido/challenge-aido_LF-simulator-gym
+	$(BUILD) -C ../../aido/challenge-aido_LF-experiment_manager
+build-npcs:
+	$(BUILD) -C ../../src/aido-base-python3
+	$(BUILD) -C ${dn}/challenge-aido_LF-baseline-simple-yield
+	$(BUILD) -C ${dn}/challenge-aido_LF-minimal-agent-full
+	$(BUILD) -C ${dn}/challenge-aido_LF-minimal-agent-state
+	$(BUILD) -C ${dn}/challenge-aido_LF-minimal-agent
+	$(BUILD) -C ${dn}/challenge-aido_LF-template-pytorch
+	$(BUILD) -C ${dn}/challenge-aido_LF-template-random
+	$(BUILD) -C ${dn}/challenge-aido_LF-template-ros
+	$(BUILD) -C ${dn}/challenge-aido_LF-template-tensorflow
+
+	$(BUILD) -C ${dn}/challenge-aido_LF-baseline-RPL-ros
+	$(BUILD) -C ${dn}/challenge-aido_LF-baseline-duckietown
+	$(BUILD) -C ${dn}/challenge-aido_LF-baseline-duckietown-ml

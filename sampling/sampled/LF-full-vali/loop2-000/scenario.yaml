@@ -1,18 +1,21 @@
 robots:
   ego0:
     color: red
+    dynamics: duckietown_world.world_duckietown.pwm_dynamics.get_DB18_nominal
     protocol: PROTOCOL_FULL
     description: Playable robot ego0
     controllable: true
     configuration:
       pose:
-        x: 1.6380000114440918
-        y: 2.167474589882544
-        theta_deg: 149.20436531118233
+        x: 1.9275252003091066
+        y: 1.6380000114440918
+        theta_deg: -120.7956346888177
       velocity:
         x: 0.0
         y: 0.0
         theta_deg: 0.0
+    dynamics_params:
+      delay: 0.15
 duckies: {}
 environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
   \        p:\n        - 0.646\n        - 1.1219999999999999\n        theta_deg: 270\n\
@@ -33,24 +36,24 @@ environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Tra
   \        p:\n        - 0.9299999999999999\n        - -0.03899999999999999\n    \
   \    theta_deg: 180\n    tag:\n      ~TagInstance:\n        family: 36h11\n    \
   \    size: 0.08\n        tag_id: 342\n  tree_random_0:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.6758637530113965\n\
-  \        - 2.4793504095262087\n    height: 0.17583179445760935\n  tree_random_1:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.5783508090217027\n\
+  \        - 2.475057300553938\n    height: 0.3398564793466383\n  tree_random_1:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.21855179165992894\n        - 1.9177540877718506\n    height: 0.33435234362250565\n\
+  \        - 0.3785130523757902\n        - 2.098708482314776\n    height: 0.17779021923339028\n\
   \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 0.5263899657673613\n        - 1.3413952361306276\n\
-  \    height: 0.2480938610303165\n  tree_random_3:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.582305938121062\n\
-  \        - 0.4406107991266238\n    height: 0.3319627440143017\n  tree_random_4:\n\
+  \ 0.0\n        p:\n        - 0.45719966427642555\n        - 1.5560335265278766\n\
+  \    height: 0.2986838938821075\n  tree_random_3:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.3657243103627161\n\
+  \        - 0.2741739187529434\n    height: 0.2821238442438942\n  tree_random_4:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 2.5935795304003455\n        - 1.0181725933463777\n    height: 0.15290938271352\n\
+  \        - 2.6101107589336205\n        - 0.79436128730608\n    height: 0.18945934654798408\n\
   \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 1.3909030498173567\n        - 1.2605702427651768\n\
-  \    height: 0.36403439401449716\n  tree_random_6:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.1663780231449088\n\
-  \        - 2.7091762425449164\n    height: 0.3129090426288775\n  tree_random_7:\n\
+  \ 0.0\n        p:\n        - 1.6578309821692967\n        - 1.4452666259413087\n\
+  \    height: 0.2673660970813832\n  tree_random_6:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.4699684185272136\n\
+  \        - 2.666910051911408\n    height: 0.3371845408950247\n  tree_random_7:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.6754477996841775\n        - 0.15831193250119913\n    height: 0.35354656426547904\n\
+  \        - 0.9924395825709187\n        - 0.48635925138684877\n    height: 0.32167995270831984\n\
   tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
   - - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n\
   \  - straight/S\n  - floor\n  - straight/N\n  - floor\n- - floor\n  - curve_left/S\n\

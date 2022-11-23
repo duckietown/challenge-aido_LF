@@ -1,30 +1,33 @@
 robots:
   ego0:
     color: red
+    dynamics: duckietown_world.world_duckietown.pwm_dynamics.get_DB18_nominal
     protocol: PROTOCOL_STATE
     description: Playable robot ego0
     controllable: true
     configuration:
       pose:
-        x: 0.9974746327978881
-        y: 1.2869999408721924
-        theta_deg: 59.20436531118231
+        x: 1.2869999408721924
+        y: 1.9275252003091066
+        theta_deg: -30.795634688817696
       velocity:
         x: 0.0
         y: 0.0
         theta_deg: 0.0
+    dynamics_params:
+      delay: 0.15
 duckies:
   duckie00:
     pose:
-      x: 1.3107448816299438
-      y: 1.870348126623664
-      theta_deg: -62.22993990798968
+      x: 0.7295788567166966
+      y: 1.0164255885387712
+      theta_deg: -132.91604849592957
     color: yellow
   duckie01:
     pose:
-      x: 2.0780339723996795
-      y: 0.8287705865485666
-      theta_deg: -126.11196917509449
+      x: 0.6505407495475539
+      y: 1.3653372526168823
+      theta_deg: -75.18160357797464
     color: yellow
 environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Transform:\n\
   \        p:\n        - 0.646\n        - 1.1219999999999999\n        theta_deg: 270\n\
@@ -45,24 +48,24 @@ environment: "objects:\n  tag325:\n    kind: floor_tag\n    pose:\n      ~SE2Tra
   \        p:\n        - 0.9299999999999999\n        - -0.03899999999999999\n    \
   \    theta_deg: 180\n    tag:\n      ~TagInstance:\n        family: 36h11\n    \
   \    size: 0.08\n        tag_id: 342\n  tree_random_0:\n    kind: tree\n    pose:\n\
-  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.18052792310311216\n\
-  \        - 1.3768661055957827\n    height: 0.3571774443989202\n  tree_random_1:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 0.2533463580275632\n\
+  \        - 0.3620551024582708\n    height: 0.3177286615307891\n  tree_random_1:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 0.7419185872772329\n        - 0.19072057321690947\n    height: 0.2783465489441533\n\
+  \        - 2.459949841296484\n        - 2.0740460607987514\n    height: 0.32835842819876576\n\
   \  tree_random_2:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 2.821741901971311\n        - 2.6931855501658073\n \
-  \   height: 0.2194374360756661\n  tree_random_3:\n    kind: tree\n    pose:\n  \
-  \    ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.0650222614851201\n\
-  \        - 2.511034778593421\n    height: 0.2496821606319582\n  tree_random_4:\n\
+  \ 0.0\n        p:\n        - 1.0566237167717525\n        - 0.16942814658167038\n\
+  \    height: 0.3029942524868722\n  tree_random_3:\n    kind: tree\n    pose:\n \
+  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 2.850559938255777\n\
+  \        - 2.7199350252889007\n    height: 0.30631954613182866\n  tree_random_4:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 1.417555534196632\n        - 0.07565157235234016\n    height: 0.3689374316930426\n\
+  \        - 0.9786044240974519\n        - 2.525225919896282\n    height: 0.3136457252260446\n\
   \  tree_random_5:\n    kind: tree\n    pose:\n      ~SE2Transform:\n        theta:\
-  \ 0.0\n        p:\n        - 1.9212052352736344\n        - 2.495014222951271\n \
-  \   height: 0.16237366682168639\n  tree_random_6:\n    kind: tree\n    pose:\n \
-  \     ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.2510102351263122\n\
-  \        - 1.4622548350908284\n    height: 0.19197074185560822\n  tree_random_7:\n\
+  \ 0.0\n        p:\n        - 1.3420244245036534\n        - 0.3756396262283687\n\
+  \    height: 0.18660966463119924\n  tree_random_6:\n    kind: tree\n    pose:\n\
+  \      ~SE2Transform:\n        theta: 0.0\n        p:\n        - 1.890003486580958\n\
+  \        - 2.588932576366141\n    height: 0.3083335167585759\n  tree_random_7:\n\
   \    kind: tree\n    pose:\n      ~SE2Transform:\n        theta: 0.0\n        p:\n\
-  \        - 2.694018530141278\n        - 1.9818340925806242\n    height: 0.2614744666428938\n\
+  \        - 1.3335841836143794\n        - 1.4936199415809166\n    height: 0.2843429491660326\n\
   tile_size: 0.585\ntiles:\n- - floor\n  - floor\n  - floor\n  - floor\n  - floor\n\
   - - floor\n  - curve_left/W\n  - straight/W\n  - curve_left/N\n  - floor\n- - floor\n\
   \  - straight/S\n  - floor\n  - straight/N\n  - floor\n- - floor\n  - curve_left/S\n\

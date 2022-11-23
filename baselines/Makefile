@@ -1,6 +1,6 @@
 dn=../..
 
-submit=dt-challenges-cli submit --retire-same-label --impersonate 1639 --buildx
+submit=dt-challenges-cli submit --challenge '*' --retire-same-label --impersonate 1639 --buildx
 
 all:
 

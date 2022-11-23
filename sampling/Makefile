@@ -50,17 +50,18 @@ all: \
 	sampled/LFV_multi-state-test \
 	sampled/LFV_multi-state-vali \
 	\
-	sampled/mooc-BV1
+	sampled/lx22-BV1
 
 
 BV=python -m duckietown_world.world_duckietown.sample_braitenberg
-sampled/mooc-BV1:
-	rm -rf  sampled/mooc-BV1
-	$(BV) --nduckies 30 --ntiles 8 --scenario-name d30 -o sampled/mooc-BV1/d30/scenario.yaml
-	$(BV) --nduckies 40 --ntiles 8 --scenario-name d40 -o sampled/mooc-BV1/d40/scenario.yaml
-	$(BV) --nduckies 45 --ntiles 8 --scenario-name d45 -o sampled/mooc-BV1/d45/scenario.yaml
-	$(BV) --nduckies 50 --ntiles 8 --scenario-name d50 -o sampled/mooc-BV1/d50/scenario.yaml
-	$(BV) --nduckies 60 --ntiles 8 --scenario-name d60 -o sampled/mooc-BV1/d60/scenario.yaml
+
+sampled/lx22-BV1:
+	rm -rf  sampled/lx22-BV1
+	$(BV) --nduckies 30 --ntiles 8 --scenario-name d30 -o sampled/lx22-BV1/d30/scenario.yaml
+	$(BV) --nduckies 40 --ntiles 8 --scenario-name d40 -o sampled/lx22-BV1/d40/scenario.yaml
+	$(BV) --nduckies 45 --ntiles 8 --scenario-name d45 -o sampled/lx22-BV1/d45/scenario.yaml
+	$(BV) --nduckies 50 --ntiles 8 --scenario-name d50 -o sampled/lx22-BV1/d50/scenario.yaml
+	$(BV) --nduckies 60 --ntiles 8 --scenario-name d60 -o sampled/lx22-BV1/d60/scenario.yaml
 
 
 clean:
