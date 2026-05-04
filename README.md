@@ -1,25 +1,45 @@
+# AIDO 6 Lane Following Challenges
 
-# Development
+This repository contains the ente-era AIDO lane-following challenge definitions.
+The active definitions use the `aido6_embodied_sys` protocol and the
+Duckiematrix evaluator image `${DOCKER_REGISTRY}/duckietown/dt-duckiematrix:ente-amd64`.
+When `DOCKER_REGISTRY` is not set, current Challenges tooling resolves it to `docker.io`.
 
-## Testing
+All checked-in challenge definitions now live under `challenges/`.
+That directory is limited to the LF challenge family and its LF compatibility
+variants; non-LF definitions and older sampled scenario archives have been removed.
 
-To run everything, use:
+The old flat helper fragments used by earlier experiment-manager flows were removed
+because the ente challenge YAMLs are now self-contained and use a single
+`SUBMISSION_CONTAINER` solution service with the containerized Duckiematrix evaluator.
 
-    $ make test
+The remaining LF compatibility definitions in `challenges/` intentionally continue
+to reuse the same Duckiematrix loop evaluator. This repository does not keep
+separate per-variant ente evaluator launchers until a future runtime path
+actually needs different engine behavior.
 
+## Defining Challenges
 
-The output will be in the directory `./challenges-dir/`.
+Define the current public validation challenge:
 
+```bash
+make define-challenge
+```
 
-## Testing using local repositories
+Define every checked-in LF challenge definition:
 
-You can also run the containers by mounting the local repositories.
+```bash
+make define-challenges
+```
 
-To do so you must have the structure in [dt-env-developer](https://github.com/duckietown/dt-env-developer)
-and set the variable `DT_ENV_DEVELOPER` to that repo's root directory.
+Define one challenge by file stem:
 
-To run use:
+```bash
+make define-challenge-LF-norm-vali
+```
 
-    $ make test-with-local-repos
+List the checked-in challenge stems:
 
-You can see how the repos are mounted in the file [`docker-compose-devel.yaml`](old/docker-compose-devel.yaml).
+```bash
+make list-challenges
+```

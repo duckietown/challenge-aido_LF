@@ -1,0 +1,68 @@
+challenge: aido-LFVI-sim-validation
+title: "AIDO 6 Lane Following + Vehicles + Intersections - validation"
+description: |
+  Ente-era AIDO 6 compatibility definition for Lane Following + Vehicles + Intersections.
+  This definition uses the Duckiematrix single-agent lane-following evaluator
+  and preserves the historical challenge ID `aido-LFVI-sim-validation` for submission compatibility.
+
+  Historical sampled scenarios, NPC services, and experiment-manager fragments
+  are not used by this evaluator path.
+
+protocol: aido6_embodied_sys
+
+date-open: "2026-01-01T00:00:00+00:00"
+date-close: "2030-12-31T23:59:59+00:00"
+
+tags:
+  - duckiematrix
+  - aido
+  - aido6
+  - visible
+  - simulation
+  - ml-validation
+  - lf
+  - lfv
+  - lfvi
+  - intersections
+
+steps:
+  step1:
+    title: "Duckiematrix evaluation"
+    description: "Run the agent against the Duckiematrix loop map."
+    timeout: 600
+
+    evaluation_parameters:
+      version: "3"
+      services:
+        evaluator:
+          image: ${DOCKER_REGISTRY}/duckietown/dt-duckiematrix:ente-amd64
+          build: null
+          ports: []
+          environment:
+            DT_LAUNCHER: challenge-lf-loop
+            DT_SUPERUSER: "1"
+            VEHICLE_NAME: map_0/vehicle_0
+            CHALLENGE_NAME: aido-LFVI-sim-validation
+            DM_EVAL_TIMEOUT_MINUTES: "2"
+            DTSHELL_SHM_PATH: /fifos/world_io
+
+        solution:
+          image: SUBMISSION_CONTAINER
+          build: null
+          ports: []
+          environment:
+            VEHICLE_NAME: map_0/vehicle_0
+            DUCKIEMATRIX_ENGINE_HOSTNAME: evaluator
+            DUCKIEMATRIX_ENGINE_PORT: "7501"
+
+scoring:
+  scores:
+    - name: survival_time
+      description: "Simulated seconds the agent remained in-lane."
+      order: higher-is-better
+    - name: dist_traveled
+      description: "Estimated meters driven (survival_time x 0.3 m/s)."
+      order: higher-is-better
+    - name: intersection_count
+      description: "Intersections successfully navigated (LFVI only)."
+      order: higher-is-better

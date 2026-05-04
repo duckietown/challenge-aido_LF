@@ -11,12 +11,9 @@ sq.db
 challenges-dir
 evaluator.log
 output-local-evaluation
-experiment_manager/test/
-experiment_manager/requirements.resolved
 .compmake_history.txt
 deps.dot
 deps.pdf
 out
 compmake-graph*
-sampling/a.log
 out-zuper-make

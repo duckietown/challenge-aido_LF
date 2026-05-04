@@ -1,0 +1,65 @@
+challenge: aido-LF-sim-validation
+title: "AIDO 6 Lane Following - validation"
+description: |
+  Lane Following validation challenge for AIDO 6 using the Duckiematrix engine.
+  The agent must drive a Duckiebot around the loop map for a simulated
+  duration without leaving the lane.
+
+  Evaluation is hardware-independent: the engine runs in Gym mode and
+  advances one physics step only when the agent sends wheel commands.
+
+protocol: aido6_embodied_sys
+
+date-open: "2026-01-01T00:00:00+00:00"
+date-close: "2030-12-31T23:59:59+00:00"
+
+tags:
+  - duckiematrix
+  - aido
+  - aido6
+  - visible
+  - simulation
+  - ml-validation
+  - lf
+
+steps:
+  step1:
+    title: "Duckiematrix evaluation"
+    description: "Run the agent against the Duckiematrix loop map."
+    timeout: 600
+
+    evaluation_parameters:
+      version: "3"
+      services:
+        evaluator:
+          image: ${DOCKER_REGISTRY}/duckietown/dt-duckiematrix:ente-amd64
+          build: null
+          ports: []
+          environment:
+            DT_LAUNCHER: challenge-lf-loop
+            DT_SUPERUSER: "1"
+            VEHICLE_NAME: map_0/vehicle_0
+            CHALLENGE_NAME: aido-LF-sim-validation
+            DM_EVAL_TIMEOUT_MINUTES: "2"
+            DTSHELL_SHM_PATH: /fifos/world_io
+
+        solution:
+          image: SUBMISSION_CONTAINER
+          build: null
+          ports: []
+          environment:
+            VEHICLE_NAME: map_0/vehicle_0
+            DUCKIEMATRIX_ENGINE_HOSTNAME: evaluator
+            DUCKIEMATRIX_ENGINE_PORT: "7501"
+
+scoring:
+  scores:
+    - name: survival_time
+      description: "Simulated seconds the agent remained in-lane."
+      order: higher-is-better
+    - name: dist_traveled
+      description: "Estimated meters driven (survival_time x 0.3 m/s)."
+      order: higher-is-better
+    - name: intersection_count
+      description: "Intersections successfully navigated (LFVI only)."
+      order: higher-is-better
